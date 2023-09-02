@@ -1,0 +1,441 @@
+@font-face {
+  font-family: Backslash;
+  src: url('https://www.dropbox.com/scl/fi/8e7ma3l80l633uid90uuw/BACKSLASH-RPJOL.OTF') format("opentype");
+  }
+  
+  /* Color */
+  .bg-uno{background-color: var(--color-uno)!important}
+  .bg-uno-light{background-color: rgba(var(--rgb-uno), 0.8);}
+  .bg-fond-cate{background-color: var(--color-fond-cate)!important;}
+  .c-uno{color: var(--color-uno)!important}
+  .c-uno-light{color: rgba(var(--rgb-uno), 0.8);}
+  .bg-dos{background-color: var(--color-dos)!important}
+  .bg-dos-light{background-color: rgba(var(--rgb-dos), 0.8);}
+  .c-dos{color: var(--color-dos)!important}
+  .c-dos-light{color: rgba(var(--rgb-dos), 0.8);}
+  .bg-lu{background-color: var(--color-lu)!important}
+  .c-lu{color: var(--color-lu)!important}
+  .bg-text{background-color: var(--color-text)!important}
+  .c-text{color: var(--color-text)!important}
+  .bg-fond-forum{background-color: var(--color-fond-forum)!important}
+  .c-fond-forum{color: var(--color-fond-forum)!important}
+  .bg-bloc-1{background-color: var(--color-bloc-1)!important}
+  .c-bloc-1{color: var(--color-bloc-1)!important}
+  .bg-bloc-2{background-color: var(--color-bloc-2)!important}
+  .c-bloc-2{color: var(--color-bloc-2)!important}
+  .bg-bloc-3{background-color: var(--color-bloc-3)!important}
+  .c-bloc-3{color: var(--color-bloc-3)!important}
+  .bg-sous-ligne{background-color: var(--color-sous-ligne)!important}
+  .c-sous-ligne{color: var(--color-sous-ligne)!important}
+  .bg-white{background-color: var(--color-white)!important}
+  .c-white{color: var(--color-white)!important}
+  .img-filter-uno{filter: var(--filter-color-uno)!important}
+  .img-filter-dos{filter: var(--filter-color-dos)!important}
+  .img-filter-fond-forum{filter: var(--filter-fond-forum)!important}
+  /* Border */
+  .br-0{border-radius: 0!important}
+  .br-5{border-radius: 5px!important}
+  .br-8{border-radius: 8px!important}
+  .br-10{border-radius: 10px!important}
+  .br-20{border-radius: 20px!important}
+  .br-50{border-radius: 50%!important}
+  /* Text */
+  .text-xl-mulish, .text-xl-mulish *{
+      font-family: 'Mulish';
+      font-size: 30px;
+      line-height: 38px;
+  }
+  .text-l-mulish, .text-l-mulish *{
+      font-family: 'Mulish';
+      font-size: 20px;
+      line-height: 25px;
+  }
+  .text-m-mulish, .text-m-mulish *{
+      font-family: 'Mulish';
+      font-size: 15px;
+      line-height: 19px;
+  }
+  .text-s-mulish, .text-s-mulish *{
+      font-family: 'Mulish';
+      font-size: 13px;
+      line-height: 16px;
+  }
+  .text-xl-bebas, .text-xl-bebas *{
+      font-family: 'Bebas Neue';
+      font-size: 36px;
+      line-height: 43px;
+  }
+  .text-l-bebas, .text-l-bebas *{
+      font-family: 'Backslash';
+      font-size: 30px;
+      line-height: 36px;
+      font-weight: 100;
+  }
+  .text-m-bebas, .text-m-bebas *{
+      font-family: 'Bebas Neue';
+      font-size: 25px;
+      line-height: 30px;
+      letter-spacing: 0.07em;
+  }
+  .text-s-bebas, .text-s-bebas *{
+      font-family: 'Bebas Neue';
+      font-size: 20px;
+      line-height: 24px;
+  }
+  .text-xs-bebas, .text-xs-bebas *{
+      font-family: 'Bebas Neue';
+      font-size: 15px;
+      line-height: 19px;
+  }
+  .text-xl-abril, .text-xl-abril *{
+      font-family: 'Backslash'!important;
+      font-size: 50px!important;
+      line-height: 67px!important;
+  }
+  .text-l-abril, .text-l-abril *{
+      font-family: 'Abril Fatface';
+      font-size: 32px;
+      line-height: 43px;
+  }
+  .text-ml-abril, .text-ml-abril * {
+      font-family: 'Abril Fatface';
+      font-size: 24px !important;
+      line-height: 28px !important;
+  }
+  .text-m-abril, .text-m-abril *{
+      font-family: 'Abril Fatface';
+      font-size: 20px;
+      line-height: 27px;
+  }
+  .text-s-abril, .text-s-abril *{
+      font-family: 'Abril Fatface';
+      font-size: 15px;
+      line-height: 19px;
+  }
+  .text-upper{text-transform: uppercase;}
+  .text-bold{font-weight: 700;}
+  /* Display */
+  .d-block{
+      display: block!important;
+  }
+  .d-inline-block{
+      display: inline-block!important;
+  }
+  .d-none{
+      display: none!important;
+  }
+  .d-flex{
+      display: flex!important;
+  }
+  .d-flex-col{
+      display: flex;
+      flex-direction: column;
+  }
+  .flex-grow{
+      flex-grow: 1;
+  }
+  .flex-wrap{
+      flex-wrap: wrap;
+  }
+  /* Position */
+  .text-center{
+      text-align: center;
+  }
+  .text-start{
+      text-align: start;
+  }
+  .text-end{
+      text-align: end;
+  }
+  .text-justify{
+      text-align: justify;
+  }
+  .align-items-start{
+      align-items: flex-start;
+  }
+  .align-items-center{
+      align-items: center;
+  }
+  .align-items-end{
+      align-items: end;
+  }
+  .justify-content-center{
+      justify-content: center;
+  }
+  .justify-content-between{
+      justify-content: space-between;
+  }
+  .justify-content-end{
+      justify-content: end;
+  }
+  /* Sizing*/
+  .w-50{width: 50%!important;}
+  .w-100{width: 100%!important;}
+  .h-50{height: 50%!important;}
+  .h-100{height: 100%!important;}
+  /* Box Shadow */
+  .box-s-bold{
+      box-shadow: 0px 1px 4px #585A74!important;
+  }
+  .box-s-light{
+      box-shadow: 0px 1px 4px rgba(116, 116, 116, 0.25)!important;
+  }
+  /* Float for image */
+  .float-right{
+      float: right;
+  }
+  .float-left{
+      float: left;
+  }
+  /* Input, Select, textarea, label Lien */
+  input:not([type="checkbox"]):not([type="radio"]), select{
+      height: 32px;
+      border-radius: 8px;
+      font-family: 'Mulish';
+      font-size: 13px;
+      line-height: 16px;
+      color: var(--color-text);
+      border: none;
+      padding: 4px 12px;
+      box-sizing: border-box;
+      box-shadow: 0px 2px 3px rgba(184, 180, 180, 0.25);
+  }
+  input::placeholder{
+      font-family: 'Mulish';
+      font-size: 13px;
+      line-height: 16px;
+      color: var(--color-text);
+  }
+  input:not([type="checkbox"]):not([type="radio"]):focus, select:focus, textarea:focus{
+      outline: 2px solid var(--color-uno);
+  }
+  input[type="submit"], input[type="reset"], input[type="button"]{
+      padding: 4px 8px!important;
+      background: var(--color-uno);
+      border: 1px solid var(--color-uno);
+      font-family: 'Mulish'!important;
+      font-size: 13px!important;
+      line-height: 16px;
+      color: var(--color-white)!important;
+  }
+  input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover{
+      background: var(--color-white);
+      border: 1px solid var(--color-uno);
+      color: var(--color-uno)!important;
+  }
+  .inputbox{
+      padding: 4px;
+      border: 1px solid var(--color-bloc-2);
+  }
+  .inputbox:hover{
+      border: 1px solid var(--color-bloc-2);
+  }
+  .inputbox:focus{
+      border: 1px solid var(--color-bloc-2);
+  }
+  input.button1:focus, input.button2:focus{
+      transition: all ease-in-out 0.15;
+      border: 1px solid var(--color-white)!important;
+  }
+  textarea{
+      border-radius: 5px;
+      font-family: 'Mulish';
+      font-size: 13px;
+      line-height: 16px;
+      color: var(--color-text);
+      padding: 8px;
+      resize: none;
+  }
+  #mpage-body-modern input, #mpage-body-modern textarea {
+      font-size: 16px !important;
+  }
+  dd label{
+      color: var(--color-text);
+  }
+  label{
+      font-family: 'Mulish';
+      font-size: 13px;
+      line-height: 16px;
+      color: var(--color-text);
+  }
+  body#phpbb a:link,body#phpbb a:visited{
+      color: var(--color-link);
+  }
+  a:hover, a:hover > *{
+      color: var(--color-dos);
+      text-decoration: underline;
+  }
+  
+  /* General for element quote, code, etc... */
+  dl.codebox{
+      background-color: unset;
+      font-family: 'Mulish';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 16px;
+      text-align: justify;
+      border: none;
+      color: var(--color-text);
+  }
+  dl.codebox dt{
+      border-bottom: none;
+  }
+  /* Element quote */
+  blockquote{
+      text-align: justify;
+  }
+  #phpbb blockquote{
+      margin: 12px 44px;
+      padding: 8px;
+      background: unset;
+      border: none;
+      font-size: 13px;
+  }
+  blockquote blockquote{
+      background-color: unset;
+      font-size: unset;
+      margin: 8px;
+  }
+  blockquote div{
+      margin-left: unset;
+  }
+  blockquote cite{
+      color: var(--color-uno);
+      text-transform: uppercase;
+      font-family: 'Mulish';
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 14px;
+      margin-bottom: 5px;
+  }
+  /* Element code */
+  .codebox::after{
+      content: '';
+  }
+  dl.codebox code{
+      border: 1px dashed var(--color-uno);
+      padding: 10px 16px;
+      color: var(--color-text);
+      word-break: break-word;
+  }
+  /* Element spoiler */
+  dl.codebox.spoiler .spoiler_title{
+      background-color: var(--color-uno);
+      color: var(--color-white);
+      font-weight: 700;
+      line-height: 14px;
+      text-transform: uppercase;
+      padding: 8px 12px;
+  }
+  .spoiler_content{
+      border: 1px dashed var(--color-uno);
+      padding: 10px 16px;
+      margin: 12px 20px;
+  }
+  /* Element hide */
+  dl.codebox.hidecode{
+      border: 1px dashed var(--color-uno);
+      background: var(--color-bloc-3);
+      padding: 10px 16px;
+  }
+  dl.codebox.hidecode > dt{
+      display: none;
+  }
+  /* Redéfinition de classes natives */
+  .panel{
+      background-color: var(--color-bloc-1)!important;
+  }
+  body#phpbb .row1, body#phpbb .row2, body#phpbb .row3{
+      background-color: unset!important;
+  }
+  .corners-top, .corners-bottom{
+      display: none!important;
+  }
+  h1.page-title{
+      font-family: 'Abril Fatface';
+      font-size: 32px;
+      line-height: 43px;
+      color: var(--color-text);
+  }
+  table.table1 *{
+      font-family: 'Mulish';
+      font-size: 13px;
+      line-height: 16px;
+  }
+  form[action="/search?search_id=watchsearch"] table.table1 tbody tr td:first-child, form[action="/search?search_id=watchsearch"] table.table1 thead tr th:first-child{
+      display: none;
+  }
+  a.topictitle:hover{
+      color: currentColor;
+  }
+  table.table1 tbody td{
+      border-top: none!important;
+  }
+  table.forumline{
+      background: var(--color-bloc-1);
+      padding: 8px;
+      border-radius: 8px;
+  }
+  table.forumline th.thCornerL, table th.thTop, table th.thCornerR{
+      background-color: rgba(var(--rgb-dos), 0.8);
+  }
+  table.forumline td.catHead{
+      font-family: 'Abril Fatface';
+      font-size: 24px;
+      line-height: 36px;
+      color: var(--color-text);
+  }
+  body#phpbb h3, body#phpbb .h3, body#phpbb .content h2, body#phpbb .panel h2, body#phpbb .content h2.h3, body#phpbb .panel h2.h3{
+      color: var(--color-text);
+      border: none;
+      font-family: 'Abril Fatface';
+      font-size: 15px;
+      line-height: 19px;
+  }
+  a.button1, input.button1, a.button2, input.button2, button.button2, .external-module .external-more a{
+      padding: 4px 8px!important;
+      background: var(--color-uno);
+      border: 1px solid var(--color-uno)!important;
+      font-family: 'Mulish'!important;
+      font-size: 13px!important;
+      line-height: 16px;
+      color: var(--color-white)!important;
+      border-radius: 8px;
+      box-sizing: border-box;
+      box-shadow: 0px 2px 3px rgba(184, 180, 180, 25%);
+  }
+  a.button1:hover, input.button1:hover, a.button2:hover, input.button2:hover, button.button2:hover, .external-module .external-more a:hover{
+      background: var(--color-white);
+      color: var(--color-uno)!important;
+  }
+  .pagination span strong{
+      background-color: var(--color-bloc-2);
+      border: 1px solid var(--color-bloc-2);
+      color: var(--color-white);
+      font-size: 14px;
+  }
+  .pagination span a, .pagination span a:link, .pagination span a:visited, .pagination span a:active{
+      color: var(--color-text);
+      background-color: var(--color-bloc-1);
+      border: 1px solid var(--color-bloc-1);
+      font-size: 14px;
+  }
+  .pagination span a:hover {
+      background-color: var(--color-bloc-2);
+      border: 1px solid var(--color-bloc-2);
+      color: var(--color-white);
+      text-decoration: none;
+  }
+  .pagination span a.pag-img {
+      background: none!important;
+      border: none!important;
+  }
+  table.table1 tbody tr:hover, table.table1 tbody tr.hover {
+      background-color: unset;
+      color: currentColor;
+  }
+  /* Mobile */
+  body#mpage-body-modern .search-topic-category span{
+      color: white;
+  }

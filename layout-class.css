@@ -1,9 +1,9 @@
 /* Base Layout */
-.admin-content{
-  background-color: var(--color-bloc-1);
+.admin-content {
+   background-color: #d9d4cf; /* TO VARIABILIZE */
    border-radius: 20px;
    box-sizing: border-box;
-   border: 5px solid var(--color-uno);
+   border: 5px solid rgba(197, 192, 182, .3); /* TO VARIABILIZE */
    padding: 36px 24px 24px;
    margin-left: auto;
    margin-right: auto;
@@ -16,7 +16,7 @@
    margin-bottom: 16px;
 }
 .bloc-text{ /* Bloc text bg fond forum */
-  background: var(--color-fond-forum);
+   background: var(--color-fond-forum);
    border-left: 2px solid var(--color-dos);
    text-align: justify;
    box-sizing: border-box;

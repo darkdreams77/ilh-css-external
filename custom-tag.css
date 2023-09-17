@@ -244,14 +244,17 @@ title1, title2, title3, title4, title5, title6, title7{ /* Setup Title */
     text-align: center;
 }
 title1{ /* Title Abril, Color Gradient */
-    font-family: 'Abril Fatface';
+    margin-bottom: -8px;
+    font-family: Arial;
+    font-style: italic;
     font-weight: 400;
     font-size: 32px;
     line-height: 43px;
-    background: linear-gradient(180deg, var(--color-uno) 0%, var(--color-dos) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    /* background: linear-gradient(180deg, var(--color-uno) 0%, var(--color-dos) 100%); */
+    /* -webkit-background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
     background-clip: text;
+    color: #898985;
 }
 title2{/* Title Bebas, Color Dos, Border Dos Bottom, Circle Right */
     font-family: 'Bebas Neue';
@@ -333,16 +336,18 @@ title5::before{
     bottom: 5px;
     left: 10px;
 }
-title6{/* Title Bebas, Color Bloc 1, Background Uno */
-    font-family: 'Bebas Neue';
-    font-weight: 400;
-    font-size: 20px;
+title6 {
+    font-family: Arial;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.875rem;
     line-height: 24px;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     padding: 5px 0;
     margin: 0 10px;
-    color: var(--color-bloc-1);
-    background-color: var(--color-uno);
+    color: #844549;
+    border-bottom: 1px solid #c9c6c4;
+    /* background-color: var(--color-uno); */
 }
 title7{/* Title Bebas, Color Bloc 1, Background Dos */
     font-family: 'Bebas Neue';

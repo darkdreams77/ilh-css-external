@@ -12,9 +12,9 @@
    max-width: 710px;
    overflow: auto;
 }
-.admin-content title1, .admin-content title6 {
+/* .admin-content title1, .admin-content title6 {
    margin-bottom: 16px;
-}
+} */
 .bloc-text{ /* Bloc text bg fond forum */
    background: var(--color-fond-forum);
    border-left: 2px solid var(--color-dos);

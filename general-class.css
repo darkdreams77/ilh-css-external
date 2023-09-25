@@ -32,6 +32,9 @@
   .img-filter-uno{filter: var(--filter-color-uno)!important}
   .img-filter-dos{filter: var(--filter-color-dos)!important}
   .img-filter-fond-forum{filter: var(--filter-fond-forum)!important}
+  .c-new{color: var(--color-new) !important}
+  .c-no-new{color: var(--color-no-new) !important}
+  .c-link{color: var(--color-link) !important}
   /* Border */
   .br-0{border-radius: 0!important}
   .br-5{border-radius: 5px!important}

@@ -132,8 +132,8 @@
   }
   .text-s-poppins, .text-s-poppins *{
       font-family: 'Poppins';
-      font-size: 15px;
-      line-height: 19px;
+      font-size: 16px;
+      line-height: 20px;
   }
   .text-upper{text-transform: uppercase;}
   .text-bold{font-weight: 700;}

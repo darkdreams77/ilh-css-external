@@ -1,8 +1,3 @@
-@font-face {
-  font-family: Backslash;
-  src: url('https://www.dropbox.com/scl/fi/8e7ma3l80l633uid90uuw/BACKSLASH-RPJOL.OTF') format("opentype");
-  }
-  
   /* Color */
   .bg-uno{background-color: var(--color-uno)!important}
   .bg-uno-light{background-color: rgba(var(--rgb-uno), 0.8);}
@@ -112,6 +107,31 @@
   }
   .text-s-abril, .text-s-abril *{
       font-family: 'Abril Fatface';
+      font-size: 15px;
+      line-height: 19px;
+  }
+  .text-xl-poppins, .text-xl-poppins *{
+      font-family: 'Poppins';
+      font-size: 50px;
+      line-height: 67px;
+  }
+  .text-l-poppins, .text-l-poppins *{
+      font-family: 'Poppins';
+      font-size: 32px;
+      line-height: 43px;
+  }
+  .text-ml-poppins, .text-ml-poppins * {
+      font-family: 'Poppins';
+      font-size: 24px;
+      line-height: 28px;
+  }
+  .text-m-poppins, .text-m-poppins *{
+      font-family: 'Poppins';
+      font-size: 20px;
+      line-height: 27px;
+  }
+  .text-s-poppins, .text-s-poppins *{
+      font-family: 'Poppins';
       font-size: 15px;
       line-height: 19px;
   }

@@ -343,8 +343,7 @@ title6 {
     padding: 5px 0;
     margin: 0 10px;
     color: #844549;
-    border-bottom: 1px solid #c9c6c4;
-    /* background-color: var(--color-uno); */
+    border-bottom: 1px solid var(--border-bottom-admin-content);
 }
 title7{/* Title Bebas, Color Bloc 1, Background Dos */
   font-family: 'Bebas Neue';

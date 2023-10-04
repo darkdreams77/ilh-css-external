@@ -245,7 +245,7 @@ title1, title2, title3, title4, title5, title6, title7{ /* Setup Title */
 }
 title1{ /* Title Abril, Color Gradient */
     margin-bottom: -8px;
-    font-family: Arial;
+    font-family: 'Poppins';
     font-style: italic;
     font-weight: 400;
     font-size: 32px;
@@ -337,7 +337,7 @@ title5::before{
   left: 10px;
 }
 title6 {
-    font-family: Arial;
+    font-family: 'Poppins';
     font-weight: 800;
     text-transform: uppercase;
     font-size: 0.875rem;
@@ -346,8 +346,7 @@ title6 {
     padding: 5px 0;
     margin: 0 10px;
     color: #844549;
-    border-bottom: 1px solid #c9c6c4;
-    /* background-color: var(--color-uno); */
+    border-bottom: 1px solid var(--border-bottom-admin-content);
 }
 title7{/* Title Bebas, Color Bloc 1, Background Dos */
   font-family: 'Bebas Neue';

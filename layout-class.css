@@ -1,9 +1,9 @@
 /* Base Layout */
 .admin-content {
-   background-color: #d9d4cf; /* TO VARIABILIZE */
+   background-color: var(--background-admin-content);
    border-radius: 20px;
    box-sizing: border-box;
-   border: 5px solid rgba(197, 192, 182, .3); /* TO VARIABILIZE */
+   border: 5px solid var(--border-admin-content);
    padding: 36px 24px 24px;
    margin-left: auto;
    margin-right: auto;
@@ -12,9 +12,6 @@
    max-width: 710px;
    overflow: auto;
 }
-/* .admin-content title1, .admin-content title6 {
-   margin-bottom: 16px;
-} */
 .bloc-text{ /* Bloc text bg fond forum */
    background: var(--color-fond-forum);
    border-left: 2px solid var(--color-dos);
@@ -22,6 +19,7 @@
    box-sizing: border-box;
    padding: 18px 30px;
    min-height: 120px;
+   margin-top: 246px;
 }
 .bloc-text .title-inner{
    display: block;

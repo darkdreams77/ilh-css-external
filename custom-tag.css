@@ -243,15 +243,18 @@ title1, title2, title3, title4, title5, title6, title7{ /* Setup Title */
   box-sizing: border-box;
   text-align: center;
 }
-title1{ /* Title Abril, Color Gradient */
+title1 {
     margin-bottom: -8px;
-    font-family: 'Poppins';
+    font-family: 'Times';
     font-style: italic;
-    font-weight: 400;
-    font-size: 32px;
+    font-weight: 800;
+    font-size: 28px;
     line-height: 43px;
-    background-clip: text;
-    color: #898985;
+    text-transform: uppercase;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(90deg,var(--color-link) 0%,var(--color-dos) 100%);
+    -webkit-text-fill-color: transparent;
+    background-color: #898985;
 }
 title2{/* Title Bebas, Color Dos, Border Dos Bottom, Circle Right */
   font-family: 'Bebas Neue';
@@ -338,12 +341,14 @@ title6 {
     font-weight: 800;
     text-transform: uppercase;
     font-size: 0.875rem;
-    line-height: 24px;
-    /* border-radius: 20px; */
-    padding: 5px 0;
-    margin: 0 10px;
-    color: #844549;
+    line-height: 12px;
+    padding: 2px 0;
+    width: 60%;
+    border-radius: 5px;
+    margin: auto;
+    color: var(--color-white);
     border-bottom: 1px solid var(--border-bottom-admin-content);
+    background: var(--gradient-hoz);
 }
 title7{/* Title Bebas, Color Bloc 1, Background Dos */
   font-family: 'Bebas Neue';

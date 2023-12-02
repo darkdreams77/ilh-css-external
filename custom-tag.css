@@ -244,14 +244,14 @@ title1, title2, title3, title4, title5, title6, title7{ /* Setup Title */
   text-align: center;
 }
 title1 {
-    margin-bottom: -8px;
+    margin-bottom: -4px;
     font-family: 'Abril Fatface';
     font-weight: 800;
     font-size: 28px;
     line-height: 43px;
     text-transform: uppercase;
     -webkit-background-clip: text;
-    background-image: linear-gradient(90deg,var(--color-link) 0%,var(--color-dos) 100%);
+    background-image: linear-gradient(-180deg,var(--color-link) 0%,var(--color-dos) 100%);
     -webkit-text-fill-color: transparent;
     background-color: #898985;
 }

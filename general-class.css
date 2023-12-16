@@ -14,6 +14,8 @@
   .c-text{color: var(--color-text)!important}
   .bg-fond-forum{background-color: var(--color-fond-forum)!important}
   .c-fond-forum{color: var(--color-fond-forum)!important}
+  .bg-fond-wrapper{background-color: var(--color-fond-wrapper)!important}
+  .c-fond-wrapper{color: var(--color-fond-wrapper)!important}
   .bg-bloc-1{background-color: var(--color-bloc-1)!important}
   .c-bloc-1{color: var(--color-bloc-1)!important}
   .bg-bloc-2{background-color: var(--color-bloc-2)!important}

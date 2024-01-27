@@ -13,7 +13,7 @@
    overflow: auto;
 }
 .bloc-text{ /* Bloc text bg fond forum */
-   background: var(--color-fond-forum);
+   background: var(--color-bloc-1);
    border-left: 2px solid var(--color-dos);
    text-align: justify;
    box-sizing: border-box;

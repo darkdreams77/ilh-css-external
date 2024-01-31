@@ -429,3 +429,79 @@ hoghouse {
     margin: auto;
     padding-left: 10%;
 }
+
+quote { font-weight: 600; font-style: italic; color: var(--color-text-cate); }
+quote:before { content: "“ "; font-family: "Georgia"; font-size: 20px; line-height: 10px; }
+sign { display: block; text-align: right; text-transform: uppercase; font-size: 9px; margin-top: 5px; }
+
+.serpentard-bg {
+  background: linear-gradient(0deg, var(--serpentard-gradient) 0%, rgba(0,212,255,0) 100%), var(--background-hog-img) left;
+}
+
+.griffondor-bg {
+  background: linear-gradient(0deg, var(--griffondor-gradient) 0%, rgba(0,212,255,0) 100%), var(--background-hog-img) left;
+}
+
+.poufsouffle-bg {
+  background: linear-gradient(0deg, var(--poufsouffle-gradient) 0%, rgba(0,212,255,0) 100%), var(--background-hog-img) left;
+}
+
+.serdaigle-bg {
+  background: linear-gradient(0deg, var(--serdaigle-gradient) 0%, rgba(0,212,255,0) 100%), var(--background-hog-img) left;
+}
+
+.serpentard {
+    background: var(--serpentard-bg);
+}
+
+.griffondor {
+    background: var(--griffondor-bg);
+}
+
+.poufsouffle {
+    background: var(--poufsouffle-bg);
+}
+
+.serdaigle {
+    background: var(--serdaigle-bg);
+}
+
+.serpentard-bg::before {
+content: url(https://images2.imgbox.com/f5/38/OujfUGjI_o.png);
+display: block;
+width: 30px;
+height: 30px;
+position: absolute;
+left: 3%;
+bottom: 5%;
+}
+
+.griffondor-bg::before {
+content: url(https://images2.imgbox.com/7d/09/iHO3fTl9_o.png);
+display: block;
+width: 30px;
+height: 30px;
+position: absolute;
+left: 3%;
+bottom: 5%;
+}
+
+.poufsouffle-bg::before {
+content: url(https://images2.imgbox.com/31/10/KEEaVEVr_o.png);
+display: block;
+width: 30px;
+height: 30px;
+position: absolute;
+left: 3%;
+bottom: 5%;
+}
+
+.serdaigle-bg::before {
+content: url(https://images2.imgbox.com/b9/af/psjBkULw_o.png);
+display: block;
+width: 30px;
+height: 30px;
+position: absolute;
+left: 3%;
+bottom: 5%;
+}

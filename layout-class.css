@@ -479,6 +479,15 @@
 }
 .admin-content-field-list-info up1, .admin-content-field-list-info-plus up1{
    margin-right: 8px;
+   font-family: 'Mulish';
+   font-weight: 700;
+   font-size: 13px;
+   line-height: 16px;
+   text-transform: uppercase;
+   background: var(--gradient-hoz);
+   padding: 0 5px;
+   border-radius: 5px;
+   color: var(--color-white);
 }
 .admin-content-field-list-info-plus > div > div > div > *:last-child{
    margin-left: auto;

@@ -474,9 +474,9 @@
    margin: 0 15px;
    padding: 4px;
 }
-.admin-content-field-list-info > div > div:not(:last-child), .admin-content-field-list-info-plus > div > div:not(:last-child){
+/*.admin-content-field-list-info > div > div:not(:last-child), .admin-content-field-list-info-plus > div > div:not(:last-child){
    border-bottom: 1px solid var(--color-bloc-2);
-}
+}*/
 .admin-content-field-list-info up1, .admin-content-field-list-info-plus up1{
    margin-right: 8px;
    font-family: 'Mulish';

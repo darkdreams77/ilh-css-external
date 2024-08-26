@@ -25,8 +25,8 @@
 
     &.one img {
       object-fit: cover;
-      max-width: 100%;
-      max-height: 200px;
+      width: 100%;
+      max-height: 250px;
     }
 
     &.two img {

@@ -12,6 +12,21 @@
   padding: 10px;
   position: relative;
 
+  
+  .imgs {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    img {
+      flex: 1 1 auto;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+  }
+
   .content {
     border-radius: 8px;
     padding: 10px;

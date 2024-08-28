@@ -26,6 +26,10 @@
     padding-right: 5px;
   }
 
+  .block:last-child .content {
+    line-height: 1.1;
+  }
+
   .block .top-sites {
     font-family: var(--title);
     font-size: var(--12px);

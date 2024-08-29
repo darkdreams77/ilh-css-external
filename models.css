@@ -153,9 +153,9 @@ subtitle4 { background: var(--accentClr); }
     position: absolute;
     border-radius: 50%;
     left: -3px;
-    top: -1px;
-    width: 18px;
-    height: 18px;
+    top: 0;
+    width: 20px;
+    height: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -183,7 +183,7 @@ subtitle7, subtitle8 {
   font-size: var(--11px);
   text-transform: uppercase;
   font-weight: 600;
-  padding: 2px 9px;
+  padding: 2px 9px 0;
   border-image: var(--gradientAccent);
   border-image-slice: 1;
   margin-bottom: 4px;

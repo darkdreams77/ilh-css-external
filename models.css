@@ -74,7 +74,7 @@
 }
 
 .admin-title {
-  font-size: var(--16px);
+  font-size: var(--20px);
   font-family: var(--title);
   text-transform: uppercase;
   display: flex;

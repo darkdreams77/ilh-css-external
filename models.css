@@ -130,7 +130,7 @@ subtitle3 { background: var(--accentClrDark); }
 subtitle4 { background: var(--accentClr); }
 
 .subtitle5, .subtitle6 {
-  display: inline-block;
+  display: inline-flex;
   background: var(--neutralDark);
   border-radius: 4px;
   padding: 2px 4px;

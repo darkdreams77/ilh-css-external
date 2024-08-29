@@ -215,3 +215,7 @@ r3 { font-family: var(--title); }
 fond1 { background: var(--gradientAccent); border-radius: 4px; font-weight: 600; padding: 0 3px; text-transform: lowercase; }
 fond2 { background: var(--accentClr); border-radius: 4px; font-weight: 600; padding: 0 3px; text-transform: lowercase; }
 fond3 { background: var(--accentClrDark); border-radius: 4px; font-weight: 600; padding: 0 3px; text-transform: lowercase; }
+e1 { border-bottom: var(--accentClr) 2px solid; padding: 0 3px; transition: all 0.6s ease-in-out; }
+e1:hover { background: var(--accentClr); }
+e2 { border-bottom: var(--accentClrDark) 2px solid; padding: 0 3px; transition: all 0.6s ease-in-out; }
+e2:hover { background: var(--accentClrDark); }

@@ -212,9 +212,9 @@ n { border-bottom: 1px #745135 dashed; }
 r1 { font-family: var(--title); text-transform: lowercase; color: var(--accentClr); font-style: italic; font-size: var(--16px); }
 r2 { font-family: var(--title); text-transform: lowercase; color: var(--accentClrDark); font-style: italic; font-size: var(--16px); }
 r3 { font-family: var(--title); }
-fond1 { background: var(--gradientAccent); border-radius: 4px; font-weight: 600; padding: 0 3px; text-transform: lowercase; }
-fond2 { background: var(--accentClr); border-radius: 4px; font-weight: 600; padding: 0 3px; text-transform: lowercase; }
-fond3 { background: var(--accentClrDark); border-radius: 4px; font-weight: 600; padding: 0 3px; text-transform: lowercase; }
+fond1 { background: var(--gradientAccent); border-radius: 4px; font-weight: 600; padding: 0 3px; text-transform: lowercase; color: var(--white); }
+fond2 { background: var(--accentClr); border-radius: 4px; font-weight: 600; padding: 0 3px; text-transform: lowercase; color: var(--white); }
+fond3 { background: var(--accentClrDark); border-radius: 4px; font-weight: 600; padding: 0 3px; text-transform: lowercase; color: var(--white); }
 e1 { 
   border-bottom: var(--accentClr) 2px solid; 
   padding: 0 3px; 

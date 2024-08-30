@@ -126,7 +126,7 @@
   height: 320px;
   position: relative;
   
-  img { border-radius: 8px; }
+  img { border-radius: 8px; width: 200px; }
 }
 
 .user_fc {

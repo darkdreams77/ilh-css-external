@@ -307,7 +307,7 @@
 
 /* Bouton "suivre le membre" */
 .followBtn {
-  background: var(--neutralDarker);
+  background: var(--neutralLight);
   border-radius: 5px;
   font-weight: 600;
   margin: 0;

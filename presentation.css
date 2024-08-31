@@ -91,49 +91,6 @@
     }
   }
 
-  .accordion_title {
-    all: unset;
-    font-size: var(--12px);
-    font-weight: 600;
-    text-transform: uppercase;
-    cursor: pointer;
-
-    &:before {
-      content: '\F282';
-      font-family: var(--bi-font);
-      color: var(--accentClr);
-      display: inline-block;
-      margin-right: 5px;
-      transition: all .3s ease-in-out;
-    }
-
-    &.active:before {
-      transform: rotate(180deg);
-    }
-  }
-
-  .accordion_content {
-    background: var(--base);
-    padding: 0 5px;
-    border-radius: 8px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-    flex: 1 0 auto;
-
-    &.active {
-      padding: 5px;
-    }
-
-    div {
-      padding: 5px 0 3px;
-
-      &:first-child {
-        border-bottom: 1px solid var(--neutral);
-      }
-    }
-  }
-
   .second_block {
     background: var(--neutralDark);
     border-radius: 8px;

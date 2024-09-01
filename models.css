@@ -110,6 +110,8 @@ subtitle2 {
   gap: 16px;
   align-items: center;
   justify-content: center;
+  text-transform: uppercase; 
+  
   &:before, &:after {
     content: '';
     flex: 1 1 auto;

@@ -3,6 +3,7 @@
   .id_card {
     .first_block_left {
       flex: 1 1 auto;
+      height: 300px;
     }
 
     .avatar_right {
@@ -27,6 +28,10 @@
     .hors_jeu {
       display: flex;
       flex-direction: column;
+
+      img {
+        margin: 0 auto 20px;
+      }
     }
   }
 }

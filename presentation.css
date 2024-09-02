@@ -29,6 +29,10 @@
       display: flex;
       flex-direction: column;
 
+      .content {
+        height: 200px;
+      }
+
       img {
         margin: 0 auto 20px;
       }

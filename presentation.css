@@ -1,7 +1,39 @@
 
+.mobile {
+  .id_card {
+    .first_block_left {
+      flex: 1 1 auto;
+    }
+
+    .avatar_right {
+      flex: 1 1 auto;
+      margin-top: 10px;
+      text-align: center;
+
+      img { 
+        width: 240px;
+        height: 240px;
+        object-fit: cover;
+      }
+    }
+
+    .second_block {
+      .line {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .hors_jeu {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
 
 .id_card {
   width: 630px;
+  max-width: 100%;
   margin: 0 auto; 
 
   .admin-title {

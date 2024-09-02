@@ -9,6 +9,7 @@
     .avatar_right {
       flex: 1 1 auto;
       margin-top: 10px;
+      margin-right: 0;
       text-align: center;
 
       img { 
@@ -35,6 +36,10 @@
 
       img {
         margin: 0 auto 20px;
+      }
+
+      .codebox {
+        padding: 15px;
       }
     }
   }

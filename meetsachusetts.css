@@ -1,0 +1,109 @@
+
+
+.meetsa {
+  width: 450px;
+  height: 250px;
+  overflow: hidden;
+  margin: 10px auto;
+  border-radius: 8px;
+
+  .cover {
+    height: 110px;
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .content {
+    height: calc(100% - 110px);
+    width: 100%;
+    padding: 4px 12px 14px 15px;
+    background: var(--neutralDark);
+    display: flex;
+    gap: 5px;
+
+    .icon {
+      width: 90px;
+      height: 90px;
+      border-radius: 50px;
+      border: 3px solid var(--neutralDark);
+      overflow: hidden;
+      position: relative;
+      margin-top: -45px;
+      margin-left: 5px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+
+  .left_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 0 0 120px;
+
+    .localisation {
+      display: inline-flex;
+      align-items: center;
+      font-size: var(--11px);
+
+      &:before {
+        content: '\F3E8';
+        font-family: var(--bi-font);
+        background: var(--gradientAccent);
+        padding: 4px;
+        border-radius: 50%;
+        color: var(--white);
+        margin-right: 6px;
+        flex: 0 0 16px;
+        font-size: var(--16px);
+        line-height: 16px;
+      }
+    }
+  } 
+
+  .right_content {
+    flex: 1 1 auto;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .line {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      span i {
+        font-size: var(--18px);
+        color: var(--love);
+      }
+    }
+
+    .pseudo {
+      display: inline-block;
+      padding: 2px 4px;
+      background: var(--gradientAccent);
+      border-radius: 4px;
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .description {
+      background: var(--base);
+      border-radius: 4px;
+      padding: 4px 8px;
+      flex: 1 1 auto;
+      overflow: auto;
+    }
+  }
+}

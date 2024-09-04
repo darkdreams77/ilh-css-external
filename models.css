@@ -7,10 +7,9 @@
   overflow: hidden;
 
   hr {
-    height: 1px;
+    border: 2px var(--accentClr) solid;
+    border-radius: 2px;
     width: 100%;
-    border: none;
-    background: var(--neutral);
   }
 }
 

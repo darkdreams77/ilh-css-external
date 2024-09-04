@@ -159,7 +159,7 @@
     }
 
     .left_content {
-      flex: 0 0 90px;
+      flex: 0 0 70px;
       position: relative;
       min-height: 250px;
 
@@ -186,7 +186,6 @@
 
         span:nth-child(2) {
           flex: 1 1 auto;
-          padding-left: 5px;
         }
       }
 

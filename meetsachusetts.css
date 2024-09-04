@@ -182,13 +182,14 @@
         flex-wrap: wrap;
         gap: 8px;
         flex: 1 1 auto;
+        max-width: 300px;
 
         img {
           display: flex;
           min-width: 30%;
           flex: 30%;
           background-color: var(--neutralLight);
-          max-height: 190px;
+          max-height: 300px;
           object-fit: cover;
           object-position: center;
           max-width: 300px !important;

@@ -26,9 +26,9 @@
     display: flex;
     gap: 5px;
 
-    .icon {
-      width: 90px;
-      height: 90px;
+    .icon {            
+      width: 100px;
+      height: 100px;
       overflow: hidden;
       position: relative;
       margin-top: -45px;
@@ -141,12 +141,15 @@
       min-height: 250px;
       height: auto;
       gap: 15px;
+      padding: 10px;
     
       .icon {
         margin-top: 0;
         margin-left: 0;
-        flex: 0 0 90px;
+        flex: 0 0 70px;
         z-index: 1;
+        width: 70px;
+        height: 70px;
 
         img {
           border: 3px solid var(--accentClr);
@@ -179,6 +182,7 @@
 
       .line {
         flex-wrap: wrap;
+        gap: 5px;
 
         span:nth-child(2) {
           flex: 1 1 auto;
@@ -206,5 +210,11 @@
         }
       }
     }
+  }
+
+  &.post:has(.text_content) {
+    min-height: 100px;
+
+    .content, .left_content, .right_content { min-height: 100px; }
   }
 }

@@ -229,56 +229,34 @@ fond3 { background: var(--accentClrDark); border-radius: 4px; font-weight: 600; 
 e1 { 
   border-bottom: var(--accentClr) 2px solid; 
   padding: 0 3px; 
-  position: relative;
-  z-index: 1;
   transition: all 0.25s ease;
 
   &:before {
     content: '';
     background: var(--accentClr);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 0%;
-    width: 100%;
     transition: all 0.25s ease;
-    z-index: -1;
   }
 
   &:hover {
     color: var(--white); 
-    
-    &:before {
-      height: 100%;
-    }
+    background: var(--accentClr);
   }
 }
 
 e2 { 
   border-bottom: var(--accentClrDark) 2px solid; 
   padding: 0 3px; 
-  position: relative;
-  z-index: 1;
   transition: all 0.25s ease;
 
   &:before {
     content: '';
     background: var(--accentClrDark);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 0%;
-    width: 100%;
     transition: all 0.25s ease;
-    z-index: -1;
   }
 
   &:hover {
     color: var(--white); 
-    
-    &:before {
-      height: 100%;
-    }
+    background: var(--accentClrDark);
   }
 }
 
@@ -290,3 +268,65 @@ gradiant {
     font-weight: 600;
     color: var(--white);
 }
+
+back1 {
+    background: var(--accentClr);
+    font-weight: 400;
+    padding: 0 5px;
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+back2 {
+    background: var(--accentClrDark);
+    font-weight: 400;
+    padding: 0 5px;
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+/* ================= BOTTIN ================= */
+
+pris, reserve, nouveau {
+  display: flex; flex-wrap: wrap;text-align: left;margin-bottom: -10px;
+
+i {
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: var(--bi-font);
+width: 20px;
+height: 25px;
+border-radius: 4px;
+color: var(--white);
+}
+
+date { 
+  color: var(--accentClr); 
+  &:before {
+       content: " ›";
+       margin-right: 5px;
+     }
+}
+
+  b { width: 50%;background: var(--neutral); padding: 2px 10px;text-transform: uppercase;}
+  span { padding: 2px 10px; flex-grow: 1; margin-left: 10px;
+  
+  &:hover {
+       background: var(--neutral);
+    }
+  }
+}
+
+pris {
+i {  background: var(--love); }
+}
+
+reserve {
+i {  background: var(--fire);  }
+}
+
+nouveau {
+i {  background: var(--students); }
+}
+

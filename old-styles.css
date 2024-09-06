@@ -347,7 +347,7 @@
 }
 
 /* Base Layout */
-.admin-content {
+.admin-content:has(.admin-content-body-pres), .admin-content:has(.bloc-text) {
    background-color: var(--background-admin-content);
    border-radius: 20px;
    box-sizing: border-box;

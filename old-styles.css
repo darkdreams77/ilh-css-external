@@ -1,17 +1,17 @@
 :root {
     --bg-color-opacity: rgba(255, 255, 255, 0.7);
-    --color-uno: #d7933f;
+    --color-uno: var(--accentClr);
     --tmp-color-uno: #c47617;
     --color-uno-gradiant: #c47617;
-    --color-dos: #cb816e;
-    --color-lu: #ffffff; /* Color balise fond1, etc... */
-    --color-text: #705a49;
+    --color-dos: var(--accentClrDark);
+    --color-lu: var(--white); /* Color balise fond1, etc... */
+    --color-text: var(--textColor);
     --color-text-cate: #434242;
     --color-fond-wrapper: #f5e3d6;
     --gradient-fond-color: linear-gradient(90deg, rgb(238 193 158) 0%,rgb(238 193 158) 100%);
     --color-fond-forum: #eec19e;
     --color-fond-cate: #e8dfd1; /* fond cate dernier message + qeel */
-    --color-bloc-1: #f1ede8; /* fond cate */
+    --color-bloc-1: var(--neutralDark); /* fond cate */
     --color-bloc-2: #e8ded0; /* fond mdm pa */
     --color-bloc-3: #ebdecd; /* Scroll and background profil sujet */
     --color-sous-ligne: #cb816e; /* Member month color */
@@ -33,7 +33,7 @@
     --icon-day-night: url("https://images2.imgbox.com/54/a1/Ym8V4j0C_o.png");
     --img-notif: url("https://images2.imgbox.com/50/84/n8EgXwy9_o.png");
     --box-shadow-1: 195, 195, 195, 0.25;
-    --background-admin-content: #f5e4d6;
+    --background-admin-content: var(--neutral);
     --border-admin-content: rgba(197, 192, 182, .3);
     --border-bottom-admin-content: #e6ecee;
     --last-post-invert: invert(0);
@@ -65,18 +65,18 @@
 
  [data-color-scheme="dark"], html.fa_darkmode {
     --bg-color-opacity: rgba(0, 0, 0, 0.7);
-    --color-uno: #5e646e;
+    --color-uno: var(--accentClr);
     --tmp-color-uno: #383d45;
     --color-uno-gradiant: #383d45;
-    --color-dos: #75968e;
-    --color-lu: #DCDCDC; /* Color balise fond1, etc... */
-    --color-text: #97989a;
+    --color-dos: var(--accentClrDark);
+    --color-lu: var(--white); /* Color balise fond1, etc... */
+    --color-text: var(--textColor);
     --color-text-cate: #c0c2c5;
     --color-fond-wrapper: #1a1c21;
     --gradient-fond-color: linear-gradient(90deg,rgb(68 71 80) 0%,rgb(68 71 80) 100%);
     --color-fond-forum: #141414;
     --color-fond-cate: #18191a;
-    --color-bloc-1: #25272c;
+    --color-bloc-1: var(--neutralDark);
     --color-bloc-2: #1a1c21;
     --color-bloc-3: #2b2e37;
     --color-sous-ligne: #7e908b; /* Member month color */
@@ -98,7 +98,7 @@
     --icon-day-night: url("https://images2.imgbox.com/5f/43/abhgckiV_o.png");
     --img-notif: url("https://images2.imgbox.com/1f/b8/IthN92GB_o.png");
     --box-shadow-1: 20, 20, 20, 0.25;
-    --background-admin-content: #1a1c21;
+    --background-admin-content: var(--neutral);
     --border-admin-content: rgba(0, 0, 0, .3);
     --border-bottom-admin-content: #ae96a1;
     --last-post-invert: invert(1);
@@ -1357,21 +1357,21 @@ r1{/* Texte, Police Abril, Color Uno */
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
-  color: var(--color-balise-deco-un);
+  color: var(--accentClr);
 }
 r2{/* Texte, Police Abril, Color Dos */
   font-family: 'Abril Fatface';
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
-  color: var(--color-balise-deco-deux);
+  color: var(--accentClrDark);
 }
 r3{/* Texte, Police Abril, Color Text */
   font-family: 'Abril Fatface';
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
-  color: var(--color-text);
+  color: var(--textColor);
 }
 k1{/* Texte, Police Bebas, Color Dos, Gras, Upper */
   font-family: 'Bebas Neue';
@@ -1379,7 +1379,7 @@ k1{/* Texte, Police Bebas, Color Dos, Gras, Upper */
   font-size: 13px;
   line-height: 13px;
   text-transform: uppercase;
-  color: var(--color-balise-deco-un);
+  color: var(--accentClr);
 }
 k2{/* Texte, Police Bebas, Color Uno, Gras, Upper */
   font-family: 'Bebas Neue';
@@ -1387,7 +1387,7 @@ k2{/* Texte, Police Bebas, Color Uno, Gras, Upper */
   font-size: 13px;
   line-height: 13px;
   text-transform: uppercase;
-  color: var(--color-balise-deco-deux);
+  color: var(--accentClrDark);
 }
 k3{/* Texte, Police Bebas, Color Dos, Gras, Upper, Underline */
   font-family: 'Bebas Neue';
@@ -1396,7 +1396,7 @@ k3{/* Texte, Police Bebas, Color Dos, Gras, Upper, Underline */
   line-height: 13px;
   text-transform: uppercase;
   text-decoration: underline;
-  color: var(--color-balise-deco-un);
+  color: var(--accentClr);
 }
 k4{/* Texte, Police Bebas, Color Uno, Gras, Upper, Underline */
   font-family: 'Bebas Neue';
@@ -1405,21 +1405,21 @@ k4{/* Texte, Police Bebas, Color Uno, Gras, Upper, Underline */
   line-height: 13px;
   text-transform: uppercase;
   text-decoration: underline;
-  color: var(--color-balise-deco-deux);
+  color: var(--accentClrDark);
 }
 fond1{/*Texte Upper, Color White, Fond Uno, Radius 20 */
   border-radius: 20px;
   text-transform: uppercase;
-  color: var(--color-lu);
-  background-color: var(--color-uno);
+  color: var(--white);
+  background-color: var(--accentClr);
   padding: 2px 13px;
   line-height: 23px;
 }
 fond2{/*Texte Upper, Color White, Fond Dos, Radius 20 */
   border-radius: 20px;
   text-transform: uppercase;
-  color: var(--color-lu);
-  background-color: var(--color-dos);
+  color: var(--white);
+  background-color: var(--accentClrDark);
   padding: 2px 13px;
   line-height: 23px;
 }
@@ -1524,7 +1524,7 @@ title1 {
     line-height: 43px;
     text-transform: uppercase;
     -webkit-background-clip: text;
-    background-image: linear-gradient(-180deg,var(--color-link) 0%,var(--color-dos) 100%);
+    background-image: var(--gradientAccent);
     -webkit-text-fill-color: transparent;
     background-color: #898985;
 }
@@ -1618,9 +1618,9 @@ title6 {
     width: 60%;
     border-radius: 5px;
     margin: auto;
-    color: var(--color-white);
+    color: var(--white);
     border-bottom: 1px solid var(--border-bottom-admin-content);
-    background: var(--gradient-hoz);
+    background: var(--gradientAccent);
 }
 title7{/* Title Bebas, Color Bloc 1, Background Dos */
   font-family: 'Bebas Neue';

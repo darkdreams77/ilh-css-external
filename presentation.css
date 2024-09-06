@@ -161,6 +161,15 @@
       text-align: justify;
 
       &.small { height: 105px; }
+      &.trait {
+        display: flex;
+        height: 165px;
+        gap: 5px;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+      }
     }
 
     .groupe {

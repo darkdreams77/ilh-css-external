@@ -288,6 +288,23 @@ back2 {
     color: var(--white);
 }
 
+in, out {
+  font: var(--28px) var(--title);
+  font-style: italic;
+
+  &:before {
+    content: '— ';
+  }
+}
+
+in {
+  color: #2b8e2b;
+}
+
+out {
+  color: #921c1c;
+}
+
 /* ================= BOTTIN ================= */
 
 pris, reserve, nouveau {

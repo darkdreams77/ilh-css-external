@@ -11,6 +11,10 @@
     border-radius: 2px;
     width: 100%;
   }
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 .admin-content {

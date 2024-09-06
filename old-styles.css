@@ -425,8 +425,10 @@
    background-image: url(https://images2.imgbox.com/a0/4a/soqDmwS3_o.png);
    border: 3px solid #70A3C7;
 }
-.admin-content .bloc-text:last-child{
-   border-radius: 0;
+.admin-content:has(.admin-content-body-pres), .admin-content:has(.bloc-text) {
+    .bloc-text:last-child{
+       border-radius: 0;
+    }    
 }
 /* Container bloc text & nav image */
 .bloc-text.nav{
@@ -614,24 +616,26 @@
    margin-top: 36px;
 }
 /* Aside fiche */
-.admin-content aside{
-   writing-mode: vertical-lr;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   box-sizing: border-box;
-   color: var(--color-white);
-   background: linear-gradient(180deg, var(--color-uno) 0%, var(--color-dos) 100%);
-   font-family: 'Abril Fatface';
-   font-size: 32px;
-   line-height: 43px;
-   width: 72px;
-   min-height: 360px;
-   margin-right: 32px;
-   margin-top: -36px;
-   margin-left: -24px;
-   margin-bottom: -24px;
-   padding: 80px 12px 18px;
+.admin-content:has(.admin-content-body-pres), .admin-content:has(.bloc-text) {
+    aside{
+       writing-mode: vertical-lr;
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       box-sizing: border-box;
+       color: var(--color-white);
+       background: linear-gradient(180deg, var(--color-uno) 0%, var(--color-dos) 100%);
+       font-family: 'Abril Fatface';
+       font-size: 32px;
+       line-height: 43px;
+       width: 72px;
+       min-height: 360px;
+       margin-right: 32px;
+       margin-top: -36px;
+       margin-left: -24px;
+       margin-bottom: -24px;
+       padding: 80px 12px 18px;
+    }
 }
 .aside-hover{
    box-sizing: border-box;
@@ -825,20 +829,7 @@
 /*.admin-content-field-list-info > div > div:not(:last-child), .admin-content-field-list-info-plus > div > div:not(:last-child){
    border-bottom: 1px solid var(--color-bloc-2);
 }*/
-.admin-content-field-list-info up1, .admin-content-field-list-info-plus up1{
-   margin-right: 8px;
-   font-family: 'Mulish';
-   font-weight: 700;
-   font-size: 12px;
-   line-height: 16px;
-   text-transform: uppercase;
-   background: var(--gradient-hoz);
-   padding: 0 5px;
-   border-radius: 5px;
-   color: var(--color-white);
-   color: var(--color-white) !important;
-   border: none;
-}
+
 .admin-content-field-list-info-plus > div > div > div > *:last-child{
    margin-left: auto;
 }
@@ -1656,6 +1647,20 @@
     darkrises a:hover, title1 a:hover, title2 a:hover, title3 a:hover, title4 a:hover, title5 a:hover, title6 a:hover, title7 a:hover{
       color: currentColor!important;
     }
+}
+
+.admin-content-field-list-info up1, .admin-content-field-list-info-plus up1{
+   margin-right: 8px;
+   font-family: 'Mulish';
+   font-weight: 700;
+   font-size: 12px;
+   line-height: 16px;
+   text-transform: uppercase;
+   background: var(--gradient-hoz);
+   padding: 0 5px;
+   border-radius: 5px;
+   color: var(--color-white) !important;
+   border: none;
 }
 
 .ilh-hogwarts-content {   

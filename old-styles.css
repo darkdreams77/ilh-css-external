@@ -23,7 +23,7 @@
     --filter-color-uno: invert(54%) sepia(46%) saturate(463%) hue-rotate(325deg) brightness(97%) contrast(77%); /* Icones Pa */
     --filter-color-dos: invert(54%) sepia(46%) saturate(463%) hue-rotate(325deg) brightness(97%) contrast(77%); /* DC profil user */
     --filter-fond-forum: invert(99%) sepia(55%) saturate(485%) hue-rotate(298deg) brightness(100%) contrast(107%);
-    --gradient-hoz: linear-gradient(90deg,var(--color-uno) 0%,var(--color-uno) 100%); 
+    --gradient-hoz: var(--gradientAccent); 
     --img-url-header: url("https://images2.imgbox.com/ee/6f/S5Lrok7z_o.png"); 
     --img-url-sujet: url("https://images2.imgbox.com/49/88/85G6UM9D_o.png");
     --img-url-category: url("https://images2.imgbox.com/96/93/LSZYS0JY_o.png");
@@ -88,7 +88,7 @@
     --filter-color-uno: invert(58%) sepia(10%) saturate(382%) hue-rotate(113deg) brightness(94%) contrast(86%); /* Icones Pa */
     --filter-color-dos: invert(58%) sepia(10%) saturate(382%) hue-rotate(113deg) brightness(94%) contrast(86%); /* DC profil user */
     --filter-fond-forum: invert(3%) sepia(6%) saturate(1747%) hue-rotate(181deg) brightness(103%) contrast(99%);
-    --gradient-hoz: linear-gradient(90deg,var(--color-uno) 0%,var(--color-uno-gradiant) 100%); 
+    --gradient-hoz: var(--gradientAccent); 
     --img-url-header: url("https://images2.imgbox.com/60/9b/OlwXRkla_o.png");
     --img-url-sujet: url("https://images2.imgbox.com/49/88/85G6UM9D_o.png");
     --img-url-category: url("https://images2.imgbox.com/46/eb/JLqpzeRz_o.png");
@@ -128,7 +128,7 @@
     --sc-equipe4: #B49E89;
 }
 
-.admin-content, .meetsa-post {
+.admin-content:has(.admin-content-body-pres), .admin-content:has(.bloc-text), .meets-profil, .meets-notif {
 
   /* Color */
   .bg-uno{background-color: var(--color-uno)!important}

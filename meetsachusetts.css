@@ -55,6 +55,7 @@
       display: inline-flex;
       align-items: center;
       font-size: var(--11px);
+      line-height: 1;
 
       &:before {
         content: '\F3E8';
@@ -234,6 +235,7 @@
       .icon {            
         width: 80px;
         height: 80px;
+        margin-left: 0;
       }
     }
 

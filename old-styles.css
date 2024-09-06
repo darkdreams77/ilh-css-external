@@ -13,12 +13,12 @@
     --color-fond-cate: #e8dfd1; /* fond cate dernier message + qeel */
     --color-bloc-1: var(--neutralDark); /* fond cate */
     --color-bloc-2: #e8ded0; /* fond mdm pa */
-    --color-bloc-3: #ebdecd; /* Scroll and background profil sujet */
+    --color-bloc-3: var(--neutralDarker); /* Scroll and background profil sujet */
     --color-sous-ligne: #cb816e; /* Member month color */
     --color-white: #FFFFFF;
     --color-link: #cb816e;
-    --color-balise-deco-un: #e38c23;
-    --color-balise-deco-deux: #cb816e;
+    --color-balise-deco-un: var(--accentClr);
+    --color-balise-deco-deux: var(--accentClrDark);
     --color-cate-title: #e18a21;
     --filter-color-uno: invert(54%) sepia(46%) saturate(463%) hue-rotate(325deg) brightness(97%) contrast(77%); /* Icones Pa */
     --filter-color-dos: invert(54%) sepia(46%) saturate(463%) hue-rotate(325deg) brightness(97%) contrast(77%); /* DC profil user */
@@ -78,12 +78,12 @@
     --color-fond-cate: #18191a;
     --color-bloc-1: var(--neutralDark);
     --color-bloc-2: #1a1c21;
-    --color-bloc-3: #2b2e37;
+    --color-bloc-3: var(--neutralDarker);
     --color-sous-ligne: #7e908b; /* Member month color */
-    --color-white: #dcdcdc;
+    --color-white: var(--white);
     --color-link: #6c8f86;
-    --color-balise-deco-un: #747e8f;
-    --color-balise-deco-deux: #7e908b;
+    --color-balise-deco-un: var(--accentClr);
+    --color-balise-deco-deux: var(--accentClrDark);
     --color-cate-title: #d2cac5;
     --filter-color-uno: invert(58%) sepia(10%) saturate(382%) hue-rotate(113deg) brightness(94%) contrast(86%); /* Icones Pa */
     --filter-color-dos: invert(58%) sepia(10%) saturate(382%) hue-rotate(113deg) brightness(94%) contrast(86%); /* DC profil user */
@@ -127,6 +127,8 @@
     --sc-equipe3: #C9914A;
     --sc-equipe4: #B49E89;
 }
+
+.admin-content, .meetsa-post {
 
   /* Color */
   .bg-uno{background-color: var(--color-uno)!important}
@@ -342,6 +344,7 @@
   .float-left{
       float: left;
   }
+}
 
 /* Base Layout */
 .admin-content {

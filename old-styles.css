@@ -1366,40 +1366,7 @@
       line-height: 18px;
       color: var(--textColor);
     }
-    k1{/* Texte, Police Bebas, Color Dos, Gras, Upper */
-      font-family: 'Bebas Neue';
-      font-weight: 700;
-      font-size: 13px;
-      line-height: 13px;
-      text-transform: uppercase;
-      color: var(--accentClr);
-    }
-    k2{/* Texte, Police Bebas, Color Uno, Gras, Upper */
-      font-family: 'Bebas Neue';
-      font-weight: 700;
-      font-size: 13px;
-      line-height: 13px;
-      text-transform: uppercase;
-      color: var(--accentClrDark);
-    }
-    k3{/* Texte, Police Bebas, Color Dos, Gras, Upper, Underline */
-      font-family: 'Bebas Neue';
-      font-weight: 700;
-      font-size: 13px;
-      line-height: 13px;
-      text-transform: uppercase;
-      text-decoration: underline;
-      color: var(--accentClr);
-    }
-    k4{/* Texte, Police Bebas, Color Uno, Gras, Upper, Underline */
-      font-family: 'Bebas Neue';
-      font-weight: 700;
-      font-size: 13px;
-      line-height: 13px;
-      text-transform: uppercase;
-      text-decoration: underline;
-      color: var(--accentClrDark);
-    }
+    
     fond1{/*Texte Upper, Color White, Fond Uno, Radius 20 */
       border-radius: 20px;
       text-transform: uppercase;
@@ -1472,36 +1439,6 @@
       font-weight: 700;
       font-size: 13px;
       line-height: 16px;
-    }
-    adams{
-      color: var(--adams);
-    }
-    dudley{
-      color: var(--dudley);
-    }
-    kirkland{
-      color: var(--kirkland);
-    }
-    pfo{
-      color: var(--pfo);
-    }
-    students{
-      color: var(--students);
-    }
-    iwantit{
-      color: var(--iwantit);
-    }
-    love{
-      color: var(--love);
-    }
-    fire{
-      color: var(--fire);
-    }
-    idwbya{
-      color: var(--idwbya);
-    }
-    darkrises{
-      color: var(--dark);
     }
     /* Titles */
     title1, title2, title3, title4, title5, title6, title7{ /* Setup Title */
@@ -1658,6 +1595,73 @@
        color: var(--color-white) !important;
        border: none;
     }
+}
+
+
+adams{
+  color: var(--adams);
+}
+dudley{
+  color: var(--dudley);
+}
+kirkland{
+  color: var(--kirkland);
+}
+pfo{
+  color: var(--pfo);
+}
+students{
+  color: var(--students);
+}
+iwantit{
+  color: var(--iwantit);
+}
+love{
+  color: var(--love);
+}
+fire{
+  color: var(--fire);
+}
+idwbya{
+  color: var(--idwbya);
+}
+darkrises{
+  color: var(--dark);
+}
+
+k1{/* Texte, Police Bebas, Color Dos, Gras, Upper */
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: var(--accentClr);
+}
+k2{/* Texte, Police Bebas, Color Uno, Gras, Upper */
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: var(--accentClrDark);
+}
+k3{/* Texte, Police Bebas, Color Dos, Gras, Upper, Underline */
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 13px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: var(--accentClr);
+}
+k4{/* Texte, Police Bebas, Color Uno, Gras, Upper, Underline */
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 13px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: var(--accentClrDark);
 }
 
 .ilh-hogwarts-content {   

@@ -246,6 +246,18 @@
     }
 
     &.post {
+      .content {
+        .icon {
+          width: 60px;
+          height: 60px;
+          flex: 0 0 60px;
+        }
+      }
+
+      .left_content {
+        flex: 0 0 60px;
+      }
+      
       .right_content {
         min-height: 150px !important;
         

@@ -1433,13 +1433,6 @@
     dos{/* Color Dos */
       color: var(--color-dos);
     }
-    /* Décoration Groupes */
-    adams, dudley, kirkland, pfo, students, iwantit, love, fire, idwbya, darkrises{
-      font-family: 'Mulish';
-      font-weight: 700;
-      font-size: 13px;
-      line-height: 16px;
-    }
     /* Titles */
     title1, title2, title3, title4, title5, title6, title7{ /* Setup Title */
       display: block;

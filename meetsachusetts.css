@@ -217,3 +217,42 @@
     .content, .left_content, .right_content { min-height: 100px; }
   }
 }
+
+.mobile {
+  .meetsa {
+    max-width: 100%;
+
+    .left_content { flex: 0 0 90px; }
+
+    .right_content {
+      .pseudo {
+        padding: 2px 5px;
+      }
+    }
+
+    .content {  
+      .icon {            
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    .photo_roll {
+      img {
+        flex: 0 0 calc(50% - 5px);
+        width: 160px;
+        height: 160px;
+      }
+    }
+
+    &.post {
+      .right_content {
+        .photo_content {
+          img {
+            max-height: 150px;
+          }
+        }
+      }
+    }
+  }
+}

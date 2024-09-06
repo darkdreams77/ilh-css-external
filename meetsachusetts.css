@@ -247,6 +247,8 @@
 
     &.post {
       .right_content {
+        min-height: 150px !important;
+        
         .photo_content {
           img {
             max-height: 150px;

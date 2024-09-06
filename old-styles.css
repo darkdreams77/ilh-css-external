@@ -351,7 +351,6 @@
    background-color: var(--background-admin-content);
    border-radius: 20px;
    box-sizing: border-box;
-   /* border: 5px solid var(--border-admin-content); */
    padding: 36px 24px 24px;
    margin-left: auto;
    margin-right: auto;
@@ -359,6 +358,7 @@
    width: 100%;
    max-width: 710px;
    overflow: auto;
+   display: flex;
 }
 .bloc-text{ /* Bloc text bg fond forum */
    background: var(--color-bloc-1);
@@ -1647,20 +1647,20 @@
     darkrises a:hover, title1 a:hover, title2 a:hover, title3 a:hover, title4 a:hover, title5 a:hover, title6 a:hover, title7 a:hover{
       color: currentColor!important;
     }
-}
 
-.admin-content-field-list-info up1, .admin-content-field-list-info-plus up1{
-   margin-right: 8px;
-   font-family: 'Mulish';
-   font-weight: 700;
-   font-size: 12px;
-   line-height: 16px;
-   text-transform: uppercase;
-   background: var(--gradient-hoz);
-   padding: 0 5px;
-   border-radius: 5px;
-   color: var(--color-white) !important;
-   border: none;
+    .admin-content-field-list-info up1, .admin-content-field-list-info-plus up1{
+       margin-right: 8px;
+       font-family: 'Mulish';
+       font-weight: 700;
+       font-size: 12px;
+       line-height: 16px;
+       text-transform: uppercase;
+       background: var(--gradient-hoz);
+       padding: 0 5px;
+       border-radius: 5px;
+       color: var(--color-white) !important;
+       border: none;
+    }
 }
 
 .ilh-hogwarts-content {   

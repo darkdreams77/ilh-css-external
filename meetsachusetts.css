@@ -291,7 +291,7 @@
 	width: 250px;
 	height: 350px;
 	border-radius: 8px;
-	margin: 10px auto;
+	margin: 30px auto 10px;
 	background-size: cover;
 	background-position: center center;
 	display: flex;

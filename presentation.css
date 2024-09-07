@@ -53,6 +53,13 @@
   .admin-title {
     letter-spacing: 1px;
     font-size: var(--14px);
+    
+    &:after {
+        content: '';
+        flex: 1 1 auto;
+        height: 1px;
+        background: var(--neutral);
+    }
   }
 
   .first_block {
@@ -119,6 +126,7 @@
       overflow: auto;
       margin-top: 10px;
       display: flex;
+      text-align: justify;
 
       div {
         flex: 1 1 50%;

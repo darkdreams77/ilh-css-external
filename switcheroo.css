@@ -5,6 +5,19 @@
   --ease-bounce: cubic-bezier(0.43, 0.09, 0.38, 2.56);
 }
 
+.switcheroo::-webkit-scrollbar {
+  width: 4px;
+}
+
+.switcheroo::-webkit-scrollbar-thumb {
+  background-color: var(--accentClr);
+  border-radius: 3px;
+}
+
+.switcheroo:-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .switcheroo-container {
   border-top: 1px solid var(--neutral);
   padding-top: 10px;

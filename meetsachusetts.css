@@ -272,3 +272,60 @@
     }
   }
 }
+
+.meetsme-container {
+	width: 250px;
+	height: 350px;
+	position: relative;
+	margin: 0 auto;
+
+	> img {
+    position: absolute;
+    width: 75px;
+    top: -30px;
+    right: -20px;
+	}
+}
+
+.meetsme {
+	width: 250px;
+	height: 350px;
+	border-radius: 8px;
+	margin: 10px auto;
+	background-size: cover;
+	background-position: center center;
+	display: flex;
+	flex-direction: column-reverse;
+	overflow: hidden;
+
+	.content {
+		background: linear-gradient(0deg, var(--love), transparent);
+		height: 200px;
+		padding: 15px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: flex-start;
+	}
+
+	.pseudo {
+		color: var(--white);
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	.type {
+		background: rgb(31 31 31 / 65%);
+		padding: 2px 4px;
+		border-radius: 4px;
+		font-size: var(--12px);
+		font-style: italic;
+		color: var(--redMeetsme);
+	}
+
+	.search {
+		font-style: italic;
+		color: var(--white);
+		font-size: var(--12px);
+	}
+}

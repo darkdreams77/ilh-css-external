@@ -126,6 +126,8 @@
       text-transform: uppercase;
       font-size: var(--11px);
       font-weight: 600;
+
+      &:hover { opacity: .9 }
       
       &:not(:last-child) { margin-bottom: 8px; }
       

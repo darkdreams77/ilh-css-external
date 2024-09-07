@@ -116,7 +116,10 @@
     overflow: auto;
   }
 
-  .rps label { display: none;  }
+  .rps {
+    label { display: none;  }
+    .field_uneditable { line-height: 1; }
+  }
 
   .inner_rps { line-height: 1; }
 }

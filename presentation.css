@@ -203,7 +203,7 @@
 
       &.love { background-color: var(--love); &:before { content: 'love shot'; } }
       &.fire { background-color: var(--fire); &:before { content: 'fire starter'; } }
-      &.idwbya { background-color: var(--idwbya); &:before { content: 'idontwannabeyouanymore'; } }
+      &.wrecked { background-color: var(--wrecked); &:before { content: 'idontwannabeyouanymore'; } }
       &.iwantit { background-color: var(--iwantit); &:before { content: 'i want it, i got it'; } }
       &.dark { background-color: var(--dark); &:before { content: 'dark rises'; } }
       &.pfo { background-color: var(--pfo); &:before { content: 'pforzheimer house'; } }

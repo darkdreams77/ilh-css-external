@@ -255,7 +255,7 @@
 
 .awards_block_simple_wrapper {
   .h3 { display: none; }
-  .awards_block { padding: 10px !important; }
+  .awards_block { padding: 10px !important; display: flex; gap: 15px; flex-wrap: wrap; }
 }
 
 .profile_contact form { display: flex; }

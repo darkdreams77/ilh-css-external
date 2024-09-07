@@ -4,15 +4,39 @@
   --ease: cubic-bezier(0.4, 0.0, 0.2, 1);
   --ease-bounce: cubic-bezier(0.43, 0.09, 0.38, 2.56);
 }
+
 .switcheroo-container {
   border-top: 1px solid var(--neutral);
-  padding-top: 5px;
+  padding-top: 10px;
   margin-top: 5px;
+  width: 50px;
+  margin-left: -8px;
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    height: 10%;
+    background: var(--FAM-gradientBot);
+    z-index: 5;
+    pointer-events: none;
+    left: 0;
+  }
 }
 
 .switcheroo {
-  color: var(--textColor);
-  margin-top: 10px;
+  color: var(--textColor); 
+  height: 100%;
+
+  &:hover {
+    overflow-y: auto; 
+  }
 }
 
 .switcheroo__squircles {

@@ -32,7 +32,7 @@
 
 .switcheroo {
   color: var(--textColor); 
-  height: 100%;
+  height: calc(100vh - 380px);
 
   &:hover {
     overflow-y: auto; 

@@ -208,6 +208,8 @@
         height: calc(100% - 25px);
         overflow: auto;
 
+        img { max-width: 100% }
+
         &.descriptions .field_uneditable { line-height: 1; }
       }
     }

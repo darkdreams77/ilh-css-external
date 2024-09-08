@@ -299,12 +299,19 @@ in, out {
   }
 }
 
-in {
-  color: #2b8e2b;
-}
+in { color: #2b8e2b; }
+out { color: #921c1c; }
 
-out {
-  color: #921c1c;
+tw {
+	background: var(--neutralDark);
+	color: var(--neutralDark);
+	cursor: default;
+	border-bottom: 1px solid var(--neutralDark);
+
+	&:hover {
+		background: transparent;
+    color: var(--textColor);
+	}
 }
 
 /* ================= BOTTIN ================= */

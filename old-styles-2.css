@@ -1,0 +1,521 @@
+
+
+.admin-content:has(.admin-content-body-pres), .admin-content:has(.bloc-text), .admin-meets, .meets-profil, .meets-notif {
+    /* Textes */
+    w{/* Texte, Police Mulish, Color Uno, Gras */
+      font-family: 'Mulish';
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 16px;
+      color: var(--color-balise-deco-un);
+    }
+    x{/* Texte, Police Mulish, Color Dos, Gras */
+      font-family: 'Mulish';
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 16px;
+      color: var(--color-balise-deco-deux);
+    }
+    j{/* Texte, Police Mulish, Color Uno, Italique */
+      font-family: 'Mulish';
+      font-style: italic;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 16px;
+      color: var(--color-balise-deco-un);
+    }
+    k{/* Texte, Police Mulish, Color Dos, Italique */
+      font-family: 'Mulish';
+      font-style: italic;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 16px;
+      color: var(--color-balise-deco-deux);
+    }
+    l{/* Texte, Police Mulish, Color Uno, Gras, Upper */
+      font-family: 'Mulish';
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 16px;
+      text-transform: uppercase;
+      color: var(--color-balise-deco-un);
+    }
+    m{/* Texte, Police Mulish, Color Dos, Gras, Upper */
+      font-family: 'Mulish';
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 16px;
+      text-transform: uppercase;
+      color: var(--color-balise-deco-deux);
+    }
+    n{/* Underline Uno */
+      text-decoration: underline;
+      text-decoration-color: var(--color-balise-deco-un);
+    }
+    u{/* Underline Dos */
+      text-decoration: underline;
+      text-decoration-color: var(--color-balise-deco-deux);
+    }
+    c{/* Bloc de texte avec alignement */
+      display: inline-block;
+      margin:5px 10px 0px 40px;
+      font-size: 13px;
+    }
+    e1,e2{position: relative;z-index: 0;}
+    e1::after{/* Underline Big Uno */
+      content: '';
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 4px;
+      background-color: rgba(var(--rgb-uno), 0.8);
+      bottom: 1px;
+      left: 0;
+    }
+    e2::after{/* Underline Big Dos */
+      content: '';
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 4px;
+      background-color: rgba(var(--rgb-dos), 0.8);
+      bottom: 1px;
+      left: 0;
+    }
+    r1{/* Texte, Police Abril, Color Uno */
+      font-family: 'Abril Fatface';
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      color: var(--accentClr);
+    }
+    r2{/* Texte, Police Abril, Color Dos */
+      font-family: 'Abril Fatface';
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      color: var(--accentClrDark);
+    }
+    r3{/* Texte, Police Abril, Color Text */
+      font-family: 'Abril Fatface';
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      color: var(--textColor);
+    }
+    
+    fond1{/*Texte Upper, Color White, Fond Uno, Radius 20 */
+      border-radius: 20px;
+      text-transform: uppercase;
+      color: var(--white);
+      background-color: var(--accentClr);
+      padding: 2px 13px;
+      line-height: 23px;
+    }
+    fond2{/*Texte Upper, Color White, Fond Dos, Radius 20 */
+      border-radius: 20px;
+      text-transform: uppercase;
+      color: var(--white);
+      background-color: var(--accentClrDark);
+      padding: 2px 13px;
+      line-height: 23px;
+    }
+    up1{/* Texte, Border Gradient, Gras */
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 23px;
+      text-transform: uppercase;
+      border-width: 2px;
+      border-style: solid;
+      padding: 1px 5px;
+      border-image: linear-gradient(to bottom, var(--color-uno), var(--color-dos)) 1;
+    }
+    beauty{/* Fond Gradient, Texte Bebas, Color White */
+      font-family: 'Bebas Neue';
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 31px;
+      border-radius: 20px;
+      color: var(--color-white);
+      background: linear-gradient(180deg, var(--color-uno) 0%, var(--color-dos) 100%);
+      padding: 2px 15px;
+    }
+    gradiant{/* Fond Gradient, Texte Mulish, Color Bloc 1, Upper*/
+      font-family: 'Mulish';
+      color: var(--color-lu);
+      text-transform: uppercase;
+      background: linear-gradient(90deg, var(--color-uno) 0%, var(--color-dos) 100%);
+      padding: 2px 9px;
+      line-height: 23px;
+    }
+    best1{/* Fond Uno, Texte Mulish, Color Bloc 1 Upper*/
+      font-family: 'Mulish';
+      color: var(--color-lu);
+      text-transform: uppercase;
+      background: var(--color-uno);
+      padding: 2px 9px;
+      line-height: 23px;
+    }
+    best2{/* Fond Dos, Texte Mulish, Color Bloc 1 Upper*/
+      font-family: 'Mulish';
+      color: var(--color-lu);
+      text-transform: uppercase;
+      background: var(--color-dos);
+      padding: 2px 9px;
+      line-height: 23px;
+    }
+    uno{/* Color Uno */
+      color: var(--color-uno);
+    }
+    dos{/* Color Dos */
+      color: var(--color-dos);
+    }
+    /* Titles */
+    title1, title2, title3, title4, title5, title6, title7{ /* Setup Title */
+      display: block;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    title1 {
+        margin-bottom: -4px;
+        font-family: 'Abril Fatface';
+        font-weight: 800;
+        font-size: 28px;
+        line-height: 43px;
+        text-transform: uppercase;
+        -webkit-background-clip: text;
+        background-image: var(--gradientAccent);
+        -webkit-text-fill-color: transparent;
+        background-color: #898985;
+    }
+    title2{/* Title Bebas, Color Dos, Border Dos Bottom, Circle Right */
+      font-family: 'Bebas Neue';
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 30px;
+      color: var(--color-dos);
+      border-bottom: 3px solid var(--color-dos);
+      margin: 0 15px 15px;
+      position: relative;
+    }
+    title2::after{
+      content: '';
+      position: absolute;
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--color-dos);
+      bottom: -9px;
+      right: -5px;
+    }
+    title3{/* Title Bebas, Color Uno, Border Uno Bottom, Circle Right */
+      font-family: 'Bebas Neue';
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 30px;
+      color: var(--color-uno);
+      border-bottom: 3px solid var(--color-uno);
+      margin: 0 15px 15px;
+      position: relative;
+    }
+    title3::after{
+      content: '';
+      position: absolute;
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--color-uno);
+      bottom: -9px;
+      right: -5px;
+    }
+    title4{/* Title Bebas, Color Uno, Underline Uno */
+      font-family: 'Bebas Neue';
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 30px;
+      color: var(--color-uno);
+      position: relative;
+    }
+    title4::before{
+      content: '';
+      position: absolute;
+      display: block;
+      width: calc(100% - 20px);
+      height: 5px;
+      background-color: var(--color-uno);
+      filter: opacity(0.5);
+      bottom: 5px;
+      left: 10px;
+    }
+    title5{/* Title Bebas, Color Dos, Underline Dos */
+      font-family: 'Bebas Neue';
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 30px;
+      color: var(--color-dos);
+      position: relative;
+    }
+    title5::before{
+      content: '';
+      position: absolute;
+      display: block;
+      width: calc(100% - 20px);
+      height: 5px;
+      background-color: var(--color-dos);
+      filter: opacity(0.5);
+      bottom: 5px;
+      left: 10px;
+    }
+    title6 {
+        font-family: 'Poppins';
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 0.875rem;
+        line-height: 12px;
+        padding: 2px 0;
+        width: 60%;
+        border-radius: 5px;
+        margin: auto;
+        color: var(--white);
+        border-bottom: 1px solid var(--border-bottom-admin-content);
+        background: var(--gradientAccent);
+    }
+    title7{/* Title Bebas, Color Bloc 1, Background Dos */
+      font-family: 'Bebas Neue';
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      border-radius: 20px;
+      padding: 5px 0;
+      margin: 0 10px;
+      color: var(--color-bloc-1);
+      background-color: var(--color-dos);
+    }
+    /* Apply style to link in tag */
+    w a:link, w a:visited, x a:link, x a:visited, j a:link, j a:visited, k a:link, k a:visited, l a:link, l a:visited, m a:link, m a:visited, 
+    n a:link, n a:visited, u a:link, u a:visited, e1 a:link, e1 a:visited, e2 a:link, e2 a:visited, r1 a:link, r1 a:visited, r2 a:link, r2 a:visited, 
+    r3 a:link, r3 a:visited, k1 a:link, k1 a:visited, k2 a:link, k2 a:visited, k3 a:link, k3 a:visited, k4 a:link, k4 a:visited, fond1 a:link, fond1 a:visited, 
+    fond2 a:link, fond2 a:visited, up1 a:link, up1 a:visited, beauty a:link, beauty a:visited, gradiant a:link, gradiant a:visited, best1 a:link, best1 a:visited, 
+    best2 a:link, best2 a:visited, uno a:link, uno a:visited, dos a:link, dos a:visited, adams a:link, adams a:visited, dudley a:link, dudley a:visited, 
+    kirkland a:link, kirkland a:visited, pfo a:link, pfo a:visited, students a:link, students a:visited, iwantit a:link, iwantit a:visited, love a:link, 
+    love a:visited, fire a:link, fire a:visited, idwbya a:link, idwbya a:visited, darkrises a:link, darkrises a:visited, title1 a:link, title1 a:visited, 
+    title2 a:link, title2 a:visited, title3 a:link, title3 a:visited, title4 a:link, title4 a:visited, title5 a:link, title5 a:visited, title6 a:link, 
+    title6 a:visited, title7 a:link, title7 a:visited{
+      color: currentColor!important;
+    }
+    w a:hover, x a:hover, j a:hover, k a:hover, l a:hover, m a:hover, n a:hover, u a:hover, e1 a:hover, e2 a:hover, r1 a:hover, r2 a:hover, 
+    r3 a:hover, k1 a:hover, k2 a:hover, k3 a:hover, k4 a:hover, fond1 a:hover, fond2 a:hover, up1 a:hover, beauty a:hover, gradiant a:hover, best1 a:hover, 
+    best2 a:hover, uno a:hover, dos a:hover, adams a:hover, dudley a:hover, kirkland a:hover, pfo a:hover, students a:hover, iwantit a:hover, love a:hover, fire a:hover, idwbya a:hover, 
+    darkrises a:hover, title1 a:hover, title2 a:hover, title3 a:hover, title4 a:hover, title5 a:hover, title6 a:hover, title7 a:hover{
+      color: currentColor!important;
+    }
+
+    .admin-content-field-list-info up1, .admin-content-field-list-info-plus up1{
+       margin-right: 8px;
+       font-family: 'Mulish';
+       font-weight: 700;
+       font-size: 12px;
+       line-height: 16px;
+       text-transform: uppercase;
+       background: var(--gradient-hoz);
+       padding: 0 5px;
+       border-radius: 5px;
+       color: var(--color-white) !important;
+       border: none;
+    }
+}
+
+
+adams{
+  color: var(--adams);
+}
+dudley{
+  color: var(--dudley);
+}
+kirkland{
+  color: var(--kirkland);
+}
+pfo{
+  color: var(--pfo);
+}
+students{
+  color: var(--students);
+}
+iwantit{
+  color: var(--iwantit);
+}
+love{
+  color: var(--love);
+}
+fire{
+  color: var(--fire);
+}
+idwbya{
+  color: var(--idwbya);
+}
+darkrises{
+  color: var(--dark);
+}
+
+k1{/* Texte, Police Bebas, Color Dos, Gras, Upper */
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: var(--accentClr);
+}
+k2{/* Texte, Police Bebas, Color Uno, Gras, Upper */
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: var(--accentClrDark);
+}
+k3{/* Texte, Police Bebas, Color Dos, Gras, Upper, Underline */
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 13px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: var(--accentClr);
+}
+k4{/* Texte, Police Bebas, Color Uno, Gras, Upper, Underline */
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 13px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: var(--accentClrDark);
+}
+
+.ilh-hogwarts-content {   
+    width: 80%;
+    background-size: cover;
+    min-height: 450px;
+    margin: auto;
+    border-radius: 20px;
+    position: relative;
+}
+
+.ilh-hog-rp-content {
+    margin-left: 15%;
+    min-height: 450px;
+    border-radius: 20px;
+}
+
+.ilh-hog-rp-content title6 {
+  border-radius: 0 0 8px 8px;
+    border-bottom: none;
+    padding-bottom: 5px;
+  font-family: 'Poppins';
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    line-height: 12px;
+    padding: 2px 0;
+    width: 60%;
+  background: rgba(255,255,255, .3);
+}
+
+
+.bloc-rp {
+    margin: 3%;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    height: auto;
+    min-height: 400px;
+}
+
+hoghouse {
+      font-family: 'Poppins';
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 10px;
+    text-align: center;
+    margin: auto;
+    padding-left: 10%;
+}
+
+quote { font-weight: 600; font-style: italic; color: var(--color-text-cate); }
+quote:before { content: "“ "; font-family: "Georgia"; font-size: 20px; line-height: 10px; }
+sign { display: block; text-align: right; text-transform: uppercase; font-size: 9px; margin-top: 5px; }
+
+.serpentard-bg {
+  background: linear-gradient(0deg, var(--serpentard-gradient) 0%, rgba(0,212,255,0) 100%), var(--background-hog-img) left;
+}
+
+.griffondor-bg {
+  background: linear-gradient(0deg, var(--griffondor-gradient) 0%, rgba(0,212,255,0) 100%), var(--background-hog-img) left;
+}
+
+.poufsouffle-bg {
+  background: linear-gradient(0deg, var(--poufsouffle-gradient) 0%, rgba(0,212,255,0) 100%), var(--background-hog-img) left;
+}
+
+.serdaigle-bg {
+  background: linear-gradient(0deg, var(--serdaigle-gradient) 0%, rgba(0,212,255,0) 100%), var(--background-hog-img) left;
+}
+
+.serpentard {
+    background: var(--serpentard-bg);
+}
+
+.griffondor {
+    background: var(--griffondor-bg);
+}
+
+.poufsouffle {
+    background: var(--poufsouffle-bg);
+}
+
+.serdaigle {
+    background: var(--serdaigle-bg);
+}
+
+.serpentard-bg::before {
+content: url(https://images2.imgbox.com/f5/38/OujfUGjI_o.png);
+display: block;
+width: 30px;
+height: 30px;
+position: absolute;
+left: 3%;
+bottom: 5%;
+}
+
+.griffondor-bg::before {
+content: url(https://images2.imgbox.com/7d/09/iHO3fTl9_o.png);
+display: block;
+width: 30px;
+height: 30px;
+position: absolute;
+left: 3%;
+bottom: 5%;
+}
+
+.poufsouffle-bg::before {
+content: url(https://images2.imgbox.com/31/10/KEEaVEVr_o.png);
+display: block;
+width: 30px;
+height: 30px;
+position: absolute;
+left: 3%;
+bottom: 5%;
+}
+
+.serdaigle-bg::before {
+content: url(https://images2.imgbox.com/b9/af/psjBkULw_o.png);
+display: block;
+width: 30px;
+height: 30px;
+position: absolute;
+left: 3%;
+bottom: 5%;
+}

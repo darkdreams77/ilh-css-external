@@ -1,3 +1,8 @@
+
+wrecked {
+ color: var(--wrecked);
+}
+
 /* ========== ADMIN ========== */
 .admin-template {
   border-radius: 8px;

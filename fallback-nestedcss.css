@@ -127,7 +127,7 @@
 	 --FAM-fontClr: #b9b2b2;
 	 --FAM-fontLightClr: #9a96a3;
 	 --FAM-linkClr: #7583ff;
-	 --FAM-titleClr: #f0f0f8;
+	 --FAM-titleClr: #746c68;
 	 --FAM-buttonsClr: #e5e5e5;
 	/* COULEURS VERSION MOBILE */
 	 --mobi_bgcolor: #282a2f;
@@ -2761,7 +2761,7 @@
 	 background: var(--base);
 	 margin-top: 1px;
 	 border-radius: 0 0 8px 8px;
-	 min-height: 700px;
+	 min-height: 720px;
 }
  .post_message img {
 	 max-width: 100%;

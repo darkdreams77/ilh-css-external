@@ -1,0 +1,440 @@
+.main_user_profile {
+  border-radius: 8px;
+  background: var(--neutralDark);
+  overflow: hidden;
+  padding-bottom: 10px;
+
+  input {
+    width: auto !important;
+  }
+
+  .head {
+    background: var(--neutralDarker);
+    padding: 10px;
+
+    &.colored .rank, &.colored .username div span, &.colored .username i { color: var(--white) !important; }
+  }
+
+  .username {
+    font-family: var(--title);
+    text-transform: uppercase;
+    font-size: var(--16px);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .isOnline {
+      font-family: var(--font);
+      text-transform: lowercase;
+      font-size: var(--11px);
+      display: inline-flex;
+      background: var(--neutralDark);
+      border-radius: 4px;
+      padding: 0px 4px;
+      font-style: italic;
+    }
+  }
+
+  .rank {
+    text-transform: uppercase;
+    font-size: var(--12px);
+    font-weight: 500;
+  }
+}
+
+.user_profile {
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+
+  .user_icon {
+    top: -30px; 
+
+    label { display: none; }
+  }
+
+  .line {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    margin-top: 14px;
+
+    &.two .id_card {
+      flex: 1 1 50%;
+    }
+
+    &.three > div {
+      flex: 1 1 33%;
+    }
+
+    .id_card {
+      width: auto;
+      flex: 1 1 auto;    
+
+      & .accordion_content {
+        overflow: auto; 
+
+        .profile_field { margin: 10px; }
+
+        div { 
+          padding: 0; 
+
+          &:first-child { border-bottom: none; }
+        }
+      }
+      .game label { display: none; }
+    }
+  }
+
+  .pseudo_mc {
+    flex: 0 0 200px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .pseudo_irl, .mc {
+      label { display: none; }
+      .profile_field { margin: 0; }
+    }
+
+    .pseudo_irl {
+      font: var(--16px) var(--title);
+      text-align: center;
+    }
+
+    .mc { font-style: italic; text-align: center; }
+  }
+
+  .info_irl, .rps {
+    background: var(--base);
+    border-radius: 8px;
+    padding: 10px;
+    height: 160px;
+    overflow: auto;
+  }
+
+  .rps {
+    label { display: none;  }
+    .field_uneditable { line-height: 1; }
+  }
+
+  .inner_rps { 
+    line-height: 1; 
+    img { max-width: 100%; }
+  }
+}
+
+.profile_avatar {
+  width: 200px;
+  height: 320px;
+  position: relative;
+  
+  img { border-radius: 8px; width: 200px; }
+}
+
+.user_fc {
+  background: var(--gradientAccent);
+  display: inline-block;
+  border-radius: 4px;
+  color: var(--white);
+  text-transform: uppercase;
+  font-size: var(--10px);
+  font-weight: 600;
+  padding: 4px 8px;
+  top: 80%;
+  left: 50%;
+  position: absolute;
+  width: 80%;
+  text-align: center;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+
+  input { width: 100% !important; }
+  label { display: none; }
+}
+
+.user_avatar_subinfo {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: var(--base);
+  text-align: center;
+  height: 60px;
+  border-radius: 0 0 8px 8px;
+
+  .posts_rps {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    align-items: center;
+    height: 60px;
+    margin-top: 8px;
+
+    field {
+      font-family: var(--title);
+      font-size: var(--16px);
+      line-height: 1;
+    }
+  }  
+}
+
+.last_visited {
+  text-transform: lowercase;
+  position: absolute;
+  right: 80px;
+  top: -10px;
+}
+
+.profile_infos {
+  background: var(--neutral);
+  border-radius: 8px;
+  padding: 10px;
+  height: 320px;
+  flex: 1 1 auto;
+
+  .inner_line {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+
+    .block {
+      flex: 1 1 50%;
+      height: calc(320px - 70px);
+      background: var(--neutralLight);
+      padding: 10px;
+      border-radius: 8px;
+
+      .content {
+        height: calc(100% - 25px);
+        overflow: auto;
+
+        img { max-width: 100% }
+
+        &.descriptions .field_uneditable { line-height: 1; }
+      }
+    }
+
+    &.subjects {
+      align-items: center;
+
+      .links {
+        display: inline-block;
+        background: var(--gradientAccent);
+        padding: 4px 8px;
+        border-radius: 4px;
+        color: var(--white);
+        font-size: var(--11px);
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .user_color {
+    .color_user {
+      padding: 4px 8px;
+      border-radius: 8px;
+      background: var(--neutralDark);
+      color: var(--white);
+    }
+
+    label { color: var(--white); }
+     
+    > div {
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+
+      .field_uneditable { font-size: var(--11px); }
+    }
+  }
+
+  textarea { width: 100%; }
+}
+
+.awards_block_simple_wrapper {
+  .h3 { display: none; }
+  .awards_block { padding: 10px !important; display: flex; gap: 15px; flex-wrap: wrap; }
+}
+
+.profile_contact form { display: flex; }
+.profile_contact form > div { margin-left: 5px; }
+.profile_contact form div:nth-child(2) { display: none }
+
+.profile_content {
+  font-size: var(--10px);
+  text-transform: uppercase;
+  font-weight: 500;
+
+  .profile_contact {
+    border-top: 1px solid var(--neutralDark);
+    margin-top: -5px;
+    margin-left: -10px;
+    margin-right: -10px;
+
+    div:not(:first-child) { border-left: 1px solid var(--neutralDark); }
+
+    a {
+      display: inline-block;
+      padding: 4px 8px;
+      font-size: var(--10px);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  }
+}
+
+#list_awards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.award {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  background-image: var(--award-image);
+  background-size: cover;
+  background-position: center;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.award:hover .award_tooltiptext {
+  display: block;
+}
+
+/* Bloc description de la récompenses */
+.award_tooltiptext {
+  width: max-content;
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 25px;
+  background-color: var(--neutral);
+  border: 1px solid var(--neutralDark);
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 11px;
+}
+
+/* titre de la récompenses*/
+.award_tooltiptext_title {
+  font-weight: 600;
+}
+
+.profile_field {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile_field label,
+.profile_field label > span {
+  font-weight: 600;
+  color: var(--accentClr);
+  text-transform: uppercase;
+  font-size: var(--11px);
+}
+
+.profile_field field {
+  position: relative;
+}
+
+.profile_admin {
+  text-align: center;
+  margin: 10px 0 0;
+}
+
+/* Bouton "suivre le membre" */
+.followBtn {
+  background: var(--neutralLight);
+  border-radius: 5px;
+  font-weight: 600;
+  margin: 0;
+  font-size: var(--14px);
+  text-transform: uppercase;
+  padding: 4px 8px;
+  color: var(--textColor);
+}
+
+.followBtn::before {
+  top: 1px;
+  position: relative;
+  color: var(--accentClr);
+  margin-right: 5px;
+}
+
+.ajax-profil_parent { position: relative; display: block; }
+.ajax-profil_edit {
+  cursor: pointer; 
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: unset;
+  box-shadow: 0px 1px 1px inset #585A74!important;
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+}
+.ajax-profil_edit > img{ display: none; }
+.ajax-profil_valid {
+  width: 16px !important;
+  height: 16px !important;
+  filter: var(--filter-accent);
+  margin: 4px;
+  padding: 0 !important;
+}
+
+.notif_row:hover { background-color: var(--neutralDark); }
+
+/* Fond atténué */
+.wombat-overlay {
+  position: fixed;
+  z-index: 990;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  transition: 0.2s opacity ease;
+  background: var(--neutral);
+}
+
+/* effet de transition du fond atténué */
+.wombat-overlay.open {
+  opacity: .5;
+  visibility: visible;
+}
+
+/* Fenêtre du popup */
+.wombat-aside {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  z-index: 999;
+  transition: 0.2s all ease;
+  visibility: hidden;
+  opacity: 0;
+  width: 90%;
+  max-width: 950px;
+  box-shadow: var(--shadowBox);
+  border-radius: 10px;
+  height: max-content;
+  transform: translateX(-20%);
+}
+
+/* effet de transition pour la fenêtre */
+.wombat-aside.open {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
+}

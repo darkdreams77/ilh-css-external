@@ -1,0 +1,241 @@
+
+.mobile {
+  .id_card {
+    .first_block_left {
+      flex: 1 1 auto;
+      height: 300px;
+    }
+
+    .avatar_right {
+      flex: 1 1 auto;
+      margin-top: 10px;
+      margin-right: 0;
+      text-align: center;
+
+      img { 
+        width: 240px;
+        height: 240px;
+        object-fit: cover;
+      }
+    }
+
+    .second_block {
+      .line {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .hors_jeu {
+      display: flex;
+      flex-direction: column;
+
+      .content {
+        height: 200px;
+      }
+
+      img {
+        margin: 0 auto 20px;
+      }
+
+      .codebox {
+        padding: 15px;
+      }
+    }
+  }
+}
+
+.id_card {
+  width: 630px;
+  max-width: 100%;
+  margin: 0 auto; 
+
+  .admin-title {
+    letter-spacing: 1px;
+    font-size: var(--14px);
+    
+    &:after {
+        content: '';
+        flex: 1 1 auto;
+        height: 1px;
+        background: var(--neutral);
+    }
+  }
+
+  .first_block {
+    border-radius: 8px;
+    background: var(--neutralDark);
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 6px;
+
+    > .content {
+      padding: 20px;
+      line-height: 1;
+      width: 100%;
+    }
+  }
+
+  .head {
+    background: var(--gradientAccent);
+    padding: 6px;
+    color: var(--white);
+    display: flex;
+    gap: 5px;
+    flex: 1 1 100%;
+    line-height: 1;
+    align-items: center;
+
+    &:before {
+      content: '\F379';
+      font-family: 'bootstrap-icons';
+      font-size: var(--38px);
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        &:first-child {
+          font-family: var(--title);
+          font-size: var(--18px);
+          text-transform: uppercase;
+        }
+        &:last-child {
+          font-style: italic;
+          font-size: var(--14px);
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .first_block_left {
+    flex: 0 1 calc(100% - 162px);
+    padding: 10px 10px 0;
+    height: 205px;
+    display: flex;
+    flex-direction: column;
+
+    .informations {
+      background: var(--base);
+      padding: 10px;
+      border-radius: 8px;
+      flex: 1 1 auto;
+      overflow: auto;
+      margin-top: 10px;
+      display: flex;
+      text-align: justify;
+
+      div {
+        flex: 1 1 50%;
+
+        &:first-child { padding-right: 10px; }
+        &:last-child { border-left: 1px solid var(--neutral); padding-left: 10px; }
+
+        > * { display: block; }
+      }
+    }
+  }
+
+  .avatar_right {
+    flex: 0 0 150px;
+    margin-top: -35px;
+    margin-right: 12px;
+
+    img {
+      width: 150px;
+      border-radius: 8px;
+    }
+  }
+
+  .second_block {
+    background: var(--neutralDark);
+    border-radius: 8px;
+    margin-top: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .line {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .content {
+      background: var(--base);
+      border-radius: 8px;
+      padding: 6px;
+      height: 165px;
+      overflow: auto;
+      text-align: justify;
+
+      &.small { height: 105px; }
+      &.trait {
+        display: flex;
+        height: 165px;
+        gap: 5px;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+      }
+    }
+
+    .groupe {
+      padding: 6px;
+      background: var(--neutralDarker);
+      border-radius: 4px;
+      margin-bottom: 5px;
+
+      &:before {
+        content: 'groupe';
+        display: block;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--white);
+      }
+
+      &.love { background-color: var(--love); &:before { content: 'love shot'; } }
+      &.fire { background-color: var(--fire); &:before { content: 'fire starter'; } }
+      &.wrecked { background-color: var(--wrecked); &:before { content: 'idontwannabeyouanymore'; } }
+      &.iwantit { background-color: var(--iwantit); &:before { content: 'i want it, i got it'; } }
+      &.dark { background-color: var(--dark); &:before { content: 'dark rises'; } }
+      &.pfo { background-color: var(--pfo); &:before { content: 'pforzheimer house'; } }
+      &.dudley { background-color: var(--dudley); &:before { content: 'dudley house'; } }
+      &.adams { background-color: var(--adams); &:before { content: 'adams house'; } }
+      &.kirkland { background-color: var(--kirkland); &:before { content: 'kirkland house'; } }
+      &.student { background-color: var(--students); &:before { content: 'student'; } }
+    }
+  }
+
+  .hors_jeu {
+    border-bottom: 1px solid transparent !important;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "icon text"
+        "icon code";
+
+    img {
+      width: 150px;
+      border-radius: 8px;
+      grid-area: icon;
+    }
+
+    .content {
+      height: 85px;
+      padding: 0 20px;
+    }
+
+    .code #codeBox dd {
+      padding: 10px;
+    }
+  }
+}

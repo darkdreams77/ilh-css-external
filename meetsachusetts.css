@@ -216,6 +216,11 @@
     min-height: 100px;
 
     .content, .left_content, .right_content { min-height: 100px; }
+	.text_content {
+		text-align: justify;
+		padding: 15px 25px 0 0;
+		border-top: 1px solid var(--neutral);
+	}  
   }
 }
 
@@ -278,12 +283,12 @@
 	height: 350px;
 	position: relative;
 	margin: 0 auto;
-
+	
 	> img {
-    position: absolute;
-    width: 75px;
-    top: -30px;
-    right: -20px;
+	    position: absolute;
+	    width: 75px;
+	    top: -30px;
+	    right: -20px;
 	}
 }
 

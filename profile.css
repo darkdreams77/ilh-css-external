@@ -121,7 +121,10 @@
     .field_uneditable { line-height: 1; }
   }
 
-  .inner_rps { line-height: 1; }
+  .inner_rps { 
+    line-height: 1; 
+    img { max-width: 100%; }
+  }
 }
 
 .profile_avatar {

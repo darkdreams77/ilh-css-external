@@ -1,141 +1,155 @@
 /* https://jsonformatter.org/scss-to-css */
 
 :root {
-	 --background: url('https://images2.imgbox.com/b8/1e/FnjjBLWq_o.jpg');
-	 --header: url('https://images2.imgbox.com/b0/c4/dLVs2VHI_o.png');
-	 --bg-color: #000;
-	 --base: #f4f4f4;
-	 --neutralLight: #fbfbfb;
-	 --neutral: #eaeaea;
-	 --neutralDark: #dfdfdf;
-	 --neutralDarker: #ebebeb;
-	 --contrast: #381717;
-	 --contrastLight: #572323;
-	 --contrastLighter: #f3c3c3;
-	 --accentClr: #70232c;
-	 --accentClrDark: #89414e;
-	 --gradientAccent: linear-gradient(to right, var(--accentClr) 0%, var(--accentClrDark) 100%);
-	 --textColor: #565252;
-	 --textColorAccent: #796060;
-	 --border: 1px solid #e5e5e5;
-	 --shadowBox: 0 0 20px #232657 30;
-	 --bg-backdrop: #000;
-	 --redMeetsme: #d4576c;
+	--background: url('https://images2.imgbox.com/b8/1e/FnjjBLWq_o.jpg');
+	--header: url('https://images2.imgbox.com/b0/c4/dLVs2VHI_o.png');
+	--bg-color: rgb(173 173 173);
+	--base: #f4f4f4;
+	--neutralLight: #FBFBFB;
+	--neutral: #eaeaea;
+	--neutralDark: #DFDFDF;
+	--neutralDarker: #ebebeb;
+
+	--contrast: #381717;
+	--contrastLight: #572323;
+	--contrastLighter: #f3c3c3;
+
+	--accentClr: #70232c;
+	--accentClrDark: #89414e;
+
+	--gradientAccent: linear-gradient(to right, var(--accentClr) 0%, var(--accentClrDark) 100%);
+
+	--textColor: #565252;
+	--textColorAccent: #796060;
+
+	--border: 1px solid #E5E5E5;
+	--shadowBox: 0 0 20px #23265730;
+	--bg-backdrop: rgb(255 255 255 / 0.3);
+
+	--redMeetsme: #D4576C;
+
 	/* https://nekocalc.com/fr/px-a-rem-convertisseur */
-	 --78px: 4.875rem;
-	 --48px: 3rem;
-	 --38px: 2.375rem;
-	 --32px: 2rem;
-	 --28px: 1.75rem;
-	 --24px: 1.5rem;
-	 --22px: 1.375rem;
-	 --20px: 1.25rem;
-	 --18px: 1.125rem;
-	 --16px: 1rem;
-	 --14px: 0.875rem;
-	 --13px: 0.813rem;
-	 --12px: 0.75rem;
-	 --11px: 0.688rem;
-	 --10px: 0.625rem;
-	 --8px: 0.5rem;
-	 --font: 'Work Sans';
-	 --title: 'Libre Bodoni';
-	 --bi-font: 'bootstrap-icons';
+	--78px: 4.875rem;
+	--48px: 3rem;
+	--38px: 2.375rem;
+	--32px: 2rem;
+	--28px: 1.75rem;
+	--24px: 1.5rem;
+	--22px: 1.375rem;
+	--20px: 1.25rem;
+	--18px: 1.125rem;
+	--16px: 1rem;
+	--14px: 0.875rem;
+	--13px: 0.813rem;
+	--12px: 0.75rem;
+	--11px: 0.688rem;
+	--10px: 0.625rem;
+	--8px: 0.5rem;
+
+	--font: 'Work Sans';
+	--title: 'Libre Bodoni';
+	--bi-font: 'bootstrap-icons';
+
 	/* constants */
-	 --white: #fff;
-	 --adams: #00b0f0;
-	 --kirkland: #626cc7;
-	 --pfo: #d19e07;
-	 --dudley: #e80065;
-	 --franklin: #dedede;
-	 --students: #b86f5d;
-	 --dark: #70a3c7;
-	 --iwantit: #38a33f;
-	 --love: #ab2037;
-	 --fire: #e38846;
-	 --wrecked: #008796;
+	--white: #fff;
+
+	--adams: #00B0F0;
+	--kirkland: #626CC7;
+	--pfo: #D19E07;
+	--dudley: #E80065;
+	--franklin: #dedede;
+	--students: #B86F5D;
+	--dark: #70A3C7;
+	--iwantit: #38A33F;
+	--love: #AB2037;
+	--fire: #E38846;
+	--wrecked: #008796;
+
 	/* VARIABLES MESSENGER */
-	 --FAM-pluginBackground: #eaeaea;
-	 --FAM-chatBackground: #dfdfdf;
-	 --FAM-textareaBackground: #efefef;
-	 --FAM-msgBackground: #c9c9c9;
-	 --FAM-myMsgBackground: #efefef;
-	 --FAM-quoteBackground: #8a9fd2 36;
-	 --FAM-gradient: linear-gradient(-90deg, var(--FAM-pluginBackground) 20%, rgba(250, 251, 252, 0) 100%);
-	 --FAM-gradientTop: linear-gradient(180deg, var(--FAM-chatBackground) 20%, rgba(242, 244, 249, 0) 100%);
-	 --FAM-gradientBot: linear-gradient(0deg, var(--FAM-chatBackground) 20%, rgba(242, 244, 249, 0) 100%);
-	 --FAM-border: 1px solid #dce3f4;
-	 --FAM--shadowBox: 0 0 20px var(--contrastLight);
-	 --FAM-sleepModeBackground: rgba(255, 255, 255, 0.6);
-	 --FAM-newMsgAnimation: #000;
-	 --FAM-accentClr: #601f25;
-	 --FAM-secondClr: #38020b;
-	 --FAM-fontClr: #7a7675;
-	 --FAM-fontLightClr: #484a65;
-	 --FAM-linkClr: #4b57c5;
-	 --FAM-titleClr: #171938;
-	 --FAM-buttonsClr: #171938;
-	 --FAM-fontSize: 14px;
-	 --FAM-titleFont: 'Work Sans';
-	 --FAM-titleSize: 24px;
-	 --FAM-light: white;
-	 --FAM-dark: black;
-	 --FAM-windowSize: 750px;
+	--FAM-pluginBackground: #eaeaea;
+	--FAM-chatBackground: #dfdfdf;
+	--FAM-textareaBackground: #efefef;
+	--FAM-msgBackground: #c9c9c9;
+	--FAM-myMsgBackground: #efefef;
+	--FAM-quoteBackground: #8a9fd236;
+	--FAM-gradient: linear-gradient(-90deg, var(--FAM-pluginBackground) 20%, rgba(250, 251, 252, 0) 100%);
+	--FAM-gradientTop: linear-gradient(180deg, var(--FAM-chatBackground) 20%, rgba(242, 244, 249, 0) 100%);
+	--FAM-gradientBot: linear-gradient(0deg, var(--FAM-chatBackground) 20%, rgba(242, 244, 249, 0) 100%);
+	--FAM-border: 1px solid #dce3f4;
+	--FAM--shadowBox: 0 0 20px var(--contrastLight);
+	--FAM-sleepModeBackground: rgba(255, 255, 255, 0.6);
+	--FAM-newMsgAnimation: rgb(0, 0, 0,.3);
+	--FAM-accentClr: #601f25;
+	--FAM-secondClr: #38020b;
+	--FAM-fontClr: #7a7675;
+	--FAM-fontLightClr: #484a65;
+	--FAM-linkClr: #4B57C5;
+	--FAM-titleClr: #171938;
+	--FAM-buttonsClr: #171938;
+	--FAM-fontSize: 14px;
+	--FAM-titleFont: 'Work Sans';
+	--FAM-titleSize: 24px;
+	--FAM-light: white;
+	--FAM-dark: black;
+	--FAM-windowSize: 750px;
 	/* COULEURS VERSION MOBILE */
-	 --mobi_bgcolor: #fff;
-	 --mobi_joinbtn_bgcolor: #824c55;
-	 --mobi_forumcat_bgcolor: #824c55;
+	--mobi_bgcolor: #fff;
+	--mobi_joinbtn_bgcolor: #824c55;
+	--mobi_forumcat_bgcolor: #824c55;
 }
+
 /* VARIABLES DU MODE INVERSE (ici sombre) */
- [data-color-scheme="dark"], html.fa_darkmode {
-	 --background: url('https://images2.imgbox.com/b8/1e/FnjjBLWq_o.jpg');
-	 --header: url('https://images2.imgbox.com/56/8f/ScpMmBGP_o.png');
-	 --bg-color: #000;
-	 --base: #1f1f1f;
-	 --neutralLight: #262626;
-	 --neutral: #222;
-	 --neutralDark: #181818;
-	 --neutralDarker: #0f0f0f;
-	 --contrast: #e5e5f0;
-	 --contrastLight: #c1c1c1;
-	 --contrastLighter: #40485e;
-	 --accentClr: #745135;
-	 --accentClrDark: #703d31;
-	 --textColor: #8c8787;
-	 --textColorAccent: #7e7570;
-	 --white: #e7e7e7;
-	 --font_light: #e7e7e7;
-	 --border: 1px solid #262626;
-	 --shadowBox: 0 0 20px var(--neutralDark);
-	 --bg-backdrop: #000;
+[data-color-scheme="dark"], html.fa_darkmode {
+	--background: url('https://images2.imgbox.com/b8/1e/FnjjBLWq_o.jpg');
+	--header: url('https://images2.imgbox.com/56/8f/ScpMmBGP_o.png');
+	--bg-color: rgb(12 11 10 / 89%);
+	--base: #1f1f1f;
+	--neutralLight: #262626;
+	--neutral: #222222;
+	--neutralDark: #181818;
+	--neutralDarker: #0f0f0f;
+
+	--contrast: #e5e5f0;
+	--contrastLight: #c1c1c1;
+	--contrastLighter: #40485e;
+
+	--accentClr: #745135;
+	--accentClrDark: #703d31;
+
+	--textColor: #8c8787;
+	--textColorAccent: #7e7570;
+	--white: #e7e7e7;
+	--font_light: #e7e7e7;
+
+	--border: 1px solid #262626;
+	--shadowBox: 0 0 20px var(--neutralDark);
+	--bg-backdrop: rgb(31 31 31 / 65%);
+
 	/* VARIABLES MESSENGER */
-	 --FAM-pluginBackground: #222;
-	 --FAM-chatBackground: #181818;
-	 --FAM-textareaBackground: #242528;
-	 --FAM-msgBackground: #252525;
-	 --FAM-myMsgBackground: #1c1c1d;
-	 --FAM-quoteBackground: rgba(255, 255, 255, 0.04);
-	 --FAM-gradient: linear-gradient(-90deg, var(--FAM-pluginBackground) 20%, rgba(30, 33, 42, 0) 100%);
-	 --FAM-gradientTop: linear-gradient(180deg, var(--FAM-chatBackground) 20%, rgba(24, 26, 33, 0) 100%);
-	 --FAM-gradientBot: linear-gradient(0deg, var(--FAM-chatBackground) 20%, rgba(24, 26, 33, 0) 100%);
-	 --FAM-border: 1px solid #313543;
-	 --FAM-shadow: 0 0 20px var(--neutralDark);
-	 --FAM-sleepModeBackground: rgba(0, 0, 0, 0.5);
-	 --FAM-newMsgAnimation: #fff;
-	 --FAM-accentClr: #745035;
-	 --FAM-secondClr: #703d31;
-	 --FAM-fontClr: #b9b2b2;
-	 --FAM-fontLightClr: #9a96a3;
-	 --FAM-linkClr: #7583ff;
-	 --FAM-titleClr: #746c68;
-	 --FAM-buttonsClr: #e5e5e5;
+	--FAM-pluginBackground: #222222;
+	--FAM-chatBackground: #181818;
+	--FAM-textareaBackground: #242528;
+	--FAM-msgBackground: #252525;
+	--FAM-myMsgBackground: #1c1c1d;
+	--FAM-quoteBackground: rgba(255,255,255,0.04);
+	--FAM-gradient: linear-gradient(-90deg, var(--FAM-pluginBackground) 20%, rgba(30, 33, 42, 0) 100%);
+	--FAM-gradientTop: linear-gradient(180deg, var(--FAM-chatBackground) 20%, rgba(24, 26, 33, 0) 100%);
+	--FAM-gradientBot: linear-gradient(0deg, var(--FAM-chatBackground) 20%, rgba(24, 26, 33, 0) 100%);
+	--FAM-border: 1px solid #313543;
+	--FAM-shadow: 0 0 20px var(--neutralDark);
+	--FAM-sleepModeBackground: rgba(0, 0, 0, 0.5);
+	--FAM-newMsgAnimation: rgb(255, 255, 255,.5);
+	--FAM-accentClr: #745035;
+	--FAM-secondClr: #703d31;
+	--FAM-fontClr: #b9b2b2;
+	--FAM-fontLightClr: #9a96a3;
+	--FAM-linkClr: #7583ff;
+	--FAM-titleClr: #746c68;
+	--FAM-buttonsClr: #E5E5E5;  
 	/* COULEURS VERSION MOBILE */
-	 --mobi_bgcolor: #282a2f;
-	 --mobi_joinbtn_bgcolor: #703d31;
-	 --mobi_forumcat_bgcolor: #703d31;
-}
- wrecked {
-	 color: var(--wrecked);
+	--mobi_bgcolor: #282a2f;
+	--mobi_joinbtn_bgcolor: #703d31;
+	--mobi_forumcat_bgcolor: #703d31;
 }
  * {
 	 box-sizing: border-box;
@@ -1298,7 +1312,7 @@
 	 color: var(--accentClr);
 }
  .latest_message .user_date a {
-	 font-size: var(--10px);
+	 font-size: var(--11px);
 }
  .latest_message .forum-img {
 	 display: none;

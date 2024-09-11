@@ -240,9 +240,9 @@
       "icon code";
 }
 
-.id_card .hors_jeu img {
-  max-width: 150px;
-  max-height: 150px;
+.id_card .hors_jeu > img {
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   border-radius: 8px;
   grid-area: icon;

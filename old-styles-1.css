@@ -579,7 +579,7 @@
    margin-top: 36px;
 }
 /* Aside fiche */
-.admin-content:has(.admin-content-body-pres)  aside, .admin-content:has(.bloc-text) aside {
+.admin-content:has(.admin-content-body-pres) aside, .admin-content:has(.admin-content-body-liens) aside, .admin-content:has(.bloc-text) aside {
    writing-mode: vertical-lr;
    display: flex;
    align-items: center;

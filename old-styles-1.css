@@ -45,25 +45,9 @@
     --icon-reserve: #656565;
     --bottin-nouveau: #9f6f14;
     --icon-nouveau: #656565;
-    --adams: #00B0F0;
-    --kirkland: #626CC7;
-    --pfo: #D19E07;
-    --dudley: #E80065;
-    --students: #B86F5D;
-    --darkrises: #70A3C7;
-    --iwantit: #38A33F;
-    --loveshot: #AB2037;
-    --firestarter: #E38846;
-    --idwbya: #008796;
-    --sc-touriste: #6B8B8E;
-    --sc-boston: #C47372;
-    --sc-equipe1: #86A67F;
-    --sc-equipe2: #8892A0;
-    --sc-equipe3: #C9914A;
-    --sc-equipe4: #B49E89;
 }
 
- [data-color-scheme="dark"], html.fa_darkmode {
+[data-color-scheme="dark"], html.fa_darkmode {
     --bg-color-opacity: rgba(0, 0, 0, 0.7);
     --color-uno: var(--accentClr);
     --tmp-color-uno: #383d45;
@@ -110,22 +94,6 @@
     --icon-reserve: #bdbdbd;
     --bottin-nouveau: #6d4c0d;
     --icon-nouveau: #bdbdbd;
-    --adams: #00B0F0;
-    --kirkland: #626CC7;
-    --pfo: #D19E07;
-    --dudley: #E80065;
-    --students: #B86F5D;
-    --darkrises: #70A3C7;
-    --iwantit: #38A33F;
-    --loveshot: #AB2037;
-    --firestarter: #E38846;
-    --idwbya: #008796;
-    --sc-touriste: #6B8B8E;
-    --sc-boston: #C47372;
-    --sc-equipe1: #86A67F;
-    --sc-equipe2: #8892A0;
-    --sc-equipe3: #C9914A;
-    --sc-equipe4: #B49E89;
 }
 
 
@@ -422,10 +390,8 @@
    background-image: url(https://images2.imgbox.com/a0/4a/soqDmwS3_o.png);
    border: 3px solid #70A3C7;
 }
-.admin-content:has(.admin-content-body-pres), .admin-content:has(.bloc-text) {
-    .bloc-text:last-child{
-       border-radius: 0;
-    }    
+.admin-content:has(.admin-content-body-pres) .bloc-text:last-child, .admin-content:has(.bloc-text) .bloc-text:last-child {
+   border-radius: 0;
 }
 /* Container bloc text & nav image */
 .bloc-text.nav{
@@ -613,26 +579,24 @@
    margin-top: 36px;
 }
 /* Aside fiche */
-.admin-content:has(.admin-content-body-pres), .admin-content:has(.bloc-text) {
-    aside{
-       writing-mode: vertical-lr;
-       display: flex;
-       align-items: center;
-       justify-content: space-between;
-       box-sizing: border-box;
-       color: var(--color-white);
-       background: linear-gradient(180deg, var(--color-uno) 0%, var(--color-dos) 100%);
-       font-family: 'Abril Fatface';
-       font-size: 32px;
-       line-height: 43px;
-       width: 72px;
-       min-height: 360px;
-       margin-right: 32px;
-       margin-top: -36px;
-       margin-left: -24px;
-       margin-bottom: -24px;
-       padding: 80px 12px 18px;
-    }
+.admin-content:has(.admin-content-body-pres)  aside, .admin-content:has(.bloc-text) aside {
+   writing-mode: vertical-lr;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   box-sizing: border-box;
+   color: var(--color-white);
+   background: linear-gradient(180deg, var(--color-uno) 0%, var(--color-dos) 100%);
+   font-family: 'Abril Fatface';
+   font-size: 32px;
+   line-height: 43px;
+   width: 72px;
+   min-height: 360px;
+   margin-right: 32px;
+   margin-top: -36px;
+   margin-left: -24px;
+   margin-bottom: -24px;
+   padding: 80px 12px 18px;
 }
 .aside-hover{
    box-sizing: border-box;
@@ -823,9 +787,6 @@
    margin: 0 15px;
    padding: 4px;
 }
-/*.admin-content-field-list-info > div > div:not(:last-child), .admin-content-field-list-info-plus > div > div:not(:last-child){
-   border-bottom: 1px solid var(--color-bloc-2);
-}*/
 
 .admin-content-field-list-info-plus > div > div > div > *:last-child{
    margin-left: auto;

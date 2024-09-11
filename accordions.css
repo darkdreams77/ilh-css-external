@@ -4,19 +4,19 @@
   font-weight: 600;
   text-transform: uppercase;
   cursor: pointer;
+}
 
-  &:before {
-    content: '\F282';
-    font-family: var(--bi-font);
-    color: var(--accentClr);
-    display: inline-block;
-    margin-right: 5px;
-    transition: all .3s ease-in-out;
-  }
+.accordion_title:before {
+  content: '\F282';
+  font-family: var(--bi-font);
+  color: var(--accentClr);
+  display: inline-block;
+  margin-right: 5px;
+  transition: all .3s ease-in-out;
+}
 
-  &.active:before {
-    transform: rotate(180deg);
-  }
+.accordion_title.active:before {
+  transform: rotate(180deg);
 }
 
 .accordion_content {
@@ -27,16 +27,16 @@
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   flex: 1 0 auto;
+}
 
-  &.active {
-    padding: 5px;
-  }
+.accordion_content.active {
+  padding: 5px;
+}
 
-  div {
-    padding: 5px 0 3px;
+.accordion_content div {
+  padding: 5px 0 3px;
+}
 
-    &:first-child {
-      border-bottom: 1px solid var(--neutral);
-    }
-  }
+.accordion_content div:first-child {
+  border-bottom: 1px solid var(--neutral);
 }

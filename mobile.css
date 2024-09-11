@@ -1,0 +1,60 @@
+.mobile .btn { line-height: 1; }
+.mobile .btn.btn-rep-topic { line-height: 45px !important }
+.mobile .box-login input { margin: 0 auto 10px; }
+.mobile .box-login-btns-main { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.mobile .box-login-btns-main input, .mobile .box-login-btns-main .btn-subtle { margin: 0 }
+.mobile .btn-subtle { float: none }
+.mobile .forum { padding: 0 }
+.mobile { background-color: transparent;  }
+.mobile textarea, .mobile input  { font-size: var(--16px); }
+.mobile .codebox code { white-space: pre-line !important; max-height: 100%; }
+.mobile main .mobile_title .mobile_prev_button{ left: 48px; }
+.mobile main .mobile_title .mobile_next_button{ right: 48px; }
+.mobile main .mobile_title .mobile_prev_button.first_page{ left: 0; }
+.mobile main .mobile_title .mobile_next_button.last_page{ right: 0; }
+.mobile pris span, .mobile reserve span, .mobile nouveau span { flex: 1 1 100%; }
+.mobile pris b, .mobile reserve b, .mobile nouveau b { width: calc(100% - 20px); }
+.mobile .mobile-visible { display: block; }
+.mobile td.mobile-hidden { display: none; }
+
+.mobile .online, .mobile .post-section {
+	display: block;
+	padding: 16px;
+	margin: 16px 8px;
+	background-color: var(--base);
+}
+
+.mobile .post-buttons { display: flex; }
+.mobile .rep-button { flex: 0 0 100px; }
+.mobile .rep-button span { margin-left: 0 }
+.mobile #addthis-toolbar, .mobile #FAM-button { display: none; }
+.mobile #header #mNavbar a, .mobile .mobile_title_content { color: #fff; }
+.mobile .navmenu_list { bottom: 50px;  width: 230px; }
+.mobile .navmenu_list a { font-size: 14px; }
+.mobile #tab-bar li > i { display: none; }
+.mobile #tab-bar span { font-size: var(--11px); }
+.mobile .post_message { padding: 10px 5px; min-height: auto; text-align: justify; }
+.mobile .profil_react_avatar { display: none; }
+
+.mobile .profil_react .online:empty {
+	display: block;
+	width: 10px;
+	height: 10px;
+	background: #70c470;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	border-radius: 50%;
+}
+
+.mobile .reaction.comment {
+	background: var(--neutral);
+	border-radius: 5px;
+	padding: 10px 20px;
+}
+
+.mobile .like_button { flex: 1; margin-left: 0; }
+
+.mobile .codebox.hidecode { padding: 5px; }
+.mobile .codebox.hidecode	dd { font-family: var(--font); padding: 5px; }
+.mobile .codebox.hidecode:after { content: ''; }

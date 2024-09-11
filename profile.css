@@ -3,43 +3,45 @@
   background: var(--neutralDark);
   overflow: hidden;
   padding-bottom: 10px;
+}
 
-  input {
-    width: auto !important;
-  }
+.main_user_profile input {
+  width: auto !important;
+}
 
-  .head {
-    background: var(--neutralDarker);
-    padding: 10px;
+.main_user_profile .head {
+  background: var(--neutralDarker);
+  padding: 10px;
+}
 
-    &.colored .rank, &.colored .username div span, &.colored .username i { color: var(--white) !important; }
-  }
+.main_user_profile .head.colored .rank, .main_user_profile .head.colored .username div span, .main_user_profile .head.colored .username i {
+  color: var(--white) !important;
+}
 
-  .username {
-    font-family: var(--title);
-    text-transform: uppercase;
-    font-size: var(--16px);
-    display: flex;
-    align-items: center;
-    gap: 5px;
+.main_user_profile .username {
+  font-family: var(--title);
+  text-transform: uppercase;
+  font-size: var(--16px);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 
-    .isOnline {
-      font-family: var(--font);
-      text-transform: lowercase;
-      font-size: var(--11px);
-      display: inline-flex;
-      background: var(--neutralDark);
-      border-radius: 4px;
-      padding: 0px 4px;
-      font-style: italic;
-    }
-  }
+.main_user_profile .username .isOnline {
+  font-family: var(--font);
+  text-transform: lowercase;
+  font-size: var(--11px);
+  display: inline-flex;
+  background: var(--neutralDark);
+  border-radius: 4px;
+  padding: 0px 4px;
+  font-style: italic;
+}
 
-  .rank {
-    text-transform: uppercase;
-    font-size: var(--12px);
-    font-weight: 500;
-  }
+.main_user_profile  .rank {
+  text-transform: uppercase;
+  font-size: var(--12px);
+  font-weight: 500;
 }
 
 .user_profile {
@@ -47,93 +49,95 @@
   padding: 10px;
   margin: 10px;
   position: relative;
-
-  .user_icon {
-    top: -30px; 
-
-    label { display: none; }
-  }
-
-  .line {
-    display: flex;
-    gap: 12px;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    margin-top: 14px;
-
-    &.two .id_card {
-      flex: 1 1 50%;
-    }
-
-    &.three > div {
-      flex: 1 1 33%;
-    }
-
-    .id_card {
-      width: auto;
-      flex: 1 1 auto;    
-
-      & .accordion_content {
-        overflow: auto; 
-
-        .profile_field { margin: 10px; }
-
-        div { 
-          padding: 0; 
-
-          &:first-child { border-bottom: none; }
-        }
-      }
-      .game label { display: none; }
-    }
-  }
-
-  .pseudo_mc {
-    flex: 0 0 200px !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    .pseudo_irl, .mc {
-      label { display: none; }
-      .profile_field { margin: 0; }
-    }
-
-    .pseudo_irl {
-      font: var(--16px) var(--title);
-      text-align: center;
-    }
-
-    .mc { font-style: italic; text-align: center; }
-  }
-
-  .info_irl, .rps {
-    background: var(--base);
-    border-radius: 8px;
-    padding: 10px;
-    height: 160px;
-    overflow: auto;
-  }
-
-  .rps {
-    label { display: none;  }
-    .field_uneditable { line-height: 1; }
-  }
-
-  .inner_rps { 
-    line-height: 1; 
-    img { max-width: 100%; }
-  }
 }
+
+.user_profile .user_icon {
+  top: -30px; 
+}
+
+.user_profile .user_icon label { display: none; }
+
+.user_profile .line {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  margin-top: 14px;
+}
+
+.user_profile .line.two .id_card {
+  flex: 1 1 50%;
+}
+
+.user_profile .line.three > div {
+  flex: 1 1 33%;
+}
+
+.user_profile .line .id_card {
+  width: auto;
+  flex: 1 1 auto;  
+}
+
+.user_profile .line .id_card .accordion_content {
+  overflow: auto; 
+}
+
+.user_profile .line .id_card .accordion_content .profile_field {
+  margin: 10px;
+}
+
+.user_profile .line .id_card .accordion_content div {
+  padding: 0; 
+}
+
+.user_profile .line .id_card .accordion_content div:first-child {
+  border-bottom: none;
+}
+
+.user_profile .line .id_card .game label { display: none; }
+
+.user_profile .pseudo_mc {
+  flex: 0 0 200px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.user_profile .pseudo_mc .pseudo_irl label, .user_profile .pseudo_mc .mc label { display: none; }
+.user_profile .pseudo_mc .pseudo_irl .profile_field, .user_profile .pseudo_mc .mc .profile_field { margin: 0; }
+
+.user_profile .pseudo_mc .pseudo_irl {
+  font: var(--16px) var(--title);
+  text-align: center;
+}
+
+.user_profile .pseudo_mc .mc {
+  font-style: italic;
+  text-align: center;
+}
+
+.user_profile .info_irl, .user_profile .rps {
+  background: var(--base);
+  border-radius: 8px;
+  padding: 10px;
+  height: 160px;
+  overflow: auto;
+}
+
+.user_profile .rps label { display: none; }
+.user_profile .rps .field_uneditable { line-height: 1; }
+
+.user_profile .inner_rps { line-height: 1; }
+.user_profile .inner_rps img { max-width: 100%; }
 
 .profile_avatar {
   width: 200px;
   height: 320px;
   position: relative;
-  
-  img { border-radius: 8px; width: 200px; }
 }
+
+.profile_avatar img { border-radius: 8px; width: 200px; }
 
 .user_fc {
   background: var(--gradientAccent);
@@ -151,10 +155,10 @@
   text-align: center;
   z-index: 1;
   transform: translate(-50%, -50%);
-
-  input { width: 100% !important; }
-  label { display: none; }
 }
+
+.user_fc input { width: 100% !important; }
+.user_fc label { display: none; }
 
 .user_avatar_subinfo {
   position: absolute;
@@ -164,23 +168,23 @@
   text-align: center;
   height: 60px;
   border-radius: 0 0 8px 8px;
+}
 
-  .posts_rps {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: none;
-    padding-bottom: 0;
-    margin-bottom: 0;
-    align-items: center;
-    height: 60px;
-    margin-top: 8px;
+.user_avatar_subinfo .posts_rps {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  align-items: center;
+  height: 60px;
+  margin-top: 8px;
+}
 
-    field {
-      font-family: var(--title);
-      font-size: var(--16px);
-      line-height: 1;
-    }
-  }  
+.user_avatar_subinfo .posts_rps field {
+  font-family: var(--title);
+  font-size: var(--16px);
+  line-height: 1;
 }
 
 .last_visited {
@@ -196,73 +200,66 @@
   padding: 10px;
   height: 320px;
   flex: 1 1 auto;
-
-  .inner_line {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 10px;
-
-    .block {
-      flex: 1 1 50%;
-      height: calc(320px - 70px);
-      background: var(--neutralLight);
-      padding: 10px;
-      border-radius: 8px;
-
-      .content {
-        height: calc(100% - 25px);
-        overflow: auto;
-
-        img { max-width: 100% }
-
-        &.descriptions .field_uneditable { line-height: 1; }
-      }
-    }
-
-    &.subjects {
-      align-items: center;
-
-      .links {
-        display: inline-block;
-        background: var(--gradientAccent);
-        padding: 4px 8px;
-        border-radius: 4px;
-        color: var(--white);
-        font-size: var(--11px);
-        text-transform: uppercase;
-        font-weight: 600;
-      }
-    }
-  }
-
-  .user_color {
-    .color_user {
-      padding: 4px 8px;
-      border-radius: 8px;
-      background: var(--neutralDark);
-      color: var(--white);
-    }
-
-    label { color: var(--white); }
-     
-    > div {
-      flex-direction: row;
-      align-items: center;
-      gap: 10px;
-      margin: 0;
-
-      .field_uneditable { font-size: var(--11px); }
-    }
-  }
-
-  textarea { width: 100%; }
 }
 
-.awards_block_simple_wrapper {
-  .h3 { display: none; }
-  .awards_block { padding: 10px !important; display: flex; gap: 15px; flex-wrap: wrap; }
+.profile_infos .inner_line {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
 }
+
+.profile_infos .inner_line .block {
+  flex: 1 1 50%;
+  height: calc(320px - 70px);
+  background: var(--neutralLight);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.profile_infos .inner_line .block .content {
+  height: calc(100% - 25px);
+  overflow: auto;
+}
+
+.profile_infos .inner_line .block .content img { max-width: 100%; }
+.profile_infos .inner_line .block .content.descriptions .field_uneditable { line-height: 1;}
+.profile_infos .inner_line.subjects { align-items: center; }
+
+.profile_infos .inner_line.subjects .links {
+  display: inline-block;
+  background: var(--gradientAccent);
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--white);
+  font-size: var(--11px);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.profile_infos .user_color .color_user {
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: var(--neutralDark);
+  color: var(--white);
+}
+
+.profile_infos .user_color label {
+  color: var(--white);
+}
+
+.profile_infos .user_color > div {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.profile_infos .user_color > div .field_uneditable { font-size: var(--11px); }
+.profile_infos textarea { width: 100% }
+
+.awards_block_simple_wrapper .h3 { display: none;}
+.awards_block_simple_wrapper .awards_block { padding: 10px !important; display: flex; gap: 15px; flex-wrap: wrap; }
 
 .profile_contact form { display: flex; }
 .profile_contact form > div { margin-left: 5px; }
@@ -272,29 +269,29 @@
   font-size: var(--10px);
   text-transform: uppercase;
   font-weight: 500;
+}
 
-  .profile_contact {
-    border-top: 1px solid var(--neutralDark);
-    margin-top: -5px;
-    margin-left: -10px;
-    margin-right: -10px;
+.profile_content .profile_contact {
+  border-top: 1px solid var(--neutralDark);
+  margin-top: -5px;
+  margin-left: -10px;
+  margin-right: -10px;
+}
 
-    div:not(:first-child) { border-left: 1px solid var(--neutralDark); }
+.profile_content .profile_contact div:not(:first-child) { border-left: 1px solid var(--neutralDark); }
 
-    a {
-      display: inline-block;
-      padding: 4px 8px;
-      font-size: var(--10px);
-      text-transform: uppercase;
-      font-weight: 500;
-    }
-  }
+.profile_content .profile_contact a {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: var(--10px);
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 #list_awards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .award {

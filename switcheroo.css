@@ -27,29 +27,29 @@
   overflow: hidden;
   height: 100%;
   position: relative;
+}
 
-  &:after {
-    content: "";
-    display: block;
-    position: absolute;
-    right: 0;
-    top: auto;
-    bottom: 0;
-    height: 10%;
-    background: var(--FAM-gradientBot);
-    z-index: 5;
-    pointer-events: none;
-    left: 0;
-  }
+.switcheroo-container:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: auto;
+  bottom: 0;
+  height: 10%;
+  background: var(--FAM-gradientBot);
+  z-index: 5;
+  pointer-events: none;
+  left: 0;
 }
 
 .switcheroo {
   color: var(--textColor); 
   height: calc(100vh - 380px);
+}
 
-  &:hover {
-    overflow-y: auto; 
-  }
+.switcheroo:hover {
+  overflow-y: auto; 
 }
 
 .switcheroo__squircles {

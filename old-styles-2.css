@@ -157,7 +157,7 @@
   padding: 2px 9px;
   line-height: 23px;
 }
-.admin-content:has(.admin-content-body-pres), .admin-content:has(.bloc-text), .admin-meets, .meets-profil, .meets-notif best2{/* Fond Dos, Texte Mulish, Color Bloc 1 Upper*/
+.admin-content:has(.admin-content-body-pres) best2, .admin-content:has(.bloc-text) best2, .admin-meets best2, .meets-profil best2, .meets-notif best2{/* Fond Dos, Texte Mulish, Color Bloc 1 Upper*/
   font-family: 'Mulish';
   color: var(--color-lu);
   text-transform: uppercase;
@@ -319,7 +319,7 @@ darkrises a:hover, title1 a:hover, title2 a:hover, title3 a:hover, title4 a:hove
   color: currentColor!important;
 }
 
-.admin-content-field-list-info up1, .admin-content-field-list-info-plus up1{
+.admin-content:has(.admin-content-body-pres) .admin-content-field-list-info up1, .admin-content:has(.admin-content-body-pres) .admin-content-field-list-info-plus up1 {
     margin-right: 8px;
     font-family: 'Mulish';
     font-weight: 700;

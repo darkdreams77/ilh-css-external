@@ -58,3 +58,25 @@
 .mobile .codebox.hidecode { padding: 5px; }
 .mobile .codebox.hidecode	dd { font-family: var(--font); padding: 5px; }
 .mobile .codebox.hidecode:after { content: ''; }
+.mobile blockquote div { border: none; }
+.mobile blockquote div:after { content: ''; }
+.mobile .codebox, .quote_content { font: var(--14px) var(--font); }
+.mobile .container-tabs nav {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  right: 0;
+  gap: 5px;
+}
+.mobile a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+.forum h2, .forum-grid h2 {
+  background-color: var(--accentClr);
+}
+
+.forum-lastpost-wrap i, #tab-bar i {
+  color: var(--accentClrDark); 
+}

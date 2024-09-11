@@ -126,7 +126,7 @@
 }
 
 .user_profile .rps label { display: none; }
-.user_profile .rps .field_uneditable { line-height: 1; }
+.user_profile .rps .field_uneditable { line-height: 1; font-size: var(--12px); }
 
 .user_profile .inner_rps { line-height: 1; }
 .user_profile .inner_rps img { max-width: 100%; }

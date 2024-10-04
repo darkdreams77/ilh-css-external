@@ -400,11 +400,11 @@
 
 .qeel_groups .group:hover .group-visible { background: var(--gradientAccent); color: var(--white); }
 
-.qeel_groups .group.student .icon, .qeel_groups .group.pfo:hover .group-visible { background: var(--pfo); color: var(--white); }
-.qeel_groups .group.student .icon, .qeel_groups .group.adams:hover .group-visible { background: var(--adams); color: var(--white); }
-.qeel_groups .group.student .icon, .qeel_groups .group.dudley:hover .group-visible { background: var(--dudley); color: var(--white); }
-.qeel_groups .group.student .icon, .qeel_groups .group.franklin:hover .group-visible { background: var(--franklin); color: var(--white); }
-.qeel_groups .group.student .icon, .qeel_groups .group.kirkland:hover .group-visible { background: var(--kirkland); color: var(--white); }
+.qeel_groups .group.pfo .icon, .qeel_groups .group.pfo:hover .group-visible { background: var(--pfo); color: var(--white); }
+.qeel_groups .group.adams .icon, .qeel_groups .group.adams:hover .group-visible { background: var(--adams); color: var(--white); }
+.qeel_groups .group.dudley .icon, .qeel_groups .group.dudley:hover .group-visible { background: var(--dudley); color: var(--white); }
+.qeel_groups .group.franklin .icon, .qeel_groups .group.franklin:hover .group-visible { background: var(--franklin); color: var(--white); }
+.qeel_groups .group.kirkland .icon, .qeel_groups .group.kirkland:hover .group-visible { background: var(--kirkland); color: var(--white); }
 .qeel_groups .group.student .icon, .qeel_groups .group.student:hover .group-visible { background: var(--students); color: var(--white); }
 .qeel_groups .group.dark .icon, .qeel_groups .group.dark:hover .group-visible { background: var(--dark); color: var(--white); }
 .qeel_groups .group.love .icon, .qeel_groups .group.love:hover .group-visible { background: var(--love); color: var(--white); }

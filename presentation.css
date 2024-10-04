@@ -254,3 +254,11 @@
 }
 
 .id_card .hors_jeu .code #codeBox dd { padding: 10px; }
+
+.id_card .content .story-content {
+    background: var(--base);
+    text-align: justify;
+    padding: 16px;
+    border-radius: 8px;
+    line-height: 1.4;
+}

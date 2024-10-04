@@ -400,6 +400,11 @@
 
 .qeel_groups .group:hover .group-visible { background: var(--gradientAccent); color: var(--white); }
 
+.qeel_groups .group.student .icon, .qeel_groups .group.pfo:hover .group-visible { background: var(--pfo); color: var(--white); }
+.qeel_groups .group.student .icon, .qeel_groups .group.adams:hover .group-visible { background: var(--adams); color: var(--white); }
+.qeel_groups .group.student .icon, .qeel_groups .group.dudley:hover .group-visible { background: var(--dudley); color: var(--white); }
+.qeel_groups .group.student .icon, .qeel_groups .group.franklin:hover .group-visible { background: var(--franklin); color: var(--white); }
+.qeel_groups .group.student .icon, .qeel_groups .group.kirkland:hover .group-visible { background: var(--kirkland); color: var(--white); }
 .qeel_groups .group.student .icon, .qeel_groups .group.student:hover .group-visible { background: var(--students); color: var(--white); }
 .qeel_groups .group.dark .icon, .qeel_groups .group.dark:hover .group-visible { background: var(--dark); color: var(--white); }
 .qeel_groups .group.love .icon, .qeel_groups .group.love:hover .group-visible { background: var(--love); color: var(--white); }
@@ -407,6 +412,11 @@
 .qeel_groups .group.wrecked .icon, .qeel_groups .group.wrecked:hover .group-visible { background: var(--wrecked); color: var(--white); }
 .qeel_groups .group.fire .icon, .qeel_groups .group.fire:hover .group-visible { background: var(--fire); color: var(--white); }
 
+.qeel_groups .group.pfo .qeel-tooltip { border-color: var(--pfo); }
+.qeel_groups .group.adams .qeel-tooltip { border-color: var(--adams); }
+.qeel_groups .group.dudley .qeel-tooltip { border-color: var(--dudley); }
+.qeel_groups .group.franklin .qeel-tooltip { border-color: var(--franklin); }
+.qeel_groups .group.kirkland .qeel-tooltip { border-color: var(--kirkland); }
 .qeel_groups .group.student .qeel-tooltip { border-color: var(--students); }
 .qeel_groups .group.dark .qeel-tooltip { border-color: var(--dark); }
 .qeel_groups .group.love .qeel-tooltip { border-color: var(--love); }
@@ -414,6 +424,11 @@
 .qeel_groups .group.wrecked .qeel-tooltip { border-color: var(--wrecked); }
 .qeel_groups .group.fire .qeel-tooltip { border-color: var(--fire); }
 
+.qeel_groups .group.pfo .qeel-tooltip .title { color: var(--pfo); }
+.qeel_groups .group.adams .qeel-tooltip .title { color: var(--adams); }
+.qeel_groups .group.dudley .qeel-tooltip .title { color: var(--dudley); }
+.qeel_groups .group.franklin .qeel-tooltip .title { color: var(--franklin); }
+.qeel_groups .group.kirkland .qeel-tooltip .title { color: var(--kirkland); }
 .qeel_groups .group.student .qeel-tooltip .title { color: var(--students); }
 .qeel_groups .group.dark .qeel-tooltip .title { color: var(--dark); }
 .qeel_groups .group.love .qeel-tooltip .title { color: var(--love); }

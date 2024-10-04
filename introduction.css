@@ -291,6 +291,52 @@
 .second_container .important_links a:nth-child(odd) { color: var(--accentClrDark); }
 
 
+.intro_pa_groups {
+	list-style: none;
+	display: flex;
+	gap: 60px;
+	align-items: center;
+	justify-content: center;
+	margin-top: 40px;
+}
+
+.pa_group { text-align: center; position: relative; width: 100px; }
+.pa_group:hover { cursor: default; } 
+
+.pa_group img {
+	width: 70px;
+	filter: grayscale(1);
+	transition: all .3s ease-in-out;
+}
+
+.pa_group:hover img {
+	width: 70px;
+	filter: grayscale(0);
+}
+
+.pa_group .text {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	bottom: 30%;
+	width: 100%;
+	text-align: center;
+	background: var(--white);
+	border-radius: 4px;
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: var(--11px);
+	transition: all .3s ease-in-out;
+}
+
+.pa_group:hover .text {
+	opacity: 1;
+	visibility: visible;
+	bottom: 50%;
+	transform: translateY(50%);
+}
+
+
 /* ======= QUI EST EN LIGNE ===========*/ 
 
 .qeel {

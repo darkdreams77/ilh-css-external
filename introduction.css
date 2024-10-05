@@ -304,13 +304,13 @@
 .pa_group:hover { cursor: default; } 
 
 .pa_group img {
-	width: 70px;
+	width: 100px;
 	filter: grayscale(1);
 	transition: all .3s ease-in-out;
 }
 
 .pa_group:hover img {
-	width: 70px;
+	width: 80px;
 	filter: grayscale(0);
 }
 

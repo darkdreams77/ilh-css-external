@@ -1,0 +1,30 @@
+.belong_groups ul { display: inline-block; }
+.belong_groups li { display: inline-block; margin-right: 25px; }
+.groups_list dl {
+    grid-template-rows: 20px auto;
+    grid-template-columns: auto;
+}
+ul.group_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 45px;
+    text-align: center;
+    margin-top: 30px;
+}
+.group_list li {
+    flex: 0 0 30%;
+}
+.group_list a {
+    display: inline-block;
+    padding: 15px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 600;
+    width: 100%;
+    font-size: var(--12px);
+    background: var(--gradientAccent); 
+}
+.group_list div {
+    font-size: var(--11px);
+    font-style: italic;
+}

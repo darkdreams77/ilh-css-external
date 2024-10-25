@@ -391,3 +391,8 @@ love { color: var(--love); }
 fire { color: var(--fire); }
 wrecked { color: var(--wrecked); }
 darkrises { color: var(--dark); }
+
+.admin-table { display: table; }
+.admin-table div { display: table-cell; vertical-align: top; }
+.mobile .admin-table, .mobile .admin-table div { display: block; }
+

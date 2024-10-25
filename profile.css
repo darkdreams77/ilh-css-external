@@ -295,8 +295,8 @@
 }
 
 .award {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   position: relative;
   background-image: var(--award-image);
   background-size: cover;
@@ -314,14 +314,17 @@
   width: max-content;
   display: none;
   position: absolute;
-  top: 25%;
-  left: 25px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 60px;
   background-color: var(--neutral);
   border: 1px solid var(--neutralDark);
   padding: 5px;
   border-radius: 5px;
   text-align: center;
   font-size: 11px;
+  pointer-events: none;
 }
 
 /* titre de la récompenses*/

@@ -317,7 +317,6 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 60px;
   background-color: var(--neutral);
   border: 1px solid var(--neutralDark);
   padding: 5px;

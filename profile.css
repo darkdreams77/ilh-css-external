@@ -259,7 +259,7 @@
 .profile_infos textarea { width: 100% }
 
 .awards_block_simple_wrapper .h3 { display: none;}
-.awards_block_simple_wrapper .awards_block { padding: 10px !important; display: flex; gap: 15px; flex-wrap: wrap; }
+.awards_block_simple_wrapper .awards_block { padding: 10px !important; display: flex; gap: 15px; flex-wrap: wrap; overflow-x: hidden; }
 
 .profile_contact form { display: flex; }
 .profile_contact form > div { margin-left: 5px; }
@@ -295,8 +295,8 @@
 }
 
 .award {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   position: relative;
   background-image: var(--award-image);
   background-size: cover;
@@ -314,9 +314,8 @@
   width: max-content;
   display: none;
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 25%;
+  left: 25px;
   background-color: var(--neutral);
   border: 1px solid var(--neutralDark);
   padding: 5px;

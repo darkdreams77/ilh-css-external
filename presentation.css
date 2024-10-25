@@ -114,9 +114,6 @@
 }
 
 .id_card .first_block_left .informations {
-  background: var(--base);
-  padding: 10px;
-  border-radius: 8px;
   flex: 1 1 auto;
   overflow: auto;
   margin-top: 10px;
@@ -126,15 +123,11 @@
 
 .id_card .first_block_left .informations div {
   flex: 1 1 50%;
-}
-
-.id_card .first_block_left .informations div:first-child {
-  padding-right: 10px;
-}
-
-.id_card .first_block_left .informations div:last-child {
-  border-left: 1px solid var(--neutral);
-  padding-left: 10px;
+  background: var(--base);
+  padding: 10px;
+  border-radius: 8px;
+  overflow: auto;
+  height: 100%;
 }
 
 .id_card .first_block_left .informations div > * {
@@ -172,13 +165,17 @@
   background: var(--base);
   border-radius: 8px;
   padding: 6px;
-  height: 165px;
+  height: 235px;
   overflow: auto;
   text-align: justify;
 }
 
+.id_card .second_block .line .content {
+  height: 165px;
+}
+
 .id_card .second_block .content.small {
-  height: 105px;
+  height: 135px;
 }
 
 .id_card .second_block .content.trait {

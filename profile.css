@@ -371,8 +371,8 @@
   margin-right: 5px;
 }
 
-.profile_field:not(#field_id29) .ajax-profil_parent { position: relative; display: block; }
-.profile_field:not(#field_id29) .ajax-profil_edit {
+.profile_field:not(.field-rps-en-cours) .ajax-profil_parent { position: relative; display: block; }
+.profile_field:not(.field-rps-en-cours) .ajax-profil_edit {
   cursor: pointer; 
   position: absolute;
   width: 100%;
@@ -383,8 +383,8 @@
   top: 0;
   left: 0;
 }
-.profile_field:not(#field_id29) .ajax-profil_edit > img{ display: none; }
-.profile_field:not(#field_id29) .ajax-profil_valid {
+.profile_field:not(.field-rps-en-cours) .ajax-profil_edit > img { display: none; }
+.ajax-profil_valid {
   width: 16px !important;
   height: 16px !important;
   filter: var(--filter-accent);

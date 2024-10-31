@@ -52,7 +52,8 @@
 }
 
 .user_profile .user_icon {
-  top: -30px; 
+    top: -25px;
+    right: -8px;
 }
 
 .user_profile .user_icon label { display: none; }

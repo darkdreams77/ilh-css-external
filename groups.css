@@ -1,19 +1,23 @@
 .belong_groups ul { display: inline-block; }
 .belong_groups li { display: inline-block; margin-right: 25px; }
+
 .groups_list dl {
     grid-template-rows: 20px auto;
     grid-template-columns: auto;
 }
+
 ul.group_list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px 45px;
-    text-align: center;
+    text-align: left;
     margin-top: 30px;
 }
+
 .group_list li {
     flex: 0 0 30%;
 }
+
 .group_list a {
     display: inline-block;
     padding: 15px 10px;
@@ -23,7 +27,36 @@ ul.group_list {
     width: 100%;
     font-size: var(--12px);
     background: var(--gradientAccent); 
+    color: var(--groupLink) !important;
+    position: relative;
+    z-index: 1;
 }
+
+.group_list a:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--groupColor);
+    z-index: -1;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+}
+.group_list a:after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: var(--groupColor);
+    display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    z-index: -2;
+}
+
 .group_list div {
     font-size: var(--11px);
     font-style: italic;

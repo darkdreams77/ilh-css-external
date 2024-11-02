@@ -26,7 +26,6 @@ ul.group_list {
     font-weight: 600;
     width: 100%;
     font-size: var(--12px);
-    background: var(--gradientAccent); 
     color: var(--groupLink) !important;
     position: relative;
     z-index: 1;

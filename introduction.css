@@ -325,7 +325,7 @@
 	border-radius: 4px;
 	text-transform: uppercase;
 	font-weight: 600;
-	font-size: var(--11px);
+	font-size: var(--12px);
 	transition: all .3s ease-in-out;
 }
 

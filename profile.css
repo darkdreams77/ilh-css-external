@@ -355,14 +355,14 @@
 
 /* Bouton "suivre le membre" */
 .followBtn {
-  background: var(--neutralLight);
+  background: var(--neutral);
   border-radius: 5px;
   font-weight: 600;
   margin: 0;
-  font-size: var(--14px);
+  font-size: var(--12px);
   text-transform: uppercase;
-  padding: 4px 8px;
-  color: var(--textColor);
+  padding: 5px 10px;
+  color: var(--textColorAccent);
 }
 
 .followBtn::before {
@@ -371,6 +371,28 @@
   color: var(--accentClr);
   margin-right: 5px;
 }
+
+.profile_admin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.profile_friendsfoes {
+  display: flex;
+  gap: 10px;
+}
+
+.profile_friendsfoes a {
+  background: var(--neutral);
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: var(--12px);
+  font-weight: 600;
+}
+
 
 .profile_field:not(.field-rps-en-cours) .ajax-profil_parent { position: relative; display: block; }
 .profile_field:not(.field-rps-en-cours) .ajax-profil_edit {

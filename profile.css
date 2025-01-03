@@ -58,6 +58,16 @@
 
 .user_profile .user_icon label { display: none; }
 
+.user_profile .user_icon:has(.field_editable:not(.invisible)) {
+    width: 180px;
+    z-index: 1;
+    background: var(--neutralDarker);
+    padding: 5px;
+    border-radius: 5px;
+    height: 130px;
+    top: 0;
+}
+
 .user_profile .line {
   display: flex;
   gap: 12px;

@@ -148,7 +148,7 @@
   position: relative;
 }
 
-.profile_avatar img { border-radius: 8px; width: 200px; }
+.profile_avatar img { border-radius: 8px; width: 200px; height: 320px; object-fit: cover; }
 
 .user_fc {
   background: var(--gradientAccent);

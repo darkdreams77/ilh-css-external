@@ -18,7 +18,12 @@
   border-radius: 20px; 
   padding: 3px 6px; 
   font: normal bold var(--10px) var(--font); 
+  transition: all .5s ease-in-out;
 } 
+
+.signakdo15-wrapper > div > span:hover {
+    padding-left: 15px;
+}
 
 .signakdo15-wrapper > div > span[class*="-love"] {  background: var(--love); } 
 .signakdo15-wrapper > div > span[class*="-fire"] { background: var(--fire); } 

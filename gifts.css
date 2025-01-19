@@ -1,0 +1,51 @@
+/* SIGNATURE CADEAUX 15/01/2025 */
+.signakdo15-wrapper { 
+  display: flex;
+  width: 250px;
+  gap: 15px; 
+} 
+
+.signakdo15-wrapper > div { 
+  font-size: var(--9px); 
+  text-transform: uppercase; 
+  font-style: italic; 
+  text-align: justify; 
+} 
+
+.signakdo15-wrapper > div > span { 
+  display: inline-block; 
+  color: white; 
+  border-radius: 20px; 
+  padding: 3px 6px; 
+  font: normal bold var(--10px) var(--font); 
+} 
+
+.signakdo15-wrapper > div > span[class*="-love"] {  background: var(--love); } 
+.signakdo15-wrapper > div > span[class*="-fire"] { background: var(--fire); } 
+.signakdo15-wrapper > div > span[class*="-dark"] {  background: var(--dark); } 
+.signakdo15-wrapper > div > span[class*="-wrecked"] { background: var(--wrecked); } 
+.signakdo15-wrapper > div > span[class*="-iwantit"] {  background: var(--iwantit); } 
+.signakdo15-wrapper > div > span[class*="-adams"] { background: var(--adams); } 
+.signakdo15-wrapper > div > span[class*="-kirkland"] {  background: var(--kirkland); } 
+.signakdo15-wrapper > div > span[class*="-franklin"] { background: var(--franklin); } 
+.signakdo15-wrapper > div > span[class*="-pfo"] {  background: var(--pfo); } 
+.signakdo15-wrapper > div > span[class*="-student"] { 
+  background: var(--students); 
+  color: #5f5446; 
+} 
+
+
+
+.signakdo15-img { 
+  flex: 0 0 100px; 
+  width: 100px; 
+  object-fit: cover; 
+  will-change: filter; 
+  transition: filter .5s; 
+  filter: grayscale(100%) drop-shadow(0 0 0px var(--accentClrDark)); 
+  border-radius: 5px; 
+} 
+
+.signakdo15-img:hover { 
+  filter: grayscale(20%) drop-shadow(3px 3px 0px var(--accentClr)); 
+}

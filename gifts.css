@@ -49,6 +49,20 @@
   border-radius: 5px; 
 } 
 
+.signakdo15-img-clr { 
+  flex: 0 0 100px; 
+  width: 100px; 
+  object-fit: cover; 
+  will-change: filter; 
+  transition: filter .5s; 
+  filter: drop-shadow(0 0 0px var(--accentClrDark)); 
+  border-radius: 5px; 
+} 
+
 .signakdo15-img:hover { 
   filter: grayscale(20%) drop-shadow(3px 3px 0px var(--accentClr)); 
+}
+
+.signakdo15-img-clr:hover { 
+  filter: drop-shadow(3px 3px 0px var(--accentClr)); 
 }

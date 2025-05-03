@@ -1,5 +1,6 @@
 .mobile .btn { line-height: 1; }
-.mobile .btn.btn-rep-topic { line-height: 45px !important }
+.mobile .btn.btn-rep-topic { line-height: 45px !important; background-color: var(--mobi_joinbtn_bgcolor) !important; }
+.mobile .btn-floating { color: var(--white) !important; }
 .mobile .box-login input { margin: 0 auto 10px; }
 .mobile .box-login-btns-main { display: flex; align-items: center; justify-content: center; gap: 10px; }
 .mobile .box-login-btns-main input, .mobile .box-login-btns-main .btn-subtle { margin: 0 }

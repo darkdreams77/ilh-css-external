@@ -74,11 +74,11 @@
 }
 
 .forum h2, .forum-grid h2 {
-  background-color: var(--accentClr);
+  background-color: var(--accentClr) !important;
 }
 
 .forum-lastpost-wrap i, #tab-bar i {
-  color: var(--accentClrDark); 
+  color: var(--accentClrDark) !important; 
 }
 
 p.profile-buttons {

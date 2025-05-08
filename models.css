@@ -41,7 +41,7 @@
 .admin-content .imgs.one img {
   object-fit: cover;
   width: 100%;
-  height: 250px;
+  height: auto;
 }
 
 .admin-content .imgs.two img {

@@ -44,6 +44,11 @@
   height: auto;
 }
 
+.admin-content .imgs.one img.small {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 .admin-content .imgs.two img {
   width: calc(50% - 6px);
   height: 200px;

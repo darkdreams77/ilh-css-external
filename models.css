@@ -422,6 +422,7 @@ bizutpfo { color: var(--bizutpfo); }
 .mobile .chrono {
 	display: flex;
 	flex-direction: column;
+	padding-left: 20px;
 }
 
 /* Permet d'utiliser des sauts de ligne dans le HTML pour que le code soit plus lisible à remplir */ 
@@ -450,7 +451,16 @@ bizutpfo { color: var(--bizutpfo); }
 	background: var(--accentClr); 
 } 
 
-.mobile .chrono date:not(:last-of-type):before { display: none; }
+.mobile .chrono date:not(:last-of-type):before {
+	content: ""; 
+	position: absolute; 
+	left: 5px:
+	right: auto; /* Positionne la ligne au centre de l'espace entre les colonnes. L'espace était 60px, on divise par deux pour être au centre */ 
+	top: 20px; /* Petite marge en haut pour que la ligne commence qu'à partir du point */ 
+	bottom: -20px; /* Force la ligne à s'étendre jusqu'à la fin de la description. 20px = espace entre chaque ligne */ 
+	width: 1px; /* Largeur de la ligne */ 
+	background: var(--accentClr); 	
+}
 
 /* Point entre la date et la description */ 
 .chrono date:after { 
@@ -474,4 +484,16 @@ bizutpfo { color: var(--bizutpfo); }
 .chrono desc { 
 	grid-column: 2; /* Positionne la description dans la deuxième colonne */ 
 	display: block; 
+	position: relative;
+}
+
+.mobile .chrono desc:before {
+	content: ""; 
+	position: absolute; 
+	left: 5px;
+	right: auto; /* Positionne la ligne au centre de l'espace entre les colonnes. L'espace était 60px, on divise par deux pour être au centre */ 
+	top: 20px; /* Petite marge en haut pour que la ligne commence qu'à partir du point */ 
+	bottom: -20px; /* Force la ligne à s'étendre jusqu'à la fin de la description. 20px = espace entre chaque ligne */ 
+	width: 1px; /* Largeur de la ligne */ 
+	background: var(--accentClr); 
 }

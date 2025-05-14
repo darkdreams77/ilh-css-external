@@ -436,9 +436,18 @@ bizutpfo { color: var(--bizutpfo); }
 	font-weight: 700; 
 	text-align: right; 
 	color: var(--accentClr); 
+	background: var(--gradientAccent);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
-.mobile .chrono date { text-align: left }
+.mobile .chrono date { 
+	text-align: left;
+	align-items: center;
+	justify-content: flex-start;
+	display: flex;
+	gap: 15px;
+}
 
 /* Créer la ligne verticale entre les dates et les descriptions */ 
 .chrono date:not(:last-of-type):before { 

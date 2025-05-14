@@ -402,3 +402,62 @@ bizutpfo { color: var(--bizutpfo); }
 .admin-table div { display: table-cell; vertical-align: top; }
 .mobile .admin-table, .mobile .admin-table div { display: block; }
 
+
+/* ================= TIMELINE - COMPLEMENT DE FICHE ================= */
+
+/* Chronologie */
+/* Conteneur de la chronologie */ 
+.chrono { 
+	width: 100%; /* Largeur */ 
+	display: grid; 
+	grid-template-columns: 80px 1fr; /* Permet de créer deux colonnes. 100px = premier colonne, 1fr = deuxième colonne qui comble l'espace restant */ 
+	grid-auto-rows: auto; 
+	row-gap: 20px; /* Espace entre les lignes */ 
+	column-gap: 60px; /* Espace entre les colonnes */ 
+	position: relative; 
+	box-sizing: border-box; 
+	margin: 0 auto; /* Centre le conteneur */ 
+} 
+
+/* Permet d'utiliser des sauts de ligne dans le HTML pour que le code soit plus lisible à remplir */ 
+.chrono > br { display: none; } 
+
+/*Date ou événement*/ 
+.chrono date { 
+	grid-column: 1; /* Positionne la date dans la première colonne */ 
+	position: relative; 
+	display: block; /* Personnalisation esthétique */ 
+	font-weight: 700; 
+	text-align: right; 
+	color: var(--accentClr); 
+} 
+
+/* Créer la ligne verticale entre les dates et les descriptions */ 
+.chrono date:not(:last-of-type):before { 
+	content: ""; 
+	position: absolute; 
+	right: -31px; /* Positionne la ligne au centre de l'espace entre les colonnes. L'espace était 60px, on divise par deux pour être au centre */ 
+	top: 20px; /* Petite marge en haut pour que la ligne commence qu'à partir du point */ 
+	bottom: -20px; /* Force la ligne à s'étendre jusqu'à la fin de la description. 20px = espace entre chaque ligne */ 
+	width: 1px; /* Largeur de la ligne */ 
+	background: var(--accentClr); 
+} 
+
+/* Point entre la date et la description */ 
+.chrono date:after { 
+	content: ""; 
+	position: absolute; 
+	z-index: 99; 
+	top: 5px; /* Petite marge en haut pour aligner le point à la première ligne de texte */ 
+	right: -35px; /* Positionne le point au centre de l'espace entre les colonnes */ 
+	width: 9px; /* Largeur du point */ 
+	height: 9px; /* Personnalisation esthétique */ 
+	background-color: currentColor; 
+	border-radius: 10px; 
+} 
+
+/*Description*/ 
+.chrono desc { 
+	grid-column: 2; /* Positionne la description dans la deuxième colonne */ 
+	display: block; 
+}

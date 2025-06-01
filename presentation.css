@@ -121,6 +121,8 @@
   text-align: justify;
 }
 
+.id_card .first_block_left .informations.one_block { display: block; }
+
 .id_card .first_block_left .informations div {
   flex: 1 1 50%;
   background: var(--base);

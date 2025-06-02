@@ -202,7 +202,7 @@
 .second_container .staff .tab_content .staff_tag.presence { display: inline-block; background-color: #1F8768; }
 .second_container .staff .tab_content .staff_tag.absence { background-color: #d8933c; }
 .second_container .staff .tab_content .staff_profile {
-  background: linear-gradient(to right, var(--accentClr), var(--accentClrDark));
+  background: var(--gradientAccent);
   color: var(--white);
   padding: 1px 5px;
   border-radius: 4px;

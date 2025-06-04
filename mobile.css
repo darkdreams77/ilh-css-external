@@ -97,3 +97,5 @@ p.profile-buttons {
     font-weight: 600;
     color: var(--white) !important;
 }
+
+.mobile .search-topic-category { background: var(--neutral); }

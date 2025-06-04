@@ -163,6 +163,8 @@
   gap: 10px;
 }
 
+.id_card .second_block > div:not(:last-child) { margin-bottom: 12px; }
+
 .id_card .second_block .content {
   background: var(--base);
   border-radius: 8px;

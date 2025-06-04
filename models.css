@@ -1,3 +1,7 @@
+strong { font-weight: bold !important; }
+hr { border-color: var(--neutral); height: 1px; border-style: solid; }
+blockquote { text-align: justify; }
+
 /* ========== ADMIN ========== */
 .admin-template {
   border-radius: 8px;
@@ -397,6 +401,21 @@ bizutdudley { color: var(--bizutdudley); }
 bizutfranklin { color: var(--bizutfranklin); }
 bizutkirkland { color: var(--bizutkirkland); }
 bizutpfo { color: var(--bizutpfo); }
+
+pride {
+    font-weight: 600;
+    background: var(--gradientPride);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+pridebg {
+    background: var(--gradientPride);
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: var(--white);
+    font-weight: 600;
+}
 
 .admin-table { display: table; }
 .admin-table div { display: table-cell; vertical-align: top; }

@@ -11,7 +11,7 @@
 	--gradientGenderfluid: linear-gradient(to right, rgb(255, 120, 166), rgb(247, 196, 210), rgb(255, 255, 255) 23%, rgb(255, 255, 255), rgb(255, 255, 255) 28%, rgb(219, 148, 213), rgb(190, 20, 215), rgb(89, 22, 85), rgb(0, 0, 0) 73%, rgb(0, 0, 0), rgb(0, 0, 0) 78%, rgb(51, 36, 87), rgb(50, 60, 191));
 	--gradientAgender: linear-gradient(to right, rgb(0, 0, 0), rgb(103, 103, 103), rgb(205, 205, 205) 15%, rgb(230, 230, 230), rgb(255, 255, 255) 22%, rgb(255, 255, 255), rgb(255, 255, 255) 28%, rgb(228, 239, 201), rgb(186, 244, 132), rgb(228, 239, 201), rgb(255, 255, 255) 72%, rgb(255, 255, 255), rgb(255, 255, 255) 78%, rgb(230, 230, 230), rgb(205, 205, 205) 85%, rgb(103, 103, 103), rgb(0, 0, 0));
 	--gradientAromantic: linear-gradient(to right, rgb(60, 170, 65), rgb(179, 207, 164), rgb(255, 255, 255) 45%, rgb(255, 255, 255), rgb(255, 255, 255) 55%, rgb(128, 128, 128), rgb(0, 0, 0));
-	--gradientAsexual: linear-gradient(to right, rgb(60, 170, 65), rgb(179, 207, 164), rgb(255, 255, 255) 45%, rgb(255, 255, 255), rgb(255, 255, 255) 55%, rgb(128, 128, 128), rgb(0, 0, 0));
+	--gradientAsexual: linear-gradient(to right, rgb(0, 0, 0), rgb(81, 81, 80), rgb(163, 162, 160), rgb(209, 208, 208), rgb(255, 255, 255) 60%, rgb(255, 255, 255), rgb(255, 255, 255) 70%, rgb(185, 151, 185), rgb(101, 46, 129));
 }
 
 strong { font-weight: bold !important; }
@@ -420,7 +420,7 @@ bizutpfo { color: var(--bizutpfo); }
 
 agender, aromantic, asexual, bisexual, gay, genderfluid, genderqueer, intersex, lesbian, pride, nonbinary, pansexual, transgender {
     font-weight: 600;
-    -webkit-background-clip: text;
+    -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent;
     position: relative;
     z-index: 1;
@@ -441,9 +441,10 @@ agenderbg, aromanticbg, asexualbg, bisexualbg, gaybg, genderfluidbg, genderqueer
     border-radius: 4px;
     color: #FFF;
     font-weight: 600;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, .5);
 }
 
-agender, agenderbg { background: var(--gradientPride); }
+agender, agenderbg { background: var(--gradientAgender); }
 aromantic, aromanticbg { background: var(--gradientAromantic); }
 asexual, asexualbg { background: var(--gradientAsexual); }
 bisexual, bisexualbg { background: var(--gradientBisexual); }

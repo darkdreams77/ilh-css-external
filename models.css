@@ -407,6 +407,18 @@ pride {
     background: var(--gradientPride);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+    padding: 2px 4px;
+}
+
+pride::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: black;
+    z-index: -1;
+    border-radius: 4px;
 }
 
 pridebg {

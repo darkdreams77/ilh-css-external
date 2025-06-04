@@ -425,7 +425,7 @@ pridebg {
     background: var(--gradientPride);
     padding: 2px 4px;
     border-radius: 4px;
-    color: var(--white);
+    color: #FFF;
     font-weight: 600;
 }
 

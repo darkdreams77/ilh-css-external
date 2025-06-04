@@ -99,3 +99,11 @@ p.profile-buttons {
 }
 
 .mobile .search-topic-category { background: var(--neutral); }
+.mobile blockquote { font-family: var(--font); }
+.mobile .forum-content { display: flex; flex-direction: column; }
+
+.box.introduction { text-align: justify; }
+#profile-view img { max-width: 150px; }
+.forum-description { text-align: justify; }
+.page-desc-content { text-align: justify; }
+.page-desc-content img { display: none; }

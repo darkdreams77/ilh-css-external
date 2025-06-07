@@ -33,7 +33,7 @@
 .mobile .navmenu_list a { font-size: 14px; }
 .mobile #tab-bar li > i { display: none; }
 .mobile #tab-bar span { font-size: var(--11px); }
-.mobile .post_message { padding: 10px 5px; min-height: auto; text-align: justify; }
+.mobile .post_message { padding: 10px 5px; min-height: auto; text-align: justify; background: transparent; }
 .mobile .profil_react_avatar { display: none; }
 
 .mobile .profil_react .online:empty {

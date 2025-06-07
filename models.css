@@ -1,3 +1,23 @@
+:root {
+	--gradientPride: linear-gradient(to right, rgb(237, 34, 36), rgb(243, 91, 34), rgb(249, 150, 33), rgb(245, 193, 30), rgb(241, 235, 27) 27%, rgb(241, 235, 27), rgb(241, 235, 27) 33%, rgb(99, 199, 32), rgb(12, 155, 73), rgb(33, 135, 141), rgb(57, 84, 165), rgb(97, 55, 155), rgb(147, 40, 142));
+	--gradientTransgender: linear-gradient(to right, rgb(85, 205, 252), rgb(179, 157, 233), rgb(247, 168, 184), rgb(246, 216, 221), rgb(255, 255, 255) 45%, rgb(255, 255, 255), rgb(255, 255, 255) 55%, rgb(246, 216, 221), rgb(247, 168, 184), rgb(179, 157, 233), rgb(85, 205, 252));
+	--gradientLesbian: linear-gradient(to right, rgb(213, 44, 0), rgb(226, 150, 136), rgb(255, 255, 255) 45%, rgb(255, 255, 255), rgb(255, 255, 255) 55%, rgb(210, 127, 164), rgb(162, 2, 98));
+	--gradientGay: linear-gradient(to right, rgb(7, 141, 111), rgb(152, 202, 153), rgb(255, 255, 255) 45%, rgb(255, 255, 255), rgb(255, 255, 255) 55%, rgb(205, 208, 234), rgb(123, 173, 226) 70%, rgb(69, 76, 189), rgb(63, 26, 121));
+	--gradientNonbinary: linear-gradient(to right, rgb(253, 219, 0), rgb(238, 212, 143), rgb(255, 255, 255) 30%, rgb(255, 255, 255), rgb(255, 255, 255) 36%, rgb(212, 181, 222), rgb(156, 92, 212), rgb(88, 50, 96), rgb(0, 0, 0));
+	--gradientBisexual: linear-gradient(to right, rgb(255, 0, 128), rgb(200, 37, 157), rgb(140, 71, 153), rgb(68, 46, 159), rgb(0, 50, 160));
+	--gradientIntersex: linear-gradient(to right, rgb(255, 217, 0), rgb(255, 217, 0), rgb(255, 217, 0) 10%, rgb(230, 54, 97), rgb(157, 0, 253), rgb(230, 54, 97), rgb(255, 217, 0) 90%, rgb(255, 217, 0), rgb(255, 217, 0));
+	--gradientPansexual: linear-gradient(to right, rgb(255, 30, 140) 10%, rgb(255, 102, 57), rgb(255, 230, 29) 40%, rgb(255, 230, 29), rgb(255, 230, 29) 60%, rgb(87, 229, 98), rgb(31, 179, 253) 85%, rgb(31, 179, 253), rgb(31, 179, 253));
+	--gradientGenderqueer: linear-gradient(to right, rgb(185, 154, 222), rgb(225, 209, 232), rgb(255, 255, 255) 45%, rgb(255, 255, 255), rgb(255, 255, 255) 55%, rgb(187, 191, 159), rgb(107, 142, 58));
+	--gradientGenderfluid: linear-gradient(to right, rgb(255, 120, 166), rgb(247, 196, 210), rgb(255, 255, 255) 23%, rgb(255, 255, 255), rgb(255, 255, 255) 28%, rgb(219, 148, 213), rgb(190, 20, 215), rgb(89, 22, 85), rgb(0, 0, 0) 73%, rgb(0, 0, 0), rgb(0, 0, 0) 78%, rgb(51, 36, 87), rgb(50, 60, 191));
+	--gradientAgender: linear-gradient(to right, rgb(0, 0, 0), rgb(103, 103, 103), rgb(205, 205, 205) 15%, rgb(230, 230, 230), rgb(255, 255, 255) 22%, rgb(255, 255, 255), rgb(255, 255, 255) 28%, rgb(228, 239, 201), rgb(186, 244, 132), rgb(228, 239, 201), rgb(255, 255, 255) 72%, rgb(255, 255, 255), rgb(255, 255, 255) 78%, rgb(230, 230, 230), rgb(205, 205, 205) 85%, rgb(103, 103, 103), rgb(0, 0, 0));
+	--gradientAromantic: linear-gradient(to right, rgb(60, 170, 65), rgb(179, 207, 164), rgb(255, 255, 255) 45%, rgb(255, 255, 255), rgb(255, 255, 255) 55%, rgb(128, 128, 128), rgb(0, 0, 0));
+	--gradientAsexual: linear-gradient(to right, rgb(0, 0, 0), rgb(81, 81, 80), rgb(163, 162, 160), rgb(209, 208, 208), rgb(255, 255, 255) 60%, rgb(255, 255, 255), rgb(255, 255, 255) 70%, rgb(185, 151, 185), rgb(101, 46, 129));
+}
+
+strong { font-weight: bold !important; }
+hr { border-color: var(--neutral); height: 1px; border-style: solid; }
+blockquote { text-align: justify; }
+
 /* ========== ADMIN ========== */
 .admin-template {
   border-radius: 8px;
@@ -41,7 +61,12 @@
 .admin-content .imgs.one img {
   object-fit: cover;
   width: 100%;
-  height: 250px;
+  height: auto;
+}
+
+.admin-content .imgs.one img.small {
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .admin-content .imgs.two img {
@@ -393,6 +418,46 @@ bizutfranklin { color: var(--bizutfranklin); }
 bizutkirkland { color: var(--bizutkirkland); }
 bizutpfo { color: var(--bizutpfo); }
 
+agender, aromantic, asexual, bisexual, gay, genderfluid, genderqueer, intersex, lesbian, pride, nonbinary, pansexual, transgender {
+    font-weight: 600;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+    padding: 2px 4px;
+}
+
+agender::before , aromantic::before , asexual::before , bisexual::before , gay::before , genderfluid::before , genderqueer::before , intersex::before , lesbian::before , pride::before , nonbinary::before , pansexual::before , transgender::before  {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: black;
+    z-index: -1;
+    border-radius: 4px;
+}
+
+agenderbg, aromanticbg, asexualbg, bisexualbg, gaybg, genderfluidbg, genderqueerbg, intersexbg, lesbianbg, pridebg, nonbinarybg, pansexualbg, transgenderbg {
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: #FFF;
+    font-weight: 600;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, .5);
+}
+
+agender, agenderbg { background: var(--gradientAgender); }
+aromantic, aromanticbg { background: var(--gradientAromantic); }
+asexual, asexualbg { background: var(--gradientAsexual); }
+bisexual, bisexualbg { background: var(--gradientBisexual); }
+gay, gaybg { background: var(--gradientGay); }
+genderfluid, genderfluidbg { background: var(--gradientGenderfluid); }
+genderqueer, genderqueerbg { background: var(--gradientGenderqueer); }
+intersex, intersexbg { background: var(--gradientIntersex); }
+lesbian, lesbianbg { background: var(--gradientLesbian); }
+pride, pridebg { background: var(--gradientPride); }
+nonbinary, nonbinarybg { background: var(--gradientNonbinary); }
+pansexual, pansexualbg { background: var(--gradientPansexual); }
+transgender, transgenderbg { background: var(--gradientTransgender); }
+
 .admin-table { display: table; }
 .admin-table div { display: table-cell; vertical-align: top; }
 .mobile .admin-table, .mobile .admin-table div { display: block; }
@@ -414,6 +479,12 @@ bizutpfo { color: var(--bizutpfo); }
 	margin: 0 auto; /* Centre le conteneur */ 
 } 
 
+.mobile .chrono {
+	display: flex;
+	flex-direction: column;
+	padding-left: 20px;
+}
+
 /* Permet d'utiliser des sauts de ligne dans le HTML pour que le code soit plus lisible à remplir */ 
 .chrono > br { display: none; } 
 
@@ -425,7 +496,18 @@ bizutpfo { color: var(--bizutpfo); }
 	font-weight: 700; 
 	text-align: right; 
 	color: var(--accentClr); 
-} 
+	background: var(--gradientAccent);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.mobile .chrono date { 
+	text-align: left;
+	align-items: center;
+	justify-content: flex-start;
+	display: flex;
+	gap: 15px;
+}
 
 /* Créer la ligne verticale entre les dates et les descriptions */ 
 .chrono date:not(:last-of-type):before { 
@@ -437,6 +519,11 @@ bizutpfo { color: var(--bizutpfo); }
 	width: 1px; /* Largeur de la ligne */ 
 	background: var(--accentClr); 
 } 
+
+.mobile .chrono date:not(:last-of-type):before {
+	left: -19px;
+	right: auto; /* Positionne la ligne au centre de l'espace entre les colonnes. L'espace était 60px, on divise par deux pour être au centre */ 
+}
 
 /* Point entre la date et la description */ 
 .chrono date:after { 
@@ -451,8 +538,25 @@ bizutpfo { color: var(--bizutpfo); }
 	border-radius: 10px; 
 } 
 
+.mobile .chrono date:after {
+	left: -23px;
+	right: auto;
+}
+
 /*Description*/ 
 .chrono desc { 
 	grid-column: 2; /* Positionne la description dans la deuxième colonne */ 
 	display: block; 
+	position: relative;
+}
+
+.mobile .chrono desc:before {
+	content: ""; 
+	position: absolute; 
+	left: -19px;
+	right: auto; /* Positionne la ligne au centre de l'espace entre les colonnes. L'espace était 60px, on divise par deux pour être au centre */ 
+	top: 0; /* Petite marge en haut pour que la ligne commence qu'à partir du point */ 
+	bottom: -20px; /* Force la ligne à s'étendre jusqu'à la fin de la description. 20px = espace entre chaque ligne */ 
+	width: 1px; /* Largeur de la ligne */ 
+	background: var(--accentClr); 
 }

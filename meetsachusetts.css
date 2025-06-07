@@ -103,6 +103,10 @@
   font-size: var(--11px);
 }
 
+.meetsa .right_content .pseudo a {
+  color: var(--white);
+}
+
 .meetsa .right_content .description {
   background: var(--base);
   border-radius: 4px;

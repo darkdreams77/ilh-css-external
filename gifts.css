@@ -66,3 +66,69 @@
 .signakdo15-img-clr:hover { 
   filter: drop-shadow(3px 3px 0px var(--accentClr)); 
 }
+
+
+/* ========== SIGNATURE DJ =========== */
+
+.signature_dj_animated {
+	position: relative;
+	text-align: center;
+	width: var(--containerWidth);
+	height: var(--containerHeight);
+	margin: 0 auto;
+}
+
+.signature_dj_animated .title {
+	color: var(--titleColor);
+	font-size: var(--titleSize);
+	font-weight: 700;
+	padding: 0 20px;
+	position: absolute;
+	text-align: center;
+	text-transform: uppercase;
+	width: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+	transition: all .5s ease-in-out;
+}
+
+.signature_dj_animated img {
+	position: absolute;
+	inset: 0;
+	margin: auto;
+	transform: rotate(var(--imgRotation));
+	filter: grayscale(1);
+	transition: all .5s ease-in-out;
+}
+
+.signature_dj_animated .stroked {
+	color: transparent;
+	-webkit-text-stroke: 1px var(--titleColor);
+	z-index: 2;
+}
+
+.signature_dj_animated:hover .title {
+	top: 95%;
+}
+
+.signature_dj_animated:hover img {
+	filter: grayscale(0);
+}
+
+.signature_dj_animated .text {
+	color: var(--colorText);
+	position: absolute;
+	text-transform: uppercase;
+	font-size: var(--11px);
+	bottom: var(--textBottomPosition);
+	opacity: 0;
+	transition: all .5s ease-in-out;
+	background: var(--bgText);
+	padding: 5px;
+	border-radius: 5px;
+	font-weight: 600;
+}
+
+.signature_dj_animated:hover .text {
+	opacity: 1;
+}

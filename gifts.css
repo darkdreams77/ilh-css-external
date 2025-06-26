@@ -116,14 +116,14 @@
 }
 
 .signature_dj_animated .text {
-	color: var(--textColor);
+	color: var(--colorText);
 	position: absolute;
 	text-transform: uppercase;
 	font-size: var(--11px);
 	bottom: var(--textBottomPosition);
 	opacity: 0;
 	transition: all .5s ease-in-out;
-	background: var(--textBg);
+	background: var(--bgText);
 	padding: 5px;
 	border-radius: 5px;
 	font-weight: 600;

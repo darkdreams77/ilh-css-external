@@ -371,12 +371,15 @@
 
 .qeel-upper > div:last-child { margin-right: 20px; }
 
+.qeel-middle { flex: 0 0 220px !important; display: flex: }
+
 .qeel_groups {
 	display: flex;
 	justify-content: space-between;
 	gap: 5px;
 	align-items: stretch;
 	flex-direction: column;
+    	flex: 1 1 0;
 }
 
 .qeel_groups .sepa {
@@ -488,13 +491,14 @@
 
 .qeel_groups .sc-group {
 	flex: 1 1 100%;
-	padding: 6px 2px;
 	border-radius: 5px;
-	text-align: center;
 	transition: all .5s ease-in-out;
 	font-weight: 600;
 	text-transform: uppercase;
 	font-size: var(--12px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .qeel_groups .sc-group a { color: #fff }
@@ -553,8 +557,6 @@
 	font: var(--14px) var(--title);
 	text-transform: uppercase;
 }
-
-.qeel-middle { flex: 0 0 220px !important; }
 
 .qeel_posts_members {
 	display: flex;

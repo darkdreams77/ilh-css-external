@@ -486,6 +486,29 @@
 
 .qeel_groups .group span { align-self: center; }
 
+.qeel_groups .sc-group {
+	flex: 1 1 100%;
+	padding: 6px 2px;
+	border-radius: 5px;
+	text-align: center;
+	transition: all .5s ease-in-out;
+	color: var(--white);
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: var(--12px);
+}
+
+.qeel_groups .sc-group.team1 { background: var(--scteam1); }
+.qeel_groups .sc-group.team2 { background: var(--scteam2); }
+.qeel_groups .sc-group.team3 { background: var(--scteam3); }
+.qeel_groups .sc-group.team4 { background: var(--scteam4); }
+.qeel_groups .sc-group.team5 { background: var(--scteam5); }
+.qeel_groups .sc-group.team6 { background: var(--scteam6); }
+.qeel_groups .sc-group.tourists { background: var(--scttourists); }
+.qeel_groups .sc-group.citizens { background: var(--sccitizens); }
+
+.qeel_groups .sc-group:hover { opacity: .8; }
+
 .qeel-container {
 	display: flex;
 	gap: 12px;

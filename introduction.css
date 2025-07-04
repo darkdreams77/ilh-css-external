@@ -505,7 +505,7 @@
 .qeel_groups .sc-group.team4 { background: var(--scteam4); }
 .qeel_groups .sc-group.team5 { background: var(--scteam5); }
 .qeel_groups .sc-group.team6 { background: var(--scteam6); }
-.qeel_groups .sc-group.tourists { background: var(--scttourists); }
+.qeel_groups .sc-group.tourists { background: var(--sctourists); }
 .qeel_groups .sc-group.citizens { background: var(--sccitizens); }
 
 .qeel_groups .sc-group:hover { opacity: .8; }

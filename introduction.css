@@ -371,7 +371,7 @@
 
 .qeel-upper > div:last-child { margin-right: 20px; }
 
-.qeel-middle { flex: 0 0 220px !important; display: flex: }
+.qeel-middle { flex: 0 0 220px !important; display: flex; }
 
 .qeel_groups {
 	display: flex;

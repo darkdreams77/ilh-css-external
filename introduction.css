@@ -492,11 +492,12 @@
 	border-radius: 5px;
 	text-align: center;
 	transition: all .5s ease-in-out;
-	color: var(--white);
 	font-weight: 600;
 	text-transform: uppercase;
 	font-size: var(--12px);
 }
+
+.qeel_groups .sc-group a { color: #fff }
 
 .qeel_groups .sc-group.team1 { background: var(--scteam1); }
 .qeel_groups .sc-group.team2 { background: var(--scteam2); }

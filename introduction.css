@@ -290,6 +290,18 @@
 .second_container .important_links a:nth-child(even) { color: var(--accentClr); }
 .second_container .important_links a:nth-child(odd) { color: var(--accentClrDark); }
 
+.third_container {
+    background: var(--bg-backdrop);
+    backdrop-filter: blur(4px);
+    border-radius: 8px;
+    padding: 10px;
+    outline: 1px solid var(--bg-backdrop);
+    outline-offset: 3px;
+    margin-left: 5px;
+    width: calc(100% - 8px);
+    margin-top: 15px;
+}
+
 
 .intro_pa_groups {
 	list-style: none;
@@ -629,7 +641,6 @@
 	gap: 10px;
 	justify-content: flex-start;
 	align-items: center;
-	margin-top: 20px;
 }
 
 .qeel_birthday .birthday_icon {

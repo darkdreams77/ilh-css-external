@@ -1,0 +1,77 @@
+name: Create Pre-release and Comment Changed Files with CDN URLs
+
+on: pull_request
+
+permissions:
+  contents: write      # Pour créer un tag + release
+  pull-requests: write
+
+jobs:
+  release-and-comment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get short SHA
+        id: sha
+        run: echo "short_sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+
+      - name: Create tag and push it
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag ${{ steps.sha.outputs.short_sha }}
+          git push origin ${{ steps.sha.outputs.short_sha }}
+
+      - name: Create GitHub pre-release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.sha.outputs.short_sha }}
+          name: "Pre-release ${{ steps.sha.outputs.short_sha }}"
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get changed files in PR and generate CDN URLs
+        id: pr_files
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+            });
+
+            const repo = process.env.GITHUB_REPOSITORY;
+            const sha = process.env.GITHUB_SHA.substring(0, 7);
+
+            const filtered = files.filter(f => !f.filename.startsWith(".github/"));
+
+            const fileList = filtered.map(f => `- ${f.filename}`).join('\n');
+            const cdnList = filtered.map(f => `https://cdn.jsdelivr.net/gh/${repo}@${sha}/${f.filename}`).join('\n');
+
+            core.setOutput("fileList", fileList);
+            core.setOutput("cdnList", cdnList);
+          result-encoding: string
+
+      - name: Comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            🚀 New tag pre-released: `${{ steps.sha.outputs.short_sha }}`
+
+            💻 Changed files:
+            ```txt
+            ${{ steps.pr_files.outputs.fileList }}
+            ```
+
+
+            👾 `<link />` tags to copy:
+            ```txt
+            ${{ steps.pr_files.outputs.cdnList }}
+            ```

@@ -61,7 +61,7 @@ blockquote { text-align: justify; }
 .admin-content .imgs.one img {
   object-fit: cover;
   width: 100%;
-  height: auto;
+  height: 250px;
 }
 
 .admin-content .imgs.one img.small {

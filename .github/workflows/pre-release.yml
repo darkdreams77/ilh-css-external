@@ -51,13 +51,11 @@ jobs:
 
             const body = `📝 **Pré-release tag \`${tag}\` créée.**
 
-🔧 Fichiers modifiés :
-${files}
+            🔧 Fichiers modifiés : ${files}
 
-🌐 URLs via jsDelivr :
-\`\`\`txt
-${cdnUrls}
-\`\`\``;
+            🌐 URLs via jsDelivr : \`\`\`txt
+            ${cdnUrls}
+            \`\`\``;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,

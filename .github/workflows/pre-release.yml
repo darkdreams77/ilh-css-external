@@ -36,7 +36,7 @@ jobs:
             const filtered = files.filter(f => !f.filename.startsWith(".github/"));
 
             const fileList = filtered.map(f => `- ${f.filename}`).join('\n');
-            const cdnList = filtered.map(f => `https://cdn.jsdelivr.net/gh/${repo}@${sha}/${f.filename}`).join('\n');
+            const cdnList = filtered.map(f => `<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/${repo}@${sha}/${f.filename}">`).join('\n');
 
             core.setOutput("fileList", fileList);
             core.setOutput("cdnList", cdnList);

@@ -46,14 +46,15 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           message: |
-            📝 **Pré-release tag `${{ steps.sha.outputs.short_sha }}` créée.**
+            🚀 New tag pre-released: `${{ steps.sha.outputs.short_sha }}`
 
-            🔧 Fichiers modifiés :
+            💻 Changed files:
             ```txt
             ${{ steps.pr_files.outputs.fileList }}
             ```
 
-            🌐 URLs via jsDelivr :
+
+            👾 <link /> tags to copy:
             ```txt
             ${{ steps.pr_files.outputs.cdnList }}
             ```

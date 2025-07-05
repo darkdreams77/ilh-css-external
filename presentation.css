@@ -119,6 +119,7 @@
   margin-top: 10px;
   display: flex;
   text-align: justify;
+  gap: 10px;
 }
 
 .id_card .first_block_left .informations.one_block { display: block; }

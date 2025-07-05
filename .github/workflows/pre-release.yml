@@ -34,12 +34,12 @@ jobs:
       - uses: marocchino/sticky-pull-request-comment@v2
         with:
             message: |
-                📝 **Pré-release tag \`${{ steps.sha.outputs.short_sha }}\` créée.**
+                📝 **Pré-release tag `${{ steps.sha.outputs.short_sha }}` créée.**
 
                 🔧 Fichiers modifiés :
-                ${`\n${{ steps.files.outputs.changed_files }}`.trim()}
+                `${{ steps.files.outputs.changed_files }}`
 
                 🌐 URLs via jsDelivr :
-                \`\`\`txt
-                ${`\n${{ steps.files.outputs.cdn_urls }}`.trim()}
-                \`\`\``
+                ```txt
+                ${{ steps.files.outputs.cdn_urls }}
+                ```

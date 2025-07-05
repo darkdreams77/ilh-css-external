@@ -3,7 +3,7 @@ name: Create Pre-Release on Commit
 on:
   push:
     branches:
-      - main
+      - feature/*
 
 jobs:
   create_pre_release:

@@ -1,4 +1,4 @@
-name: Comment Changed Files & Tag on PR with CDN URLs
+name: Comment Changed Files & CDN URLs on PR
 
 on: pull_request
 
@@ -17,52 +17,33 @@ jobs:
         id: sha
         run: echo "short_sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
-      - name: Get list of changed files and CDN URLs
-        id: files
-        run: |
-          git fetch origin ${{ github.event.before }}
-          FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
-          
-          echo "changed_files<<EOF" >> $GITHUB_OUTPUT
-          echo "$FILES" | sed 's/^/- /' >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-
-          echo "cdn_urls<<EOF" >> $GITHUB_OUTPUT
-          echo "$FILES" | sed "s|^|https://cdn.jsdelivr.net/gh/${{ github.repository }}@${GITHUB_SHA:0:7}/|" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-
-      - name: Find Pull Request
-        id: find_pr
-        uses: juliangruber/find-pull-request-action@v1
-
-      - name: Comment on PR with full file list
-        if: steps.find_pr.outputs.number != ''
+      - name: Get changed files in PR and generate CDN URLs
+        id: pr_files
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
           script: |
-            const prNumber = Number('${{ steps.find_pr.outputs.number }}');
+            const prNumber = context.payload.pull_request.number;
             const { data: files } = await github.rest.pulls.listFiles({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: prNumber,
             });
 
-            const fileList = files.map(f => `- ${f.filename}`).join('\n');
-            echo "changed_files_list=$fileList" >> $GITHUB_OUTPUT
+            const shortSha = process.env.GITHUB_SHA.substring(0, 7);
+            const repo = process.env.GITHUB_REPOSITORY;
 
-      - uses: marocchino/sticky-pull-request-comment@v2
+            const filtered = files.filter(f => !f.filename.startsWith(".github/"));
+
+            const fileList = filtered.map(f => `- ${f.filename}`).join('\n');
+            const cdnList = filtered.map(f => `https://cdn.jsdelivr.net/gh/${repo}@${shortSha}/${f.filename}`).join('\n');
+
+            const output = `📝 **Pré-release tag \`${shortSha}\` créée.**\n🔧 Fichiers modifiés :\n\`\`\`txt${fileList}\`\`\`\n\n🌐 URLs via jsDelivr :\n\`\`\`txt${cdnList}\`\`\``;
+
+            return output;
+
+      - name: Comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-            message: |
-                📝 **Pré-release tag `${{ steps.sha.outputs.short_sha }}` créée.**
-
-                🔧 Fichiers modifiés :
-                ```txt
-                ${{ steps.files.outputs.changed_files_list }}
-                ${{ steps.files.outputs.changed_files }}
-                ```
-
-                🌐 URLs via jsDelivr :
-                ```txt
-                ${{ steps.files.outputs.cdn_urls }}
-                ```
+          message: ${{ steps.pr_files.outputs.result }}

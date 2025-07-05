@@ -36,7 +36,8 @@ jobs:
       - name: List of changed files
         uses: yumemi-inc/changed-files@v3
         id: changed
-        run: |
+    
+      - run: |
           for file in ${{ steps.changed.outputs.files }}; do
           echo "$file"
           done

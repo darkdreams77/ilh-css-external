@@ -5,6 +5,9 @@ on:
     branches:
       - feature/*
 
+permissions:
+  pull-requests: write
+
 jobs:
   comment-pr:
     runs-on: ubuntu-latest
@@ -31,10 +34,6 @@ jobs:
           echo "cdn_urls<<EOF" >> $GITHUB_OUTPUT
           echo "$FILES" | sed "s|^|https://cdn.jsdelivr.net/gh/${{ github.repository }}@${GITHUB_SHA:0:7}/|" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-
-      - name: Find pull request
-        id: find_pr
-        uses: juliangruber/find-pull-request-action@v1
 
       - uses: marocchino/sticky-pull-request-comment@v2
         with:

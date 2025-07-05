@@ -1,0 +1,34 @@
+name: Create Pre-Release on Commit
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create_pre_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Extract short SHA
+        id: vars
+        run: echo "SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+
+      - name: Create Git Tag
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag $SHORT_SHA
+          git push origin $SHORT_SHA
+
+      - name: Create GitHub Pre-Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.SHORT_SHA }}
+          name: "Pre-release ${{ env.SHORT_SHA }}"
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

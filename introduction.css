@@ -379,7 +379,8 @@
 	gap: 5px;
 	align-items: stretch;
 	flex-direction: column;
-    	flex: 1 1 0;
+	flex: 1 1 0;
+	margin: 10px 0;
 }
 
 .qeel_groups .sepa {

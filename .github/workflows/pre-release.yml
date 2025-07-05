@@ -1,12 +1,13 @@
-name: Comment Changed Files & CDN URLs on PR
+name: Create Pre-release and Comment Changed Files with CDN URLs
 
 on: pull_request
 
 permissions:
+  contents: write      # Pour créer un tag + release
   pull-requests: write
 
 jobs:
-  comment-pr:
+  release-and-comment:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,6 +17,22 @@ jobs:
       - name: Get short SHA
         id: sha
         run: echo "short_sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+
+      - name: Create tag and push it
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag ${{ steps.sha.outputs.short_sha }}
+          git push origin ${{ steps.sha.outputs.short_sha }}
+
+      - name: Create GitHub pre-release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.sha.outputs.short_sha }}
+          name: "Pre-release ${{ steps.sha.outputs.short_sha }}"
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get changed files in PR and generate CDN URLs
         id: pr_files
@@ -36,7 +53,7 @@ jobs:
             const filtered = files.filter(f => !f.filename.startsWith(".github/"));
 
             const fileList = filtered.map(f => `- ${f.filename}`).join('\n');
-            const cdnList = filtered.map(f => `<link href="https://cdn.jsdelivr.net/gh/${repo}@${sha}/${f.filename}" rel="stylesheet" type="text/css">`).join('\n');
+            const cdnList = filtered.map(f => `https://cdn.jsdelivr.net/gh/${repo}@${sha}/${f.filename}`).join('\n');
 
             core.setOutput("fileList", fileList);
             core.setOutput("cdnList", cdnList);

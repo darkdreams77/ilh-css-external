@@ -1,9 +1,6 @@
 name: Comment Changed Files & Tag on PR with CDN URLs
 
-on:
-  push:
-    branches:
-      - feature/*
+on: pull_request
 
 permissions:
   pull-requests: write

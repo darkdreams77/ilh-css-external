@@ -1,43 +1,67 @@
-name: Create Pre-Release on Commit
+name: Comment Changed Files & Tag on PR with CDN URLs
 
 on:
   push:
     branches:
-      - feature/*
+      - main
 
 jobs:
-  create_pre_release:
+  comment-pr:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Extract short SHA
-        id: vars
+      - name: Get short SHA
+        id: sha
         run: echo "SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
 
-      - name: Create Git Tag
+      - name: Get list of changed files
+        id: files
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git tag $SHORT_SHA
-          git push origin $SHORT_SHA
+          git fetch origin ${{ github.event.before }}
+          FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+          CHANGED_FILES=$(echo "$FILES" | sed 's/^/- /')
+          CDN_URLS=$(echo "$FILES" | sed "s|^|https://cdn.jsdelivr.net/gh/${{ github.repository }}@${GITHUB_SHA:0:7}/|")
 
-      - name: Create GitHub Pre-Release
-        uses: softprops/action-gh-release@v1
+          echo "CHANGED_FILES<<EOF" >> $GITHUB_ENV
+          echo "$CHANGED_FILES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+          echo "CDN_URLS<<EOF" >> $GITHUB_ENV
+          echo "$CDN_URLS" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Find pull request
+        id: find_pr
+        uses: juliangruber/find-pull-request-action@v1
+
+      - name: Comment on PR
+        if: steps.find_pr.outputs.number != ''
+        uses: actions/github-script@v7
         with:
-          tag_name: ${{ env.SHORT_SHA }}
-          name: "Pre-release ${{ env.SHORT_SHA }}"
-          prerelease: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prNumber = ${{ steps.find_pr.outputs.number }};
+            const tag = process.env.SHORT_SHA;
+            const files = process.env.CHANGED_FILES;
+            const cdnUrls = process.env.CDN_URLS;
 
-      - name: List of changed files
-        uses: yumemi-inc/changed-files@v3
-        id: changed
-    
-      - run: |
-          for file in ${{ steps.changed.outputs.files }}; do
-          echo "$file"
-          done
+            const body = `📝 **Pré-release tag \`${tag}\` créée.**
+
+🔧 Fichiers modifiés :
+${files}
+
+🌐 URLs via jsDelivr :
+\`\`\`txt
+${cdnUrls}
+\`\`\``;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body
+            });

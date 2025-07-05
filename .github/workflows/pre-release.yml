@@ -22,7 +22,6 @@ jobs:
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          result-encoding: string
           script: |
             const prNumber = context.payload.pull_request.number;
             const { data: files } = await github.rest.pulls.listFiles({
@@ -31,19 +30,32 @@ jobs:
               pull_number: prNumber,
             });
 
-            const shortSha = process.env.GITHUB_SHA.substring(0, 7);
             const repo = process.env.GITHUB_REPOSITORY;
+            const sha = process.env.GITHUB_SHA.substring(0, 7);
 
             const filtered = files.filter(f => !f.filename.startsWith(".github/"));
 
-            const fileList = filtered.map(f => `- ${f.filename}`).join('\n');
-            const cdnList = filtered.map(f => `https://cdn.jsdelivr.net/gh/${repo}@${shortSha}/${f.filename}`).join('\n');
+            const fileList = filtered.map(f => `- ${f.filename}`).join('\\n');
+            const cdnList = filtered.map(f => `https://cdn.jsdelivr.net/gh/${repo}@${sha}/${f.filename}`).join('\\n');
 
-            const output = `📝 **Pré-release tag \`${shortSha}\` créée.**\n🔧 Fichiers modifiés :\n \`\`\`${fileList}\`\`\` \n\n🌐 URLs via jsDelivr :\n \`\`\`${cdnList}\`\`\``;
-
-            return output;
+            return {
+              fileList,
+              cdnList
+            };
+          result-encoding: json
 
       - name: Comment on PR
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          message: ${{ steps.pr_files.outputs.result }}
+          message: |
+            📝 **Pré-release tag `${{ steps.sha.outputs.short_sha }}` créée.**
+
+            🔧 Fichiers modifiés :
+            ```txt
+            ${{ fromJson(steps.pr_files.outputs.result).fileList }}
+            ```
+
+            🌐 URLs via jsDelivr :
+            ```txt
+            ${{ fromJson(steps.pr_files.outputs.result).cdnList }}
+            ```

@@ -54,7 +54,7 @@ jobs:
             ```
 
 
-            👾 <link /> tags to copy:
+            👾 `<link />` tags to copy:
             ```txt
             ${{ steps.pr_files.outputs.cdnList }}
             ```

@@ -3,7 +3,7 @@ name: Comment Changed Files & Tag on PR with CDN URLs
 on:
   push:
     branches:
-      - main
+      - feature/*
 
 jobs:
   comment-pr:

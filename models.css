@@ -418,6 +418,15 @@ bizutfranklin { color: var(--bizutfranklin); }
 bizutkirkland { color: var(--bizutkirkland); }
 bizutpfo { color: var(--bizutpfo); }
 
+scteam1 { color: var(--scteam1); }
+scteam2 { color: var(--scteam2); }
+scteam3 { color: var(--scteam3); }
+scteam4 { color: var(--scteam4); }
+scteam5 { color: var(--scteam5); }
+scteam6 { color: var(--scteam6); }
+sctourists { color: var(--sctourists); }
+sccitizens { color: var(--sccitizens); }
+
 agender, aromantic, asexual, bisexual, gay, genderfluid, genderqueer, intersex, lesbian, pride, nonbinary, pansexual, transgender {
     font-weight: 600;
     -webkit-background-clip: text !important;

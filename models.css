@@ -95,6 +95,10 @@ blockquote { text-align: justify; }
   padding: 10px;
   font-size: var(--10px);
   text-align: center;
+  display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
 }
 
 .admin-tw:before {
@@ -108,7 +112,6 @@ blockquote { text-align: justify; }
   align-items: center;
   font-weight: 600;
   justify-content: center;
-  margin: 2px auto 10px;
   position: relative;
   z-index: 1;
 	color: #000;

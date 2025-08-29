@@ -90,31 +90,32 @@ blockquote { text-align: justify; }
 }
 
 .admin-tw {
-  flex: 0 0 75px;
   background: var(--tw);
-  padding: 10px;
-  font-size: var(--10px);
-  text-align: center;
-  display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: flex-start;
+  margin-bottom: 10px;
+  padding: 10px 8px;
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  padding-left: 45px;
+  color: var(--white);
 }
 
 .admin-tw:before {
-  content: 'TW';
+  content: "TW";
+  color: black;
+  font-size: var(--8px);
   background: var(--white);
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: var(--8px);
+  margin-right: 5px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 25px;
   display: flex;
   align-items: center;
   font-weight: 600;
   justify-content: center;
-  position: relative;
-  z-index: 1;
-	color: #000;
 }
 
 .admin-title {

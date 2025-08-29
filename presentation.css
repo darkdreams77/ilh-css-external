@@ -464,7 +464,9 @@
   padding: 8px;
 }
 
-.id_card-v165 .second_block .small {
+.id_card-v165 .large { width: 100% }
+
+.id_card-v165 .small {
   flex: 1 1 50%;
 }
 

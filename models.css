@@ -61,7 +61,7 @@ blockquote { text-align: justify; }
 .admin-content .imgs.one img {
   object-fit: cover;
   width: 100%;
-  height: auto;
+  height: 250px;
 }
 
 .admin-content .imgs.one img.small {
@@ -417,6 +417,15 @@ bizutdudley { color: var(--bizutdudley); }
 bizutfranklin { color: var(--bizutfranklin); }
 bizutkirkland { color: var(--bizutkirkland); }
 bizutpfo { color: var(--bizutpfo); }
+
+scteam1 { color: var(--scteam1); }
+scteam2 { color: var(--scteam2); }
+scteam3 { color: var(--scteam3); }
+scteam4 { color: var(--scteam4); }
+scteam5 { color: var(--scteam5); }
+scteam6 { color: var(--scteam6); }
+sctourists { color: var(--sctourists); }
+sccitizens { color: var(--sccitizens); }
 
 agender, aromantic, asexual, bisexual, gay, genderfluid, genderqueer, intersex, lesbian, pride, nonbinary, pansexual, transgender {
     font-weight: 600;

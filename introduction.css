@@ -290,6 +290,18 @@
 .second_container .important_links a:nth-child(even) { color: var(--accentClr); }
 .second_container .important_links a:nth-child(odd) { color: var(--accentClrDark); }
 
+.third_container {
+    background: var(--bg-backdrop);
+    backdrop-filter: blur(4px);
+    border-radius: 8px;
+    padding: 10px;
+    outline: 1px solid var(--bg-backdrop);
+    outline-offset: 3px;
+    margin-left: 5px;
+    width: calc(100% - 8px);
+    margin-top: 15px;
+}
+
 
 .intro_pa_groups {
 	list-style: none;
@@ -359,12 +371,16 @@
 
 .qeel-upper > div:last-child { margin-right: 20px; }
 
+.qeel-middle { flex: 0 0 220px !important; display: flex; }
+
 .qeel_groups {
 	display: flex;
 	justify-content: space-between;
 	gap: 5px;
 	align-items: stretch;
 	flex-direction: column;
+	flex: 1 1 0;
+	margin: 10px 0;
 }
 
 .qeel_groups .sepa {
@@ -474,6 +490,31 @@
 
 .qeel_groups .group span { align-self: center; }
 
+.qeel_groups .sc-group {
+	flex: 1 1 100%;
+	border-radius: 5px;
+	transition: all .5s ease-in-out;
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: var(--12px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.qeel_groups .sc-group a { color: #fff }
+
+.qeel_groups .sc-group.team1 { background: var(--scteam1); }
+.qeel_groups .sc-group.team2 { background: var(--scteam2); }
+.qeel_groups .sc-group.team3 { background: var(--scteam3); }
+.qeel_groups .sc-group.team4 { background: var(--scteam4); }
+.qeel_groups .sc-group.team5 { background: var(--scteam5); }
+.qeel_groups .sc-group.team6 { background: var(--scteam6); }
+.qeel_groups .sc-group.tourists { background: var(--sctourists); }
+.qeel_groups .sc-group.citizens { background: var(--sccitizens); }
+
+.qeel_groups .sc-group:hover { opacity: .8; }
+
 .qeel-container {
 	display: flex;
 	gap: 12px;
@@ -517,8 +558,6 @@
 	font: var(--14px) var(--title);
 	text-transform: uppercase;
 }
-
-.qeel-middle { flex: 0 0 220px !important; }
 
 .qeel_posts_members {
 	display: flex;
@@ -629,7 +668,6 @@
 	gap: 10px;
 	justify-content: flex-start;
 	align-items: center;
-	margin-top: 20px;
 }
 
 .qeel_birthday .birthday_icon {

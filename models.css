@@ -23,7 +23,7 @@ blockquote { text-align: justify; }
   border-radius: 8px;
   background: var(--neutral);
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
   overflow: hidden;
 }
 
@@ -91,10 +91,14 @@ blockquote { text-align: justify; }
 
 .admin-tw {
   flex: 0 0 75px;
-  background: var(--neutralDark);
+  background: var(--tw);
   padding: 10px;
   font-size: var(--10px);
   text-align: center;
+  display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
 }
 
 .admin-tw:before {
@@ -108,10 +112,9 @@ blockquote { text-align: justify; }
   align-items: center;
   font-weight: 600;
   justify-content: center;
-  margin: 2px auto 10px;
   position: relative;
   z-index: 1;
-	color: var(--textColor);
+	color: #000;
 }
 
 .admin-title {
@@ -130,9 +133,6 @@ blockquote { text-align: justify; }
   height: 1px;
   background: var(--textColor);
 }
-
-.admin-template:has(.admin-tw) .admin-title:after { margin-right: -55px; }
-.mobile .admin-template:has(.admin-tw) .admin-title:after { margin-right: 0 }
 
 subtitle1 {
   background: var(--gradientAccent);

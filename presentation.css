@@ -264,3 +264,301 @@
     border-radius: 8px;
     line-height: 1.4;
 }
+
+
+/* ========================= PRESENTATION V2 =========================== */
+
+.id_card-v165 {
+  background: var(--neutralDark);
+  width: 100%;
+  max-width: 650px;
+  margin: 5px auto;
+  border-radius: 8px;
+}
+
+.id_card-v165 .triggers {
+  background: var(--tw);
+  margin-bottom: 10px;
+  padding: 10px 8px;
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  padding-left: 45px;
+  color: var(--white);
+}
+
+.mobile .id_card-v165 .triggers {
+  margin-bottom: 0;
+}
+
+.id_card-v165 .triggers:before {
+  content: "TW";
+  color: black;
+  font-size: var(--8px);
+  font-weight: 600;
+  background: var(--white);
+  border-radius: 50%;
+  margin-right: 5px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.id_card-v165 .triggers l {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.id_card-v165 .main_content {
+  padding: 20px 10px 10px;
+}
+
+.mobile .id_card-v165 .main_content {
+  padding: 10px;
+}
+
+.id_card-v165 .content {
+  text-align: justify;
+  overflow: auto;
+}
+
+.id_card-v165 .first_block {
+  background: var(--neutral);
+  position: relative;
+  border-radius: 8px;
+  margin-bottom: 28px;
+}
+
+.mobile .id_card-v165 .first_block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.id_card-v165 .first_block .main_info {
+  height: 300px;
+  overflow: auto;
+  padding-left: 180px;
+}
+
+.mobile .id_card-v165 .first_block .main_info {
+  padding-left: 0;
+  height: 200px;
+}
+
+.id_card-v165 .avatar {
+  position: absolute;
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--base);
+  width: 220px;
+  height: 340px;
+  margin-left: -30px;
+  margin-top: -20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.id_card-v165 .avatar:hover {
+  transform: rotate(-3deg);
+}
+
+.mobile .id_card-v165 .avatar {
+  position: relative;
+  margin: 10px auto 0;
+  width: 160px;
+  height: 160px;
+}
+
+.id_card-v165 .avatar img {
+  width: 200px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.mobile .id_card-v165 .avatar img {
+  width: 140px;
+  height: 140px;
+}
+
+.id_card-v165 .main_info .inner_content {
+  padding: 10px 10px 10px 20px;
+  position: relative;
+}
+
+.id_card-v165 .pseudo {
+  font: var(--18px) var(--title);
+  text-transform: uppercase;
+}
+
+.id_card-v165 .main_info .fc {
+  font: italic var(--12px) var(--font);
+}
+
+.id_card-v165 .main_info hr {
+  border-color: var(--base);
+}
+
+.id_card-v165 .second_block {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.mobile .id_card-v165 .second_block {
+  flex-direction: column;
+}
+
+.id_card-v165 .small,
+.id_card-v165 .large {
+  background: var(--neutral);
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.id_card-v165 .second_block .small {
+  flex: 1 1 50%;
+}
+
+.id_card-v165 .small .title,
+.id_card-v165 .large .title {
+  background: var(--gradientAccent);
+  color: var(--white);
+  font: 700 var(--16px) var(--font);
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.id_card-v165 .small .title i,
+.id_card-v165 .large .title i {
+  display: inline-block;
+  background: white;
+  border-radius: 50%;
+  color: var(--accentClr);
+  padding: 2px 4px;
+}
+
+.id_card-v165 .second_block .small .content {
+  max-height: 200px;
+}
+
+.mobile .id_card-v165 .second_block .small .content {
+  max-height: 100px;
+}
+
+.id_card-v165 .third_block {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: calc(100% - 85px);
+}
+
+.id_card-v165 .third_block:after {
+  content: "";
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: 100px;
+  height: 100px;
+  flex: 0 0 100px;
+  border-radius: 10px;
+  margin-left: -15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.id_card-v165 .third_block:hover:after {
+  margin-left: 5px;
+}
+
+.id_card-v165 .third_block.harvard:after {
+  background: url(https://www.commonapp.org/static/80721cd9dec87ee2b050dd6cdee862b4/harvard-university_116.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+
+.id_card-v165 .third_block.boston:after {
+  background: url(https://www.fly-inselair.com/wp-content/uploads/2023/12/que-voir-et-faire-boston-deux-jours.jpg);
+  background-size: cover;
+}
+
+.id_card-v165 .third_block .large {
+  flex: 1 0 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.id_card-v165 .third_block .large .content {
+  min-height: 70px;
+  max-height: 200px;
+}
+
+.mobile .id_card-v165 .third_block {
+  flex-direction: column-reverse;
+  width: 100%;
+}
+
+.mobile .id_card-v165 .third_block::after {
+  width: 100%;
+  margin-left: 0;
+  margin-bottom: 10px;
+}
+
+.mobile .id_card-v165 .third_block:hover:after {
+  margin-left: 0;
+}
+
+.id_card-v165 .fourth_block .content {
+  min-height: 150px;
+  max-height: 500px;
+}
+
+.id_card-v165 .fifth_block {
+  padding: 10px;
+  background: var(--base);
+}
+
+.id_card-v165 .tabs {
+  background: var(--base);
+  margin-bottom: 10px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-radius: 5px;
+}
+
+.id_card-v165 .tabs button {
+  all: unset;
+  cursor: pointer;
+  text-align: center;
+  flex: 1 1 50%;
+  border-radius: 5px;
+  background: var(--neutral);
+  font: 700 var(--14px) var(--font);
+  text-transform: uppercase;
+  padding: 2px 4px;
+}
+
+.id_card-v165 .tabs button.active {
+  background: var(--gradientAccent);
+  color: var(--white);
+}
+
+.id_card-v165 .content_tab {
+  display: none;
+}
+
+.id_card-v165 .content_tab.active {
+  display: block;
+}
+

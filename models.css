@@ -23,7 +23,7 @@ blockquote { text-align: justify; }
   border-radius: 8px;
   background: var(--neutral);
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
   overflow: hidden;
 }
 
@@ -90,28 +90,32 @@ blockquote { text-align: justify; }
 }
 
 .admin-tw {
-  flex: 0 0 75px;
-  background: var(--neutralDark);
-  padding: 10px;
-  font-size: var(--10px);
-  text-align: center;
+  background: var(--tw);
+  margin-bottom: 10px;
+  padding: 10px 8px;
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  padding-left: 45px;
+  color: var(--white);
 }
 
 .admin-tw:before {
-  content: 'TW';
+  content: "TW";
+  color: black;
+  font-size: var(--8px);
   background: var(--white);
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: var(--8px);
+  margin-right: 5px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 25px;
   display: flex;
   align-items: center;
   font-weight: 600;
   justify-content: center;
-  margin: 2px auto 10px;
-  position: relative;
-  z-index: 1;
-	color: var(--textColor);
 }
 
 .admin-title {
@@ -130,9 +134,6 @@ blockquote { text-align: justify; }
   height: 1px;
   background: var(--textColor);
 }
-
-.admin-template:has(.admin-tw) .admin-title:after { margin-right: -55px; }
-.mobile .admin-template:has(.admin-tw) .admin-title:after { margin-right: 0 }
 
 subtitle1 {
   background: var(--gradientAccent);

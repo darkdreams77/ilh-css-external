@@ -131,9 +131,6 @@ blockquote { text-align: justify; }
   background: var(--textColor);
 }
 
-.admin-template:has(.admin-tw) .admin-title:after { margin-right: -55px; }
-.mobile .admin-template:has(.admin-tw) .admin-title:after { margin-right: 0 }
-
 subtitle1 {
   background: var(--gradientAccent);
   border-radius: 4px;

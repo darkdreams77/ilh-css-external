@@ -501,6 +501,21 @@
   max-height: 200px;
 }
 
+.mobile .id_card-v165 .third_block {
+  flex-direction: column-reverse;
+  width: 100%;
+}
+
+.mobile .id_card-v165 .third_block::after {
+  width: 100%;
+  margin-left: 0;
+  margin-bottom: 10px;
+}
+
+.mobile .id_card-v165 .third_block:hover:after {
+  margin-left: 0;
+}
+
 .id_card-v165 .fourth_block .content {
   min-height: 150px;
   max-height: 500px;

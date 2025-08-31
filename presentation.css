@@ -329,6 +329,7 @@
 .id_card-v165 .content {
   text-align: justify;
   overflow: auto;
+  padding-right: 5px;
 }
 
 .id_card-v165 .first_block {

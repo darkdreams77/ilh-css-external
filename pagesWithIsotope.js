@@ -289,10 +289,133 @@ function debounce(fn, ms) {
   };
 }
 
-// GET HTML via jQuery (promesse)
-function getHTML(url) {
-  return $.ajax({ url, type: 'GET', dataType: 'html' });
+// --- helper: strip safe au cas où le tien n’est pas défini ---
+function safeStrip(s) {
+  if (typeof s !== 'string') return '';
+  // enlève espaces, ponctuation "douce" et met en lower
+  return s.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
 }
+// si tu as déjà strip(), on garde le tien, sinon on mappe
+var strip = (typeof strip === 'function') ? strip : safeStrip;
+
+// --- GET HTML fiable (préserve cookies) ---
+function getHTML(url) {
+  return $.ajax({
+    url,
+    type: 'GET',
+    dataType: 'html',
+    xhrFields: { withCredentials: true } // utile si sous-domaine
+  });
+}
+
+// --- parser util : retourne un jQuery "document" sûr ---
+function toDoc(html) {
+  // $.parseHTML donne un array de nodes : on les colle dans un div
+  const nodes = $.parseHTML(html, document, true);
+  const $wrap = $('<div/>');
+  $wrap.append(nodes);
+  return $wrap;
+}
+
+// --- fetch 1 profil (version robuste & verbeuse) ---
+async function fetchProfileData(profilePath) {
+  const url = INFOSLIST["URL"] + profilePath;
+  const html = await getHTML(url);
+  const $doc = toDoc(html); // <--- différent de $(html)
+  
+  // numéro
+  const numberMatch = (new URL(url)).pathname.match(/\d+/);
+  const number = numberMatch ? numberMatch[0] : null;
+
+  const result = {
+    number,
+    mp: number ? ("/privmsg?mode=post&u=" + number) : null,
+    contact: {},
+    infos: {}
+  };
+
+  // PSEUDO
+  const $pseudo = $(INFOSLIST['pseudo'], $doc);
+  result.pseudo = $pseudo.text() || '';
+  if (!result.pseudo) {
+    console.warn('[FC] pseudo introuvable pour', profilePath, 'selector=', INFOSLIST['pseudo']);
+  }
+
+  // AVATAR
+  const $avatar = $(INFOSLIST['avatar'], $doc);
+  result.avatar = $avatar.attr('src') || '';
+  if (!result.avatar) {
+    console.warn('[FC] avatar introuvable pour', profilePath, 'selector=', INFOSLIST['avatar']);
+  }
+
+  // CHAMPS UTILES
+  const $dataInfo = $(INFOSLIST["champUtile"], $doc);
+  if ($dataInfo.length === 0) {
+    console.warn('[FC] champUtile vide pour', profilePath, 'selector=', INFOSLIST["champUtile"]);
+  }
+
+  // Parcours infos
+  $dataInfo.each(function () {
+    let txt = norm($(this).text() || '');
+
+    // suppression ?
+    let rgx = new RegExp('^' + INFOSLIST['supprime'][0] + '\\s?\\*?' + INFOSLIST['separateurEfface'] + '(.+)', 'i');
+    const deleted = txt.match(rgx);
+    if (deleted) {
+      if (strip(deleted[1]) === strip(INFOSLIST['supprime'][1])) {
+        // profil à ignorer
+        result.__deleted = true;
+        return false; // break .each
+      }
+    }
+
+    // petites infos
+    for (const displayed of INFOSLIST["utiles"]) {
+      rgx = new RegExp('^' + displayed + '\\s?\\*?' + INFOSLIST['separateurEfface'], 'i');
+      if (rgx.test(txt)) {
+        result.infos[displayed] = txt.replace(rgx, '').trim();
+        return; // continue .each
+      }
+    }
+
+    // contacts
+    for (const contact of INFOSLIST["contact"]) {
+      const name = contact[0];
+      rgx = new RegExp('^' + name + '\\s?\\*?' + INFOSLIST['separateurEfface'], 'i');
+      if (rgx.test(txt)) {
+        result.contact[name] = [txt.replace(rgx, '').trim(), contact[1]];
+        return;
+      }
+    }
+
+    // grande description
+    let rgxGD = new RegExp('^' + INFOSLIST['grandeDescription'] + '\\s?\\*?' + INFOSLIST['separateurEfface'], 'i');
+    if (rgxGD.test(txt)) {
+      result.grandeDescription = txt.replace(rgxGD, '').trim();
+      return;
+    }
+
+    // filtres → classes
+    let rgxF = new RegExp('^' + INFOSLIST['filtres'] + '\\s?\\*?' + INFOSLIST['separateurEfface'], 'i');
+    if (rgxF.test(txt)) {
+      let cleaned = txt.replace(rgxF, '').replace(/[\\\/\.\>\<\#\[\]\{\}]/gm, '').trim();
+      result.filtres = cleaned; // "student nyc lefty"
+      return;
+    }
+  });
+
+  if (result.__deleted) return null;
+
+  // Logs de diag si quasi vide
+  if (!result.pseudo && $.isEmptyObject(result.infos) && !result.grandeDescription) {
+    console.warn('[FC] profil pauvre en données → vérifie INFOSLIST selectors.', {
+      profilePath, pseudoSel: INFOSLIST['pseudo'], avatarSel: INFOSLIST['avatar'], champSel: INFOSLIST['champUtile']
+    });
+  }
+
+  return { profilePath, data: result };
+}
+
 
 // Récupère les profils sur une page de la memberlist (renvoie tableau de "/u123")
 async function fetchMemberListPage(page) {
@@ -308,70 +431,6 @@ async function fetchMemberListPage(page) {
     if (href) set.add(href.split('?')[0]);
   });
   return Array.from(set);
-}
-
-// Télécharge + parse 1 profil
-async function fetchProfileData(profilePath) {
-  const url = INFOSLIST["URL"] + profilePath;
-  const html = await getHTML(url);
-  const $doc = $(html);
-
-  const number = (new URL(url)).pathname.match(/\d+/)[0];
-  const result = {
-    number,
-    mp: "/privmsg?mode=post&u=" + number,
-    contact: {},
-    infos: {}
-  };
-
-  // Pseudo + avatar
-  result.pseudo = $(INFOSLIST['pseudo'], $doc).text();
-  result.avatar = $(INFOSLIST['avatar'], $doc).attr('src');
-
-  // Champs utiles
-  const dataInfo = $(INFOSLIST["champUtile"], $doc);
-  for (const el of dataInfo) {
-    let txt = norm($(el).text());
-
-    // suppression ?
-    let rgx = new RegExp('^' + INFOSLIST['supprime'][0] + '\\s?\\*?' + INFOSLIST['separateurEfface'] + '(.+)');
-    const deleted = txt.match(rgx);
-    if (deleted) {
-      if (strip(deleted[1]) == strip(INFOSLIST['supprime'][1])) return null;
-    }
-
-    // petites infos visibles
-    for (const displayed of INFOSLIST["utiles"]) {
-      rgx = new RegExp('^' + displayed + '\\s?\\*?' + INFOSLIST['separateurEfface']);
-      if (txt.match(rgx)) {
-        result.infos[displayed] = txt.replace(rgx, '');
-        break;
-      }
-    }
-
-    // contacts
-    for (const contact of INFOSLIST["contact"]) {
-      const name = contact[0];
-      rgx = new RegExp('^' + name + '\\s?\\*?' + INFOSLIST['separateurEfface']);
-      if (txt.match(rgx)) {
-        result.contact[name] = [txt.replace(rgx, ''), contact[1]];
-        break;
-      }
-    }
-
-    // grande description
-    rgx = new RegExp('^' + INFOSLIST['grandeDescription'] + '\\s?\\*?' + INFOSLIST['separateurEfface']);
-    if (txt.match(rgx)) result.grandeDescription = txt.replace(rgx, '');
-
-    // filtres (classes) → on nettoie les caractères non valides en classe CSS
-    rgx = new RegExp('^' + INFOSLIST['filtres'] + '\\s?\\*?' + INFOSLIST['separateurEfface']);
-    if (txt.match(rgx)) {
-      let cleaned = txt.replace(rgx, '').replace(/[\\\/\.\>\<\#\[\]\{\}]/gm, '');
-      result.filtres = cleaned; // ex: "student nyc lefty"
-    }
-  }
-
-  return { profilePath, data: result };
 }
 
 // Test filtre pour un membre

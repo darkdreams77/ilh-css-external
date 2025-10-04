@@ -230,8 +230,8 @@ async function streamAllMembers() {
 
     // 4) Page suivante
     page++;
-    showAllLoadedCheck();
   }
+  showAllLoadedCheck();
 }
 
 /** Exécute une queue avec concurrence N */

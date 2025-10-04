@@ -568,7 +568,7 @@ function showAllLoadedCheck() {
     position: 'fixed',
     bottom: '20px',
     right: '20px',
-    background: '#222',
+    background: 'linear-gradient(135deg, #16a34a, #22c55e)',
     color: '#fff',
     padding: '10px 16px',
     borderRadius: '8px',

@@ -329,6 +329,7 @@
 .id_card-v165 .content {
   text-align: justify;
   overflow: auto;
+  padding-right: 5px;
 }
 
 .id_card-v165 .first_block {
@@ -562,7 +563,7 @@
 
 .id_card-v165 .fourth_block .content {
   min-height: 150px;
-  max-height: 500px;
+  max-height: 400px;
 }
 
 .id_card-v165 .fifth_block {

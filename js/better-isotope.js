@@ -10,9 +10,9 @@ var base;
 /* ===== TUNING ===== */
 var PAGE_SIZE = 50;                // Forumactif
 var PROFILE_CONCURRENCY_MIN = 2;
-var PROFILE_CONCURRENCY_MAX = 10;
+var PROFILE_CONCURRENCY_MAX = 12;
 var START_CONCURRENCY       = 5;
-var MAX_REQUESTS_PER_SEC    = 5;   // limite réseau
+var MAX_REQUESTS_PER_SEC    = 6;   // limite réseau
 var LATENCY_SOFT_LIMIT_MS   = 1200;
 var PAGE_PREFETCH_AHEAD     = 2;   // pages en avance
 
@@ -159,7 +159,7 @@ async function getHTMLManaged(url, opts) {
 // Retourne les paths "/u123" d'une page de memberlist
 async function fetchMemberListPage(pageIndexZeroBased) {
   var start = pageIndexZeroBased * PAGE_SIZE;
-  var url = INFOSLIST["URL"] + '/memberlist?mode=username&order=DESC&start=' + start + '&username';
+  var url = INFOSLIST["URL"] + '/memberlist?mode=username&order&start=' + start + '&username';
   var html = await getHTMLManaged(url);
   var $doc = toDoc(html);
   var set = new Set();

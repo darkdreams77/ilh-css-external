@@ -12,7 +12,7 @@ var PAGE_SIZE = 50;                // Forumactif
 var PROFILE_CONCURRENCY_MIN = 2;
 var PROFILE_CONCURRENCY_MAX = 12;
 var START_CONCURRENCY       = 5;
-var MAX_REQUESTS_PER_SEC    = 6;   // limite réseau
+var MAX_REQUESTS_PER_SEC    = 5;   // limite réseau
 var LATENCY_SOFT_LIMIT_MS   = 1200;
 var PAGE_PREFETCH_AHEAD     = 2;   // pages en avance
 
@@ -403,6 +403,28 @@ function priorityScoreForPath(profilePath) {
   return dist;
 }
 
+let __lastProgressTs = Date.now();
+function markProgress(){ __lastProgressTs = Date.now(); }
+
+// “kick” si pas de progrès depuis N sec
+function setupWatchdog({intervalMs=3000, stallMs=10000} = {}) {
+  return setInterval(() => {
+    const idle = Date.now() - __lastProgressTs;
+    if (idle > stallMs && (!reachedEnd || profileQueue.length > 0)) {
+      // On relance un worker et on force un tour de prefetch
+      try { ensureWorkers(true /*forceOne*/); } catch {}
+      try { prefetchNudge(); } catch {}
+    }
+  }, intervalMs);
+}
+
+// petit nudge de prefetch
+function prefetchNudge(){
+  // rien à faire ici si prefetchPages tourne, mais on peut pousser un tick logique
+  // par exemple en diminuant légèrement le tampon pour déclencher un tour
+}
+
+
 /* =========================
    Pipeline : toutes les pages
    ========================= */
@@ -418,9 +440,11 @@ async function streamAllMembers() {
 
   // Précharge des pages pendant qu’on traite les profils
   async function prefetchPages() {
+    const wd = setupWatchdog({ intervalMs: 3000, stallMs: 12000 });  
     while (!reachedEnd) {
-      // Maintient un buffer de pages en avance (en nombre de profils)
-      if ((profileQueue.length / PAGE_SIZE) >= PAGE_PREFETCH_AHEAD) { await sleep(150); continue; }
+      const desired = Math.max(PROFILE_CONCURRENCY_MIN, Math.floor(Concurrency.value()));
+      const bufferPages = Math.max(PAGE_PREFETCH_AHEAD, Math.ceil(desired / 2));
+      if ((profileQueue.length / PAGE_SIZE) >= bufferPages) { await sleep(120); continue; }
 
       var paths = await fetchMemberListPage(pageIdx);
       if (!paths.length) { reachedEnd = true; break; }
@@ -458,57 +482,64 @@ async function streamAllMembers() {
   // Nombre de workers actifs (flag DOM discret)
   function activeWorkers() { return $('.__pf-worker-flag').length; }
 
-  // Worker profil
-  async function profileWorker() {
-    while (true) {
-      // adapte le pool en live : si trop d’ouvriers, on laisse se terminer
-      var target = Math.floor(Concurrency.value());
-      if (activeWorkers() > target) { await sleep(100); continue; }
+  // Worker profil (remplace entièrement l’ancienne version)
+   async function profileWorker() {
+     while (true) {
+       // 1) Prendre le prochain item
+       const next = dequeueNext();
+       if (!next) {
+         // plus d’items en file : si on a atteint la fin ET plus rien à traiter → sort
+         if (reachedEnd) break;
+         await sleep(60);
+         continue;
+       }
+   
+       const path = next.path;
+       try {
+         const res = await fetchProfileData(path);
+         if (!res) { removeSkeleton(path); continue; }
+   
+         members[path] = res.data;
+   
+         // Remplacement in-place
+         const $slot = $('#bp_fc .member_fc[data-profile-path="' + cssEscapeAttr(path) + '"]');
+         if ($slot.length) {
+           const node = setClonedAt(base.clone(), path, $slot);
+           $(node).removeClass('is-skeleton').addClass(res.data.filtres || '');
+         } else {
+           setCloned(base.clone(), path);
+         }
+   
+         // Progrès pour le watchdog
+         markProgress();
+   
+       } catch (e) {
+         // marque l’erreur et re-essaie jusqu’à 2 fois
+         markSkeletonError(path, e);
+         next.retries = (next.retries || 0) + 1;
+         if (next.retries <= 2) profileQueue.push(next);
+       }
+     }
+   }
 
-      var next = dequeueNext();
-      if (!next) {
-        if (reachedEnd) break;
-        await sleep(60);
-        continue;
-      }
-
-      var path = next.path;
-      try {
-        var res = await fetchProfileData(path);
-        if (!res) { removeSkeleton(path); continue; }
-
-        members[path] = res.data;
-
-        // Remplacement in-place
-        var $slot = $('#bp_fc .member_fc[data-profile-path="' + cssEscapeAttr(path) + '"]');
-        if ($slot.length) {
-          var node = setClonedAt(base.clone(), path, $slot);
-          $(node).removeClass('is-skeleton').addClass(res.data.filtres || '');
-        } else {
-          setCloned(base.clone(), path);
-        }
-      } catch (e) {
-        // marque l’erreur et re-essaie jusqu’à 2 fois
-        markSkeletonError(path, e);
-        next.retries = (next.retries || 0) + 1;
-        if (next.retries <= 2) profileQueue.push(next);
-      }
-    }
-  }
 
   // Démarre le préfetch en parallèle
   prefetchPages();
 
   // Démarre un pool dynamique de workers
   var workers = new Set();
-  function ensureWorkers() {
-    var desired = Math.floor(Concurrency.value());
-    while (workers.size < desired) {
-      var $flag = $('<i class="__pf-worker-flag" style="display:none"></i>').appendTo(document.body);
-      var w = profileWorker().finally(function () { $flag.remove(); workers.delete(w); });
-      workers.add(w);
-    }
+   function ensureWorkers(forceOne){
+     const desired = Math.max(PROFILE_CONCURRENCY_MIN, Math.floor(Concurrency.value()));
+     const target = forceOne ? Math.max(desired, workers.size + 1) : desired;
+   
+     while (workers.size < target) {
+       const $flag = $('<i class="__pf-worker-flag" style="display:none"></i>').appendTo(document.body);
+       const w = profileWorker().finally(() => { $flag.remove(); workers.delete(w); });
+       workers.add(w);
+     }
+     // si trop de workers, on ne tue pas brutalement : ils se termineront naturellement
   }
+
   var heart = setInterval(ensureWorkers, 200);
   ensureWorkers();
 

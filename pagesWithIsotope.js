@@ -89,7 +89,7 @@ var PROFILE_CONCURRENCY = 6;  // nb de profils chargés en parallèle
 // Retourne les paths "/u123" d'une page de la memberlist
 async function fetchMemberListPage(pageIndexZeroBased) {
   var start = pageIndexZeroBased * PAGE_SIZE;
-  var url = INFOSLIST["URL"] + '/memberlist?mode=username&order=DESC&start=' + start + '&username';
+  var url = INFOSLIST["URL"] + '/memberlist?mode=username&order&start=' + start + '&username';
   var html = await getHTMLWithRetry(url);
   var $doc = toDoc(html);
   var $links = $doc.find('a[href^="/u"]');

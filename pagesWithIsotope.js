@@ -66,7 +66,7 @@ function setMembers() {
     while (going) {
         var profiles = gip(URL, 'a[href^="/u"]');
         var c = 0;
-        if (profiles.length == 0) going = false;
+        if (profiles.length === 0) going = false;
         else {
 
             for (var pseudo of profiles) {
@@ -261,3 +261,264 @@ function setCloned(cloned, profile) {
     FC.prepend(cloned);
     return cloned;
 }
+
+// ===== Config =====
+var PAGE_SIZE = 50;                // Forumactif: 50 membres par page
+var PROFILE_CONCURRENCY = 6;       // nb de profils téléchargés en parallèle
+var currentPage = 1;               // 1-based
+var isLoading = false;
+var hasNext = true;
+
+// ===== État global existant =====
+var members;  // cache: { "/u123": {...}, ... }
+var FC;       // $('#bp_fc')
+var base;     // base.clone()
+
+// ===== Filtres (état) =====
+var activeFilters = {
+  q: "",               // recherche texte (pseudo, infos, grandeDescription)
+  classes: []          // tableau de classes requises (ET logique)
+};
+
+// ===== Utils =====
+function debounce(fn, ms) {
+  var t; return function() {
+    clearTimeout(t);
+    var args = arguments, ctx = this;
+    t = setTimeout(function(){ fn.apply(ctx, args); }, ms);
+  };
+}
+
+// GET HTML via jQuery (promesse)
+function getHTML(url) {
+  return $.ajax({ url, type: 'GET', dataType: 'html' });
+}
+
+// Récupère les profils sur une page de la memberlist (renvoie tableau de "/u123")
+async function fetchMemberListPage(page) {
+  var start = (page - 1) * PAGE_SIZE;
+  var url = INFOSLIST["URL"] + '/memberlist?mode=username&order=DESC&start=' + start + '&username';
+  const html = await getHTML(url);
+  const $links = $('a[href^="/u"]', $(html));
+  if ($links.length === 0) return [];
+
+  const set = new Set();
+  $links.each(function () {
+    const href = $(this).attr('href');
+    if (href) set.add(href.split('?')[0]);
+  });
+  return Array.from(set);
+}
+
+// Télécharge + parse 1 profil
+async function fetchProfileData(profilePath) {
+  const url = INFOSLIST["URL"] + profilePath;
+  const html = await getHTML(url);
+  const $doc = $(html);
+
+  const number = (new URL(url)).pathname.match(/\d+/)[0];
+  const result = {
+    number,
+    mp: "/privmsg?mode=post&u=" + number,
+    contact: {},
+    infos: {}
+  };
+
+  // Pseudo + avatar
+  result.pseudo = $(INFOSLIST['pseudo'], $doc).text();
+  result.avatar = $(INFOSLIST['avatar'], $doc).attr('src');
+
+  // Champs utiles
+  const dataInfo = $(INFOSLIST["champUtile"], $doc);
+  for (const el of dataInfo) {
+    let txt = norm($(el).text());
+
+    // suppression ?
+    let rgx = new RegExp('^' + INFOSLIST['supprime'][0] + '\\s?\\*?' + INFOSLIST['separateurEfface'] + '(.+)');
+    const deleted = txt.match(rgx);
+    if (deleted) {
+      if (strip(deleted[1]) == strip(INFOSLIST['supprime'][1])) return null;
+    }
+
+    // petites infos visibles
+    for (const displayed of INFOSLIST["utiles"]) {
+      rgx = new RegExp('^' + displayed + '\\s?\\*?' + INFOSLIST['separateurEfface']);
+      if (txt.match(rgx)) {
+        result.infos[displayed] = txt.replace(rgx, '');
+        break;
+      }
+    }
+
+    // contacts
+    for (const contact of INFOSLIST["contact"]) {
+      const name = contact[0];
+      rgx = new RegExp('^' + name + '\\s?\\*?' + INFOSLIST['separateurEfface']);
+      if (txt.match(rgx)) {
+        result.contact[name] = [txt.replace(rgx, ''), contact[1]];
+        break;
+      }
+    }
+
+    // grande description
+    rgx = new RegExp('^' + INFOSLIST['grandeDescription'] + '\\s?\\*?' + INFOSLIST['separateurEfface']);
+    if (txt.match(rgx)) result.grandeDescription = txt.replace(rgx, '');
+
+    // filtres (classes) → on nettoie les caractères non valides en classe CSS
+    rgx = new RegExp('^' + INFOSLIST['filtres'] + '\\s?\\*?' + INFOSLIST['separateurEfface']);
+    if (txt.match(rgx)) {
+      let cleaned = txt.replace(rgx, '').replace(/[\\\/\.\>\<\#\[\]\{\}]/gm, '');
+      result.filtres = cleaned; // ex: "student nyc lefty"
+    }
+  }
+
+  return { profilePath, data: result };
+}
+
+// Test filtre pour un membre
+function matchesFilters(member) {
+  // texte : pseudo + infos + grandeDescription
+  if (activeFilters.q) {
+    const q = activeFilters.q;
+    const hay = [
+      member.pseudo || '',
+      member.grandeDescription || '',
+      Object.values(member.infos || {}).join(' ')
+    ].join(' ').toLowerCase();
+    if (!hay.includes(q)) return false;
+  }
+
+  // classes (AND)
+  if (activeFilters.classes.length) {
+    const cls = (member.filtres || '').toLowerCase().split(/\s+/).filter(Boolean);
+    for (const req of activeFilters.classes) {
+      if (!cls.includes(req)) return false;
+    }
+  }
+
+  return true;
+}
+
+// Applique les filtres à tout ce qui est déjà dans le DOM
+function applyFiltersToDOM() {
+  // On parcourt les items déjà rendus
+  FC.children('.member_fc').each(function() {
+    const $node = $(this);
+    const href = $node.find('a.profile_fc').attr('href') || '';
+    // href est absolu, on veut le path "/u123"
+    let profilePath = href.replace(INFOSLIST["URL"], '');
+    if (!profilePath.startsWith('/')) {
+      // au cas où href soit relatif
+      try {
+        profilePath = new URL(href).pathname;
+      } catch (_) {}
+    }
+
+    const member = members[profilePath];
+    const ok = member && matchesFilters(member);
+    $node.toggleClass('is-filtered-out', !ok).toggle(ok);
+  });
+}
+
+// Charge la page suivante (50 profils), puis stream les profils avec concurrence limitée
+async function loadNextPage() {
+  if (isLoading || !hasNext) return;
+  isLoading = true;
+
+  try {
+    const profilePaths = await fetchMemberListPage(currentPage);
+    if (!profilePaths.length) {
+      hasNext = false;
+      return;
+    }
+
+    // petite queue concurrente
+    const queue = [...profilePaths];
+    const workers = new Array(Math.min(PROFILE_CONCURRENCY, queue.length)).fill(null).map(async () => {
+      while (queue.length) {
+        const path = queue.shift();
+        try {
+          const res = await fetchProfileData(path);
+          if (!res) continue;
+          const { profilePath, data } = res;
+
+          // cache
+          members[profilePath] = data;
+
+          // clone et injecte
+          const cloned = setCloned(base.clone(), profilePath);
+
+          // applique classes filtres (ton setCloned le fait déjà via members[...].filtres)
+          // on ajuste la visibilité selon filtres actifs
+          if (!matchesFilters(data)) {
+            $(cloned).addClass('is-filtered-out').hide();
+          } else {
+            $(cloned).show();
+          }
+
+          FC.append(cloned); // on append (ordre naturel), tu peux garder prepend si tu préfères
+        } catch (e) {
+          console.error('Erreur profil:', path, e);
+        }
+      }
+    });
+
+    await Promise.all(workers);
+    currentPage += 1; // prête pour la prochaine rafale
+  } finally {
+    isLoading = false;
+  }
+}
+
+// IntersectionObserver pour infinite scroll
+function setupInfiniteScroll() {
+  const sentinel = document.getElementById('fc_sentinel');
+  if (!('IntersectionObserver' in window) || !sentinel) {
+    // fallback: bouton "Charger plus"
+    console.warn('Pas d’IntersectionObserver, fallback manuel.');
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) loadNextPage();
+    }
+  }, { root: null, rootMargin: '300px 0px', threshold: 0 });
+  io.observe(sentinel);
+}
+
+// Écouteurs filtres (debounce)
+function setupFilters() {
+  const $q = $('#fc_q');
+  const $cls = $('#fc_classes');
+
+  const onChange = debounce(function() {
+    activeFilters.q = ($q.val() || '').toString().trim().toLowerCase();
+    const raw = ($cls.val() || '').toString().trim().toLowerCase();
+    activeFilters.classes = raw ? raw.split(/\s+/).filter(Boolean) : [];
+    applyFiltersToDOM();
+  }, 150);
+
+  $q.on('input', onChange);
+  $cls.on('input', onChange);
+}
+
+// ===== Bootstrap (à mettre dans ton $(function(){ ... }) existant) =====
+// Remplace tes anciens setMembers()/setFaceclaim() initiaux par ceci :
+$(function(){
+  // (conserve tes normalisations INFOSLIST et tes lignes existantes ici)
+  // ...
+
+  members = {};
+  FC = $('#bp_fc');
+  base = FC.find('.member_fc').eq(0).clone();
+  FC.empty(); // on part propre
+
+  setupFilters();
+  setupInfiniteScroll();
+
+  // Démarre : charge la première page tout de suite
+  loadNextPage();
+
+  // Bonus: si l’utilisateur scrolle avant que la première rafale ne finisse,
+  // l’observer déclenchera la suivante automatiquement.
+});
+

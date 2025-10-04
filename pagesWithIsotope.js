@@ -230,6 +230,7 @@ async function streamAllMembers() {
 
     // 4) Page suivante
     page++;
+    showAllLoadedCheck();
   }
 }
 
@@ -335,4 +336,41 @@ function setClonedAt(cloned, profile, $placeholder) {
   // ⬇️ différence ici : remplacement in-place
   $placeholder.replaceWith(cloned);
   return cloned;
+}
+
+function showAllLoadedCheck() {
+  // On évite de spammer si elle est déjà affichée
+  if ($('#fc_done_check').length) return;
+
+  const $msg = $('<div id="fc_done_check" class="fc-done-check"><span class="emoji">✅</span> <strong>Chargement complet</strong></div>');
+  $('body').append($msg);
+
+  // Animation d’apparition/disparition
+  $msg.css({
+    position: 'fixed',
+    bottom: '20px',
+    right: '20px',
+    background: '#222',
+    color: '#fff',
+    padding: '10px 16px',
+    borderRadius: '8px',
+    fontSize: '14px',
+    fontWeight: '500',
+    boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+    zIndex: 9999,
+    opacity: 0,
+    transition: 'opacity 0.6s ease',
+    background: 'linear-gradient(135deg, #16a34a, #22c55e)',
+    fontSize: '15px',
+  });
+
+  requestAnimationFrame(() => {
+    $msg.css('opacity', 1);
+  });
+
+  // Disparaît après 5 secondes
+  setTimeout(() => {
+    $msg.css('opacity', 0);
+    setTimeout(() => $msg.remove(), 1000);
+  }, 5000);
 }

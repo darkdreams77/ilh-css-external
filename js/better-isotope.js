@@ -441,6 +441,18 @@ async function hydrateFromCacheFast(){
   orderIndex = Object.create(null);
   orderList.forEach((p,i)=> orderIndex[p]=i);
 
+   // ----- tri alphabétique par pseudo (warm-boot) -----
+   const cachedEntries = [];
+   for (const path of orderList) {
+     const data = ProfileCache.get(path);
+     if (data && data.pseudo) cachedEntries.push({ path, pseudo: data.pseudo.toLowerCase() });
+   }
+   cachedEntries.sort((a, b) => a.pseudo.localeCompare(b.pseudo));
+   orderList = cachedEntries.map(e => e.path);
+   orderIndex = Object.create(null);
+   orderList.forEach((p, i) => orderIndex[p] = i);
+
+
   // Skeletons rapides (puis remplacement immédiat si data en cache)
   const frag = document.createDocumentFragment();
   for (const path of orderList) {
@@ -632,8 +644,14 @@ async function streamAllMembers() {
   clearInterval(heart);
   clearInterval(wd);
 
-  // Sauvegarde l'index (ordre figé) pour le prochain warm-boot
-  MemberIndexCache.set(orderList);
+  // Sauvegarde l'ordre alphabétique pour le prochain warm-boot
+  const sorted = orderList.slice().sort((a,b)=>{
+    const pa = members[a]?.pseudo?.toLowerCase?.() || '';
+    const pb = members[b]?.pseudo?.toLowerCase?.() || '';
+    return pa.localeCompare(pb);
+  });
+  MemberIndexCache.set(sorted);
+
 
   if (typeof showAllLoadedCheck === 'function') showAllLoadedCheck();
 }

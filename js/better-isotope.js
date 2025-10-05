@@ -1,11 +1,15 @@
 /* =========================
-   Faceclaim Loader – FINAL (warm-boot, caching, anti-429)
+   Faceclaim Loader – FINAL (ordre déterministe + warm-boot + caching + anti-429)
    ========================= */
 
 var members;
 var membersLength = 0;
 var FC;
 var base;
+
+/* ===== ORDONNANCEMENT DÉTERMINISTE ===== */
+var orderList = [];                    // ['/u12','/u34',...]
+var orderIndex = Object.create(null);  // path -> index (0..n-1)
 
 /* ===== TUNING ===== */
 var PAGE_SIZE = 50;                // Forumactif
@@ -18,15 +22,13 @@ var PAGE_PREFETCH_AHEAD     = 2;   // pages tampon min
 
 $(function () {
   // Invalidation simple quand tu changes tes sélecteurs
-  var FC_SELECTOR_VERSION = 'v3';
+  var FC_SELECTOR_VERSION = 'v4'; // ⬅ bump si tu modifies INFOSLIST/parse
   (function(){
     const K='fc_selectors_ver';
     const cur = localStorage.getItem(K);
     if (cur !== FC_SELECTOR_VERSION) {
       try { MemberIndexCache.clear(); } catch(_) {}
       try { ProfileCache.clear(); } catch(_) {}
-      // (optionnel) vider le cache HTML sessionStorage si tu l’avais ajouté
-      // clearFCSessionCache && clearFCSessionCache();
       localStorage.setItem(K, FC_SELECTOR_VERSION);
     }
   })();
@@ -71,6 +73,29 @@ function toDoc(html) {
 }
 function cssEscapeAttr(s) { return String(s).replace(/["\\]/g, '\\$&'); }
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+/* Place un placeholder à la bonne position d’après orderIndex */
+function ensurePlaceholder(profilePath){
+  if ($('#bp_fc .member_fc[data-profile-path="'+cssEscapeAttr(profilePath)+'"]').length) return;
+
+  const idx = orderIndex[profilePath];
+  const $ph = makeSkeleton(profilePath);
+
+  // insère avant le premier suivant déjà présent
+  for (let i = idx+1; i < orderList.length; i++){
+    const nxt = orderList[i];
+    const $n = $('#bp_fc .member_fc[data-profile-path="'+cssEscapeAttr(nxt)+'"]');
+    if ($n.length) { $ph.insertBefore($n); return; }
+  }
+  // sinon après le dernier précédent
+  for (let i = idx-1; i >= 0; i--){
+    const prev = orderList[i];
+    const $p = $('#bp_fc .member_fc[data-profile-path="'+cssEscapeAttr(prev)+'"]');
+    if ($p.length) { $ph.insertAfter($p); return; }
+  }
+  // container vide
+  FC.append($ph);
+}
 
 
 /* =========================
@@ -390,62 +415,8 @@ function setClonedAt(cloned, profile, $placeholder) {
   return cloned;
 }
 
-// (optionnel) version prepend d’origine
-function setCloned(cloned, profile) {
-  cloned.find('a.profile_fc')
-    .attr('href', (INFOSLIST["URL"] + profile))
-    .attr('target', '_blank');
-
-  cloned.find('.mps_fc')
-    .attr('href', INFOSLIST["URL"] + members[profile]["mp"])
-    .attr('target', '_blank');
-
-  var ctct = cloned.find('.contact_fc td').eq(0);
-  if (!jQuery.isEmptyObject(members[profile]["contact"])) {
-    for (var contact in members[profile]["contact"]) {
-      var obj = createHTML('a',
-        createHTML('button', members[profile]["contact"][contact][1])
-          .addClass('button1')
-          .attr('style', "--hover: '" + contact + "';"))
-        .attr('href', members[profile]["contact"][contact][0])
-        .attr('target', '_blank');
-      ctct.append(obj);
-    }
-  }
-  ctct.append(createHTML('sms', 'contact'));
-
-  cloned.find('.name_fc').html(members[profile]["pseudo"]);
-  cloned.find('.avatar_fc').attr('src', members[profile]["avatar"]);
-
-  var resume = cloned.find('.resume_fc');
-  if (jQuery.isEmptyObject(members[profile]["infos"])) resume.remove();
-  else {
-    for (var info in members[profile]["infos"]) {
-      resume.append(createHTML('cv', info));
-      resume.append(' ');
-      resume.append(members[profile]["infos"][info]);
-      resume.append(INFOSLIST['separateurAffiche']);
-    }
-  }
-
-  var hasDesc = (members[profile]["grandeDescription"] != undefined);
-  if (hasDesc) {
-    cloned.find('.infos_fc').html(members[profile]["grandeDescription"]);
-  } else {
-    cloned.find('.infos_fc').css('height', '0');
-    cloned.find('.resume_fc').removeClass('no-extend').attr('style', 'max-height: unset;');
-  }
-
-  cloned.removeClass('none');
-  cloned.find('.a_name_fc').eq(0).attr('name', tagName(members[profile]["pseudo"]));
-  cloned.addClass(members[profile]["filtres"]);
-
-  FC.prepend(cloned);
-  return cloned;
-}
-
 /* =========================
-   Priorisation du visible
+   Priorisation (optionnelle) du visible
    ========================= */
 
 function priorityScoreForPath(profilePath) {
@@ -465,9 +436,14 @@ async function hydrateFromCacheFast(){
   const idx = MemberIndexCache.get();
   if (!idx || !idx.paths || !idx.paths.length) return false;
 
-  // Skeletons rapides pour conserver la structure puis remplacement instantané
+  // Fige l’ordre
+  orderList = idx.paths.slice();
+  orderIndex = Object.create(null);
+  orderList.forEach((p,i)=> orderIndex[p]=i);
+
+  // Skeletons rapides (puis remplacement immédiat si data en cache)
   const frag = document.createDocumentFragment();
-  for (const path of idx.paths) {
+  for (const path of orderList) {
     const cached = ProfileCache.get(path);
     if (!cached) continue;
     members[path] = cached;
@@ -485,12 +461,12 @@ async function hydrateFromCacheFast(){
     setClonedAt(base.clone(), path, $(el));
   }
 
-  // Lancement d’une petite revalidation silencieuse des premiers profils
+  // Revalidation “doux” en arrière-plan (premiers items)
   (async ()=> {
     const origRps = MAX_REQUESTS_PER_SEC, origMax = PROFILE_CONCURRENCY_MAX;
     MAX_REQUESTS_PER_SEC = Math.max(3, Math.floor(MAX_REQUESTS_PER_SEC/2));
     PROFILE_CONCURRENCY_MAX = Math.max(4, Math.floor(PROFILE_CONCURRENCY_MAX/2));
-    try { await revalidateStaleProfiles(idx.paths.slice(0, 300)); } catch(_){}
+    try { await revalidateStaleProfiles(orderList.slice(0, 300)); } catch(_){}
     MAX_REQUESTS_PER_SEC = origRps; PROFILE_CONCURRENCY_MAX = origMax;
   })();
 
@@ -500,7 +476,7 @@ async function hydrateFromCacheFast(){
 async function revalidateStaleProfiles(paths){
   for (const p of paths) {
     try {
-      const res = await fetchProfileData(p); // passe par TTL, donc soft
+      const res = await fetchProfileData(p); // passe par TTL
       if (res) {
         members[p] = res.data;
         const node = $('#bp_fc .member_fc[data-profile-path="'+cssEscapeAttr(p)+'"]');
@@ -511,7 +487,7 @@ async function revalidateStaleProfiles(paths){
 }
 
 /* =========================
-   Pipeline : toutes les pages
+   Pipeline : toutes les pages (ordre figé)
    ========================= */
 
 let __lastProgressTs = Date.now();
@@ -537,8 +513,7 @@ async function streamAllMembers() {
   // Hydratation rapide si possible
   const hydrated = await hydrateFromCacheFast();
   if (!hydrated) {
-    // si pas d’hydratation, on repart propre
-    FC.empty();
+    FC.empty(); // si pas d’hydratation, on repart propre
   }
 
   var pageIdx = 0;
@@ -556,38 +531,45 @@ async function streamAllMembers() {
       var paths = await fetchMemberListPage(pageIdx);
       if (!paths.length) { reachedEnd = true; break; }
 
+      // Alimente l’ordre global (si nouveaux)
+      for (const p of paths) {
+        if (orderIndex[p] == null) {
+          orderIndex[p] = orderList.length;
+          orderList.push(p);
+        }
+      }
+
       membersLength += paths.length;
       allPaths = allPaths.concat(paths);
 
-      var frag = document.createDocumentFragment();
-      for (var i = 0; i < paths.length; i++) {
-        var p = paths[i];
+      // Pose les placeholders à la bonne place + alimente la file
+      for (const p of paths) {
         if (inQueue.has(p)) continue;
         inQueue.add(p);
-        // si déjà hydraté avec la carte finale, on ne remet pas de skeleton
-        if ($('#bp_fc .member_fc[data-profile-path="'+cssEscapeAttr(p)+'"]').length === 0) {
-          var $ph = makeSkeleton(p);
-          frag.appendChild($ph[0]);
-        }
+        ensurePlaceholder(p);
         profileQueue.push({ path: p });
       }
-      if (frag.childNodes.length) FC[0].appendChild(frag);
 
       pageIdx++;
       markProgress();
     }
   }
 
-  function dequeueNext() {
-    if (!profileQueue.length) return null;
-    var windowSize = Math.min(20, profileQueue.length);
-    var bestIdx = 0, bestScore = Number.POSITIVE_INFINITY;
-    for (var i = 0; i < windowSize; i++) {
-      var s = priorityScoreForPath(profileQueue[i].path);
-      if (s < bestScore) { bestScore = s; bestIdx = i; }
-    }
-    return profileQueue.splice(bestIdx, 1)[0];
-  }
+  // ----- Choix du dequeue -----
+  // A) ordre strict FIFO (déterministe à 100%)
+  function dequeueNext(){ return profileQueue.shift() || null; }
+
+  // B) (Option) priorité au visible : remplace la fonction ci-dessus par:
+  // function dequeueNext() {
+  //   if (!profileQueue.length) return null;
+  //   var windowSize = Math.min(20, profileQueue.length);
+  //   var bestIdx = 0, bestScore = Number.POSITIVE_INFINITY;
+  //   for (var i = 0; i < windowSize; i++) {
+  //     var s = priorityScoreForPath(profileQueue[i].path);
+  //     if (s < bestScore) { bestScore = s; bestIdx = i; }
+  //   }
+  //   return profileQueue.splice(bestIdx, 1)[0];
+  // }
 
   async function profileWorker() {
     while (true) {
@@ -599,24 +581,20 @@ async function streamAllMembers() {
       }
       const path = next.path;
       try {
-        // si déjà rendu via hydrataion + cache, on saute
-        if (members[path] && $('#bp_fc .member_fc[data-profile-path="'+cssEscapeAttr(path)+'"]').length &&
-            !$('#bp_fc .member_fc[data-profile-path="'+cssEscapeAttr(path)+'"]').hasClass('is-skeleton')) {
-          markProgress();
-          continue;
+        // si déjà rendu (hydratation) et pas skeleton → skip
+        const $existing = $('#bp_fc .member_fc[data-profile-path="'+cssEscapeAttr(path)+'"]');
+        if (members[path] && $existing.length && !$existing.hasClass('is-skeleton')) {
+          markProgress(); continue;
         }
 
         const res = await fetchProfileData(path);
         if (!res) { removeSkeleton(path); markProgress(); continue; }
         members[path] = res.data;
 
+        // s’assurer que le placeholder est là et bien placé
+        ensurePlaceholder(path);
         const $slot = $('#bp_fc .member_fc[data-profile-path="' + cssEscapeAttr(path) + '"]');
-        if ($slot.length) {
-          const node = setClonedAt(base.clone(), path, $slot);
-          $(node).removeClass('is-skeleton').addClass(res.data.filtres || '');
-        } else {
-          setCloned(base.clone(), path);
-        }
+        setClonedAt(base.clone(), path, $slot);
         markProgress();
       } catch (e) {
         markSkeletonError(path, e);
@@ -654,8 +632,8 @@ async function streamAllMembers() {
   clearInterval(heart);
   clearInterval(wd);
 
-  // Sauvegarde l'index pour warm-boot (prochains chargements instantanés)
-  MemberIndexCache.set(allPaths);
+  // Sauvegarde l'index (ordre figé) pour le prochain warm-boot
+  MemberIndexCache.set(orderList);
 
   if (typeof showAllLoadedCheck === 'function') showAllLoadedCheck();
 }

@@ -1,6 +1,5 @@
 /* =========================
-   Faceclaim Loader – FINAL
-   (full crawl, adaptive concurrency, anti-429, caching, skeletons, done-check)
+   Faceclaim Loader – FINAL (warm-boot, caching, anti-429)
    ========================= */
 
 var members;
@@ -18,6 +17,20 @@ var LATENCY_SOFT_LIMIT_MS   = 1200;
 var PAGE_PREFETCH_AHEAD     = 2;   // pages tampon min
 
 $(function () {
+  // Invalidation simple quand tu changes tes sélecteurs
+  var FC_SELECTOR_VERSION = 'v3';
+  (function(){
+    const K='fc_selectors_ver';
+    const cur = localStorage.getItem(K);
+    if (cur !== FC_SELECTOR_VERSION) {
+      try { MemberIndexCache.clear(); } catch(_) {}
+      try { ProfileCache.clear(); } catch(_) {}
+      // (optionnel) vider le cache HTML sessionStorage si tu l’avais ajouté
+      // clearFCSessionCache && clearFCSessionCache();
+      localStorage.setItem(K, FC_SELECTOR_VERSION);
+    }
+  })();
+
   // NORMALIZE FORUM URL
   if (INFOSLIST["URL"][INFOSLIST["URL"].length - 1] == '/')
     INFOSLIST["URL"] = INFOSLIST["URL"].slice(0, -1);
@@ -33,7 +46,6 @@ $(function () {
   members = {};
   FC = $('#bp_fc');
   base = FC.find('.member_fc').eq(0).clone();
-  FC.empty();
 
   $('.button1.forum').attr('href', INFOSLIST["URL"]);
 
@@ -121,7 +133,7 @@ var ProfileCache = (function(){
     return null;
   }
   function set(p, data, ttlMs){
-    const k = key(p), v = { data, exp: now() + (ttlMs || 30*60*1000) };
+    const k = key(p), v = { data, exp: now() + (ttlMs || 7*24*60*60*1000) }; // TTL profils: 7 jours
     mem.set(k, v); try { sessionStorage.setItem(k, JSON.stringify(v)); } catch(_) {}
   }
   function dedupe(p, factory){
@@ -135,6 +147,18 @@ var ProfileCache = (function(){
     mem.clear();
   }
   return { get, set, dedupe, clear };
+})();
+
+/* =========================
+   MemberIndexCache (localStorage)
+   ========================= */
+
+var MemberIndexCache = (function(){
+  const K = 'fc_member_index_v1';
+  function get(){ try{ return JSON.parse(localStorage.getItem(K) || 'null'); }catch(_){ return null; } }
+  function set(arr){ try{ localStorage.setItem(K, JSON.stringify({ paths: arr, ts: Date.now() })); }catch(_){} }
+  function clear(){ try{ localStorage.removeItem(K); }catch(_){} }
+  return { get, set, clear };
 })();
 
 /* =========================
@@ -285,7 +309,7 @@ async function fetchProfileData(profilePath){
 
     if (result.__deleted) return null;
 
-    ProfileCache.set(profilePath, result, 30*60*1000);
+    ProfileCache.set(profilePath, result, 7*24*60*60*1000); // 7 jours
     return { profilePath, data: result };
   });
 }
@@ -366,7 +390,7 @@ function setClonedAt(cloned, profile, $placeholder) {
   return cloned;
 }
 
-// Optionnel : conserve la version originale si utile ailleurs
+// (optionnel) version prepend d’origine
 function setCloned(cloned, profile) {
   cloned.find('a.profile_fc')
     .attr('href', (INFOSLIST["URL"] + profile))
@@ -434,6 +458,59 @@ function priorityScoreForPath(profilePath) {
 }
 
 /* =========================
+   Hydratation ultra-rapide (warm-boot)
+   ========================= */
+
+async function hydrateFromCacheFast(){
+  const idx = MemberIndexCache.get();
+  if (!idx || !idx.paths || !idx.paths.length) return false;
+
+  // Skeletons rapides pour conserver la structure puis remplacement instantané
+  const frag = document.createDocumentFragment();
+  for (const path of idx.paths) {
+    const cached = ProfileCache.get(path);
+    if (!cached) continue;
+    members[path] = cached;
+    const $placeholder = makeSkeleton(path);
+    frag.appendChild($placeholder[0]);
+  }
+  if (frag.childNodes.length) FC[0].appendChild(frag);
+
+  // Remplace in-place sans réseau
+  const nodes = Array.from(FC.find('.member_fc[data-profile-path]').toArray());
+  for (const el of nodes) {
+    const path = el.getAttribute('data-profile-path');
+    const data = members[path];
+    if (!data) continue;
+    setClonedAt(base.clone(), path, $(el));
+  }
+
+  // Lancement d’une petite revalidation silencieuse des premiers profils
+  (async ()=> {
+    const origRps = MAX_REQUESTS_PER_SEC, origMax = PROFILE_CONCURRENCY_MAX;
+    MAX_REQUESTS_PER_SEC = Math.max(3, Math.floor(MAX_REQUESTS_PER_SEC/2));
+    PROFILE_CONCURRENCY_MAX = Math.max(4, Math.floor(PROFILE_CONCURRENCY_MAX/2));
+    try { await revalidateStaleProfiles(idx.paths.slice(0, 300)); } catch(_){}
+    MAX_REQUESTS_PER_SEC = origRps; PROFILE_CONCURRENCY_MAX = origMax;
+  })();
+
+  return true;
+}
+
+async function revalidateStaleProfiles(paths){
+  for (const p of paths) {
+    try {
+      const res = await fetchProfileData(p); // passe par TTL, donc soft
+      if (res) {
+        members[p] = res.data;
+        const node = $('#bp_fc .member_fc[data-profile-path="'+cssEscapeAttr(p)+'"]');
+        if (node.length) setClonedAt(base.clone(), p, node);
+      }
+    } catch(_) {}
+  }
+}
+
+/* =========================
    Pipeline : toutes les pages
    ========================= */
 
@@ -445,7 +522,6 @@ function setupWatchdog({intervalMs=3000, stallMs=12000} = {}) {
     var idle = Date.now() - __lastProgressTs;
     if (idle > stallMs && (!reachedEnd || profileQueue.length > 0)) {
       try { ensureWorkers(true); } catch(_) {}
-      try { /* nudge prefetch noop */ } catch(_) {}
     }
   }, intervalMs);
 }
@@ -457,12 +533,19 @@ var inQueue = new Set();
 
 async function streamAllMembers() {
   members = members || {};
-  FC.empty();
+
+  // Hydratation rapide si possible
+  const hydrated = await hydrateFromCacheFast();
+  if (!hydrated) {
+    // si pas d’hydratation, on repart propre
+    FC.empty();
+  }
 
   var pageIdx = 0;
   reachedEnd = false;
   profileQueue = [];
   inQueue = new Set();
+  var allPaths = []; // pour persister l’index
 
   async function prefetchPages() {
     while (!reachedEnd) {
@@ -474,17 +557,21 @@ async function streamAllMembers() {
       if (!paths.length) { reachedEnd = true; break; }
 
       membersLength += paths.length;
+      allPaths = allPaths.concat(paths);
 
       var frag = document.createDocumentFragment();
       for (var i = 0; i < paths.length; i++) {
         var p = paths[i];
         if (inQueue.has(p)) continue;
         inQueue.add(p);
-        var $ph = makeSkeleton(p);
-        frag.appendChild($ph[0]);
+        // si déjà hydraté avec la carte finale, on ne remet pas de skeleton
+        if ($('#bp_fc .member_fc[data-profile-path="'+cssEscapeAttr(p)+'"]').length === 0) {
+          var $ph = makeSkeleton(p);
+          frag.appendChild($ph[0]);
+        }
         profileQueue.push({ path: p });
       }
-      FC[0].appendChild(frag);
+      if (frag.childNodes.length) FC[0].appendChild(frag);
 
       pageIdx++;
       markProgress();
@@ -512,6 +599,13 @@ async function streamAllMembers() {
       }
       const path = next.path;
       try {
+        // si déjà rendu via hydrataion + cache, on saute
+        if (members[path] && $('#bp_fc .member_fc[data-profile-path="'+cssEscapeAttr(path)+'"]').length &&
+            !$('#bp_fc .member_fc[data-profile-path="'+cssEscapeAttr(path)+'"]').hasClass('is-skeleton')) {
+          markProgress();
+          continue;
+        }
+
         const res = await fetchProfileData(path);
         if (!res) { removeSkeleton(path); markProgress(); continue; }
         members[path] = res.data;
@@ -559,6 +653,9 @@ async function streamAllMembers() {
   }
   clearInterval(heart);
   clearInterval(wd);
+
+  // Sauvegarde l'index pour warm-boot (prochains chargements instantanés)
+  MemberIndexCache.set(allPaths);
 
   if (typeof showAllLoadedCheck === 'function') showAllLoadedCheck();
 }

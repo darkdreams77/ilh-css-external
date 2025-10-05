@@ -220,7 +220,7 @@ async function getHTMLManaged(url, opts) {
 
 async function fetchMemberListPage(pageIndexZeroBased) {
   var start = pageIndexZeroBased * PAGE_SIZE;
-  var url = INFOSLIST["URL"] + '/memberlist?mode=username&order=DESC&start=' + start + '&username';
+  var url = INFOSLIST["URL"] + '/memberlist?mode=username&order&start=' + start + '&username';
   var html = await getHTMLManaged(url, { cache: true, ttlMs: 10*60*1000 });
   var $doc = toDoc(html);
   var set = new Set();

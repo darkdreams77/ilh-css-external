@@ -1,5 +1,5 @@
 /* =========================
-   Faceclaim Loader – FINAL (ordre déterministe + warm-boot + caching + anti-429)
+   Faceclaim Loader – FINAL (ordre alpha + warm-boot + anti-429 + cache + no-dup)
    ========================= */
 
 var members;
@@ -9,7 +9,11 @@ var base;
 
 /* ===== ORDONNANCEMENT DÉTERMINISTE ===== */
 var orderList = [];                    // ['/u12','/u34',...]
-var orderIndex = Object.create(null);  // path -> index (0..n-1)
+var orderIndex = Object.create(null);  // path -> index
+
+/* ===== DÉDOUPLONNAGE ===== */
+var queuedPaths = new Set();
+var renderedPaths = new Set();
 
 /* ===== TUNING ===== */
 var PAGE_SIZE = 50;                // Forumactif
@@ -22,7 +26,7 @@ var PAGE_PREFETCH_AHEAD     = 2;   // pages tampon min
 
 $(function () {
   // Invalidation simple quand tu changes tes sélecteurs
-  var FC_SELECTOR_VERSION = 'v4'; // ⬅ bump si tu modifies INFOSLIST/parse
+  var FC_SELECTOR_VERSION = 'v5'; // ⬅ bump si tu modifies INFOSLIST/parse
   (function(){
     const K='fc_selectors_ver';
     const cur = localStorage.getItem(K);
@@ -436,24 +440,12 @@ async function hydrateFromCacheFast(){
   const idx = MemberIndexCache.get();
   if (!idx || !idx.paths || !idx.paths.length) return false;
 
-  // Fige l’ordre
-  orderList = idx.paths.slice();
+  // Fige l’ordre à partir du cache (déjà alpha si sauvegardé ainsi)
+  orderList = Array.from(new Set(idx.paths)); // unique
   orderIndex = Object.create(null);
   orderList.forEach((p,i)=> orderIndex[p]=i);
 
-   // ----- tri alphabétique par pseudo (warm-boot) -----
-   const cachedEntries = [];
-   for (const path of orderList) {
-     const data = ProfileCache.get(path);
-     if (data && data.pseudo) cachedEntries.push({ path, pseudo: data.pseudo.toLowerCase() });
-   }
-   cachedEntries.sort((a, b) => a.pseudo.localeCompare(b.pseudo));
-   orderList = cachedEntries.map(e => e.path);
-   orderIndex = Object.create(null);
-   orderList.forEach((p, i) => orderIndex[p] = i);
-
-
-  // Skeletons rapides (puis remplacement immédiat si data en cache)
+  // Skeletons puis remplacement immédiat si data en cache (ordre alpha)
   const frag = document.createDocumentFragment();
   for (const path of orderList) {
     const cached = ProfileCache.get(path);
@@ -464,16 +456,16 @@ async function hydrateFromCacheFast(){
   }
   if (frag.childNodes.length) FC[0].appendChild(frag);
 
-  // Remplace in-place sans réseau
   const nodes = Array.from(FC.find('.member_fc[data-profile-path]').toArray());
   for (const el of nodes) {
     const path = el.getAttribute('data-profile-path');
     const data = members[path];
     if (!data) continue;
     setClonedAt(base.clone(), path, $(el));
+    renderedPaths.add(path); // ✅ marqué rendu
   }
 
-  // Revalidation “doux” en arrière-plan (premiers items)
+  // Revalidation “douce” en arrière-plan (premiers items)
   (async ()=> {
     const origRps = MAX_REQUESTS_PER_SEC, origMax = PROFILE_CONCURRENCY_MAX;
     MAX_REQUESTS_PER_SEC = Math.max(3, Math.floor(MAX_REQUESTS_PER_SEC/2));
@@ -499,7 +491,7 @@ async function revalidateStaleProfiles(paths){
 }
 
 /* =========================
-   Pipeline : toutes les pages (ordre figé)
+   Pipeline : toutes les pages (ordre alpha, no-dup)
    ========================= */
 
 let __lastProgressTs = Date.now();
@@ -522,7 +514,7 @@ var inQueue = new Set();
 async function streamAllMembers() {
   members = members || {};
 
-  // Hydratation rapide si possible
+  // Hydratation rapide si possible (ordre alpha via index)
   const hydrated = await hydrateFromCacheFast();
   if (!hydrated) {
     FC.empty(); // si pas d’hydratation, on repart propre
@@ -532,7 +524,8 @@ async function streamAllMembers() {
   reachedEnd = false;
   profileQueue = [];
   inQueue = new Set();
-  var allPaths = []; // pour persister l’index
+  queuedPaths.clear();
+  // on ne clear pas renderedPaths : l’hydratation a déjà rendu des paths
 
   async function prefetchPages() {
     while (!reachedEnd) {
@@ -543,7 +536,7 @@ async function streamAllMembers() {
       var paths = await fetchMemberListPage(pageIdx);
       if (!paths.length) { reachedEnd = true; break; }
 
-      // Alimente l’ordre global (si nouveaux)
+      // Alimente l’ordre global si nouveaux (l’index forum est déjà alpha)
       for (const p of paths) {
         if (orderIndex[p] == null) {
           orderIndex[p] = orderList.length;
@@ -552,14 +545,13 @@ async function streamAllMembers() {
       }
 
       membersLength += paths.length;
-      allPaths = allPaths.concat(paths);
 
-      // Pose les placeholders à la bonne place + alimente la file
+      // Pose les placeholders à la bonne place + alimente la file sans doublon
       for (const p of paths) {
-        if (inQueue.has(p)) continue;
-        inQueue.add(p);
+        if (renderedPaths.has(p) || queuedPaths.has(p)) continue;
         ensurePlaceholder(p);
         profileQueue.push({ path: p });
+        queuedPaths.add(p);
       }
 
       pageIdx++;
@@ -567,21 +559,8 @@ async function streamAllMembers() {
     }
   }
 
-  // ----- Choix du dequeue -----
-  // A) ordre strict FIFO (déterministe à 100%)
+  // Ordre strict FIFO (déterministe)
   function dequeueNext(){ return profileQueue.shift() || null; }
-
-  // B) (Option) priorité au visible : remplace la fonction ci-dessus par:
-  // function dequeueNext() {
-  //   if (!profileQueue.length) return null;
-  //   var windowSize = Math.min(20, profileQueue.length);
-  //   var bestIdx = 0, bestScore = Number.POSITIVE_INFINITY;
-  //   for (var i = 0; i < windowSize; i++) {
-  //     var s = priorityScoreForPath(profileQueue[i].path);
-  //     if (s < bestScore) { bestScore = s; bestIdx = i; }
-  //   }
-  //   return profileQueue.splice(bestIdx, 1)[0];
-  // }
 
   async function profileWorker() {
     while (true) {
@@ -593,20 +572,24 @@ async function streamAllMembers() {
       }
       const path = next.path;
       try {
-        // si déjà rendu (hydratation) et pas skeleton → skip
+        // si déjà rendu (hydratation) et pas skeleton → skip + nettoie la queue
         const $existing = $('#bp_fc .member_fc[data-profile-path="'+cssEscapeAttr(path)+'"]');
         if (members[path] && $existing.length && !$existing.hasClass('is-skeleton')) {
-          markProgress(); continue;
+          queuedPaths.delete(path);
+          markProgress(); 
+          continue;
         }
 
         const res = await fetchProfileData(path);
-        if (!res) { removeSkeleton(path); markProgress(); continue; }
+        if (!res) { removeSkeleton(path); queuedPaths.delete(path); markProgress(); continue; }
         members[path] = res.data;
 
         // s’assurer que le placeholder est là et bien placé
         ensurePlaceholder(path);
         const $slot = $('#bp_fc .member_fc[data-profile-path="' + cssEscapeAttr(path) + '"]');
         setClonedAt(base.clone(), path, $slot);
+        renderedPaths.add(path);
+        queuedPaths.delete(path);
         markProgress();
       } catch (e) {
         markSkeletonError(path, e);
@@ -644,14 +627,13 @@ async function streamAllMembers() {
   clearInterval(heart);
   clearInterval(wd);
 
-  // Sauvegarde l'ordre alphabétique pour le prochain warm-boot
-  const sorted = orderList.slice().sort((a,b)=>{
-    const pa = members[a]?.pseudo?.toLowerCase?.() || '';
-    const pb = members[b]?.pseudo?.toLowerCase?.() || '';
+  // Sauvegarde l'index pour warm-boot suivant — tri alpha par pseudo (fallback vide)
+  const sortedUnique = Array.from(new Set(orderList)).sort((a,b)=>{
+    const pa = (members[a]?.pseudo || '').toLowerCase();
+    const pb = (members[b]?.pseudo || '').toLowerCase();
     return pa.localeCompare(pb);
   });
-  MemberIndexCache.set(sorted);
-
+  MemberIndexCache.set(sortedUnique);
 
   if (typeof showAllLoadedCheck === 'function') showAllLoadedCheck();
 }

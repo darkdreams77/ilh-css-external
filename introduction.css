@@ -88,7 +88,7 @@
   text-transform: uppercase;
 }
 
-.first_container .mdm_group .mdm .mdm_name.small { font-size: var(--10px); }
+.first_container .mdm_group .mdm .mdm_name.small { font-size: var(--11px); }
       
 .first_container .mdm_group .mdm .mdm_status {
   font-size: var(--8px);

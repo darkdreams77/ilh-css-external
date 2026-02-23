@@ -135,6 +135,32 @@ blockquote { text-align: justify; }
   background: var(--textColor);
 }
 
+.img-text-display {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+}
+
+.img-text-display img {
+	object-fit: cover;
+	width: 300px;
+	height: 150px;
+	border-radius: 8px;
+	margin: 5px 0;
+	flex: 300px 0 0;
+}
+
+.mobile .img-text-display {
+	flex-direction: column;
+}
+
+.mobile .img-text-display img {
+	width: 100%;
+	height: 70px;
+	flex: 70px 0 0;
+}
+
 subtitle1 {
   background: var(--gradientAccent);
   border-radius: 4px;

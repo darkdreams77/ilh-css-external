@@ -153,12 +153,12 @@ blockquote { text-align: justify; }
 
 .mobile .img-text-display {
 	flex-direction: column;
+	gap: 10px;
 }
 
 .mobile .img-text-display img {
 	width: 100%;
-	height: 70px;
-	flex: 70px 0 0;
+	flex: 150px 0 0;
 }
 
 subtitle1 {

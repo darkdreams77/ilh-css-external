@@ -76,7 +76,7 @@
 
 .switcheroo__squircle.active,
 .switcheroo__squircle.active img {
-  outline-color: var(--accentClr);
+  border-color: var(--accentClr);
   cursor: default;
 }
 

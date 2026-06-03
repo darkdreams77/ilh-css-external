@@ -252,6 +252,7 @@
 
 /* Bloc-notes */
 .bloc-notes { position: relative; }
+.connected .bloc-notes { margin-left: 45px }
 #notes-btn {
 	width: 34px;
 	height: 34px;

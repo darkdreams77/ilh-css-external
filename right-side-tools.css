@@ -19,47 +19,22 @@
 }
 
 .switcheroo-container {
-  border-top: 1px solid var(--neutral);
-  padding-top: 10px;
-  margin-top: 5px;
-  width: 50px;
-  margin-left: -8px;
-  overflow: hidden;
   height: 100%;
   position: relative;
 }
 
-.switcheroo-container:after {
-  content: "";
-  display: block;
-  position: absolute;
-  right: 0;
-  top: auto;
-  bottom: 0;
-  height: 10%;
-  background: var(--FAM-gradientBot);
-  z-index: 5;
-  pointer-events: none;
-  left: 0;
-}
-
 .switcheroo {
   color: var(--textColor); 
-  height: calc(100vh - 420px);
-}
-
-.switcheroo:hover {
-  overflow-y: auto; 
 }
 
 .switcheroo__squircles {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   margin: 0;
   padding: 0;
   list-style: none;
-  gap: 15px;
+  gap: 10px;
 }
 
 .switcheroo__squircle {
@@ -71,12 +46,12 @@
   height: 35px;
   border-radius: 5px;
   cursor: pointer;
-  outline: 3px solid transparent;
+  border: 3px solid transparent;
   transition: border-radius 128ms var(--ease);
 }
 
 .switcheroo__squircle:hover {
-  outline-color: var(--neutralDarker);
+  border-color: var(--neutralDarker) !important;
   border-radius: 8px;
 }
 
@@ -101,7 +76,7 @@
 
 .switcheroo__squircle.active,
 .switcheroo__squircle.active img {
-  outline-color: var(--accentClr);
+  border-color: var(--accentClr);
   cursor: default;
 }
 
@@ -109,7 +84,6 @@
   transition: border-radius 128ms var(--ease);
   color: var(--accentClr);
   background-color: var(--neutralDarker);
-  order: -1;
 
   > ion-icon { font-size: 24px; }
 }
@@ -141,39 +115,39 @@
 }
 
 .switcheroo__popper {
-  background-color: var(--neutralDarker);
-  padding: 0.30rem 1rem;
-  position: absolute;
-  width: -webkit-max-content;
-  width: max-content;
-  border-radius: 5px;
-  z-index: 0;
-  opacity: 0;
-  transition: opacity 64ms var(--ease), transform 128ms var(--ease-bounce);
-  pointer-events: none;
-  color: var(--textColor);
-  right: 155%;
-  top: 50%;
-  transform-origin: left;
-  transform: translateY(-50%) scale(0.98);
+	background-color: var(--neutralDarker);
+	padding: 0.30rem 1rem;
+	position: absolute;
+	width: -webkit-max-content;
+	width: max-content;
+	border-radius: 5px;
+	z-index: 0;
+	opacity: 0;
+	transition: opacity 64ms var(--ease), transform 128ms var(--ease-bounce);
+	pointer-events: none;
+	color: var(--textColor);
+	left: 0;
+	top: 0;
+	transform-origin: left;
+	transform: translateY(-50%) scale(0.98);
 }
 
 .switcheroo__popper:before {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background-color: var(--neutralDarker);
-  z-index: -1;
-  right: -3px;
-  top: 50%;
-  transform: translateY(-50%) rotate(-45deg);
-  border-radius: 2px;
+	content: "";
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	background-color: var(--neutralDarker);
+	z-index: -1;
+	left: 50%;
+	bottom: -3px;
+	transform: translateX(-50%) rotate(-45deg);
+	border-radius: 2px;
 }
 
 .switcheroo__squircle:hover .switcheroo__popper {
   opacity: 1;
-  transform: translateY(-50%) scale(1);
+  transform: translateY(-150%) translateX(-40%) scale(1);
 }
 
 .switcheroo__logo,
@@ -278,6 +252,7 @@
 
 /* Bloc-notes */
 .bloc-notes { position: relative; }
+.connected .sidebar { padding-left: 55px }
 #notes-btn {
 	width: 34px;
 	height: 34px;
@@ -293,13 +268,13 @@
  
 .panel_bn_global {
 	background: var(--base);
-	border-radius: 4px;
-	padding: 5px;
-	width: 400px;
-	position: absolute;
-	right: 50px;
-	top: 0;
-	height: 260px;
+    border-radius: 4px;
+    padding: 5px;
+    width: 400px;
+    position: absolute;
+    left: 0;
+    bottom: 50px;
+    height: 260px;
 }
 
 .notepad {
@@ -309,4 +284,18 @@
 	overflow: auto;
 	padding: 5px;
 	width: 100%;
+}
+
+.button-styled {
+	width: 34px;
+	height: 34px;
+	font-size: 18px;
+	background: var(--neutralDarker);
+	color: var(--accentClr);
+	border-radius: 5px;
+	position: relative;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

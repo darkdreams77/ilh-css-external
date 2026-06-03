@@ -285,3 +285,17 @@
 	padding: 5px;
 	width: 100%;
 }
+
+.button-styled {
+	width: 34px;
+	height: 34px;
+	font-size: 18px;
+	background: var(--neutralDarker);
+	color: var(--accentClr);
+	border-radius: 5px;
+	position: relative;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

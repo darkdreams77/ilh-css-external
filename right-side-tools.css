@@ -51,7 +51,7 @@
 }
 
 .switcheroo__squircle:hover {
-  border: var(--neutralDarker);
+  border-color: var(--neutralDarker) !important;
   border-radius: 8px;
 }
 

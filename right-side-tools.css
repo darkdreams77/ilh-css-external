@@ -89,7 +89,7 @@
 }
 
 .switcheroo__squircle--button i {font-size: 24px;}
-.switcheroo__squircle--button:hover { background: var(--FAM-accentClr); color: var(--FAM-pluginBackground);}
+.switcheroo__squircle--button:hover { background: var(--accentClr); color: var(--neutral);}
 
 .switcheroo__delete {
   display: grid;
@@ -286,4 +286,9 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.button-styled:hover {
+	background: var(--accentClr);
+	color: var(--neutral);
 }

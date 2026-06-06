@@ -275,7 +275,6 @@
 }
 
 .button-styled {
-	display: block;
 	width: 34px;
 	height: 34px;
 	font-size: 18px;
@@ -285,6 +284,7 @@
 	position: relative;
 	cursor: pointer;
 	display: flex;
+	flex-shrink: 0;
 	align-items: center;
 	justify-content: center;
 }

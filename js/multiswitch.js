@@ -44,7 +44,7 @@
     var avatar = img && img.src ? img.src : "";
 
     // 1 ALT del avatar 
-    var nickAlt = img && img.getAttribute ? (img.getAttribute("alt") || "") : "";
+    var nickAlt = document.querySelector('#navbar_username').innerHTML;
     nickAlt = String(nickAlt || "")
       .replace(/\u00a0/g, " ")
       .replace(/\s+/g, " ")

@@ -23,7 +23,7 @@
           transform: translateX(-50%);
           top: 55px;
           width: 350px;
-          border-radius: 14px;
+          border-radius: 5px;
           overflow: hidden;
           background: var(--neutralDark);
           color: var(--textColor);
@@ -92,7 +92,7 @@
 
 
 #szSwList li:hover {
-          background: rvar(--neutralDark);
+          background: var(--neutralDark);
           border: 1px solid var(--neutralDarker);
 }
 

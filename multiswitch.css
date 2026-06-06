@@ -17,6 +17,11 @@
           font-size: 18px;
 }
 
+#szSwBtn:hover {
+          background: var(--accentClr);
+          color: var(--neutral);
+}
+
 #szSwPanel {
           position: absolute;
           left: 0;

@@ -3,7 +3,7 @@
 
   var STORAGE_KEY = "skinz_multiswitch_v1";
 
-  // ---- aides de stockage ----
+  // ---- helpers storage ----
   function load(){
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
     catch(e){ return []; }
@@ -20,12 +20,12 @@
   function normNick(s){
     s = String(s || "");
     s = s.replace(/\u00a0/g, " ");
-    s = s.replace(/bienvenue\/a\s*/i, "");
+    s = s.replace(/bienvenido\/a\s*/i, "");
     s = s.replace(/\s+/g, " ").trim();
     return s.toLowerCase();
   }
 
-  // -- trouver déconnexion AVEC clé (pas de confirmation)
+  // -- find logout WITH key (no confirm) 
   function pickLogoutUrl(){
     var a = document.getElementById('logout');
     if (a && a.href && a.href.indexOf('logout=1') > -1 && a.href.indexOf('key=') > -1) return a.href;
@@ -38,12 +38,12 @@
     return "";
   }
 
-  // -- obtenir l'utilisateur actuel de la barre d'outils
+  // -- get current user from toolbar
   function getCurrentUser(){
     var img = document.querySelector('#fa_usermenu img');
     var avatar = img && img.src ? img.src : "";
 
-    // 1 ALT de l'avatar
+    // 1 ALT del avatar 
     var nickAlt = img && img.getAttribute ? (img.getAttribute("alt") || "") : "";
     nickAlt = String(nickAlt || "")
       .replace(/\u00a0/g, " ")
@@ -54,13 +54,13 @@
       return { nick: nickAlt, avatar: avatar };
     }
 
-    // 2 Secours - texte de bienvenue
+    // 2 Fallback- texto de welcome
     var w = document.getElementById('fa_welcome');
     if (!w) return null;
 
     var nickText = (w.textContent || "")
       .replace(/\u00a0/g, " ")
-      .replace(/bienvenue\/a\s*/i, "")
+      .replace(/Bienvenue\/à\s*/i, "")
       .replace(/\s+/g, " ")
       .trim();
 
@@ -105,7 +105,7 @@
     return false;
   }
 
-  // ---- pré-remplir la connexion
+  // ---- prefill login 
   function prefillLogin(){
     var nick = sessionStorage.getItem("skinz_prefill_nick");
     if (!nick) return;
@@ -121,11 +121,11 @@
       sessionStorage.removeItem("skinz_prefill_nick");
     }
   }
-  // ---- montage UI - HTML en modèle s'il existe secours sinon
+  // ---- UI mount - HTML en template si existe fallback si no
   function ensureMarkup(){
     var wrap = document.getElementById('szSw');
 
-    // S'il n'existe pas, le créer
+    // Si no existe se crea
     if (!wrap){
       wrap = document.createElement('div');
       wrap.id = 'szSw';
@@ -134,12 +134,12 @@
       return wrap;
     }
 
-    // S'il existe mais vide, modèle
+    // Si existe pero vacio, markup
     if (!wrap.firstElementChild){
       wrap.innerHTML = defaultMarkup();
     }
 
-    // S'il existe, seulement minimum
+    // Si existe, solo minimo
     if (!document.getElementById('szSwBtn')){
       var b = wrap.querySelector('button[data-role="toggle"], #szSwBtn');
       if (b && !b.id) b.id = 'szSwBtn';
@@ -162,7 +162,7 @@
       else wrap.appendChild(p);
       p.innerHTML = defaultPanelInner();
     } else {
-      // S'il y a un panneau mais il manque liste - le créer
+      // Si hay panel pero falta lista- se crea
       if (!document.getElementById('szSwList')){
         var body = document.getElementById('szSwBody') || document.getElementById('szSwPanel');
         var ul = document.createElement('ul');
@@ -174,11 +174,11 @@
     return wrap;
   }
 
-  // Modèle par défaut
+  // Markup por defecto
   function defaultPanelInner(){
     return (
       '<div id="szSwHead">' +
-        '<b>Multi-comptes</b>' +
+        '<b>Multicuentas</b>' +
         '<div class="actions">' +
           '<button type="button" data-act="saveCurrent">Enregistrer le compte</button>' +
           '<button type="button" data-act="deleteCurrent">Supprimer le compte</button>' +
@@ -202,7 +202,7 @@
 
   var wrap = ensureMarkup();
 
-  // Références
+  // Referencias 
   var btn = document.getElementById('szSwBtn');
   var panel = document.getElementById('szSwPanel');
   var listEl = document.getElementById('szSwList');
@@ -214,7 +214,7 @@
   var saveBtn = findAction('saveCurrent') || document.getElementById('szSwSave');
   var delBtn  = findAction('deleteCurrent') || document.getElementById('szSwDel');
 
-  // initial
+  // inicial
   if (isGuest()){
     if (saveBtn) saveBtn.style.display = "none";
     if (delBtn)  delBtn.style.display  = "none";
@@ -222,17 +222,17 @@
     if (delBtn)  delBtn.style.display  = "none";
   }
 
-  // rendu
+  // render
   function render(){
     var guest = isGuest();
     var list = load();
 
-    // Basculer boutons - enregistrer vs supprimer
+    // Toggle botones- guardar vs borrar 
     var savedNow = (!guest) && currentIsSaved(list);
     if (saveBtn) saveBtn.style.display = guest ? "none" : (savedNow ? "none" : "");
     if (delBtn)  delBtn.style.display  = guest ? "none" : (savedNow ? "" : "none");
 
-    // Actif en haut + reste trié par nom
+    // Activa arriba + resto ordenado por nombre
     var activeIdx = -1;
     for (var ai = 0; ai < list.length; ai++){
       if (isActiveAccount(list[ai].nick)) { activeIdx = ai; break; }
@@ -244,7 +244,7 @@
     }
 
     list.sort(function(a, b){
-      return String(a.nick || "").localeCompare(String(b.nick || ""), "fr", { sensitivity: "base" });
+      return String(a.nick || "").localeCompare(String(b.nick || ""), "es", { sensitivity: "base" });
     });
 
     if (activeAcc){
@@ -260,8 +260,8 @@
         '<div class="meta">' +
           '<span class="nick">Aucun compte enregistré</span>' +
           (guest
-            ? '<span class="sub">Connectez-vous et enregistrez vos multi-comptes.</span>'
-            : '<span class="sub">Appuyez sur "Enregistrer le compte" pour ajouter le compte actuel.</span>') +
+            ? '<span class="sub">Connectez-vous et enregistrez vos multi-comptes</span>'
+            : '<span class="sub">Appuyez sur "Enregistrer le compte" pour ajouter le compte actuel</span>') +
         '</div>';
       listEl.appendChild(li0);
       return;
@@ -273,7 +273,7 @@
 
         var img = document.createElement('img');
         img.src = acc.avatar ? acc.avatar :
-          "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='64' height='64' fill='%23333'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' [...]
+          "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='64' height='64' fill='%23333'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='28' fill='%23fff'%3E%3F%3C/text%3E%3C/svg%3E";
 
         var meta = document.createElement('div');
         meta.className = "meta";
@@ -281,7 +281,7 @@
         if (isActiveAccount(acc.nick)){
           meta.innerHTML =
             '<span class="nick">' + esc(acc.nick) + '</span>' +
-            '<span class="sub">Actif</span>';
+            '<span class="sub">Actif·ve</span>';
           li.classList.add('szSw-active');
           li.style.cursor = "default";
         } else {
@@ -306,7 +306,7 @@
           else window.location.href = "/login";
         };
 
-        // clic droit comme bonus
+        // click derecho como extra
         li.oncontextmenu = function(e){
           e.preventDefault();
           if (confirm("Supprimer ce compte ?")){
@@ -330,7 +330,7 @@
     }
   }
 
-  // ---- événements
+  // ---- eventos
   btn.onclick = function(e){
     if (e && e.stopPropagation) e.stopPropagation();
     var isOpen = (wrap.className.indexOf("open") > -1);
@@ -353,7 +353,7 @@
     if (act === "saveCurrent"){
       var cur = getCurrentUser();
       if (!cur){
-        alert("Connectez-vous d'abord pour pouvoir enregistrer le compte.");
+        alert("Connectez-vous d'abord pour pouvoir enregistrer le compte");
         return;
       }
 
@@ -375,13 +375,13 @@
 
     if (act === "deleteCurrent"){
       if (isGuest()){
-        alert("Aucune session active à supprimer.");
+        alert("Aucune session active à supprimer");
         return;
       }
       if (!confirm("Supprimer le compte actuel de la liste ?")) return;
 
       var ok = deleteCurrentFromStorage();
-      if (!ok) alert("Ce compte n'était pas enregistré.");
+      if (!ok) alert("Ce compte n'était pas enregistré");
       render();
       return;
     }

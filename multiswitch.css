@@ -25,7 +25,6 @@
 #szSwPanel {
           position: absolute;
           left: 0;
-          transform: translateX(-50%);
           top: 55px;
           width: 350px;
           border-radius: 5px;
@@ -35,6 +34,10 @@
           transition: 0.25s ease;
           opacity: 0;
           pointer-events: none;
+}
+
+.connected #szSwPanel {
+          transform: translateX(-50%);
 }
 
 #szSw.open #szSwPanel {
@@ -70,6 +73,9 @@
 }
 
 #szSwHead button:hover { background: var(--neutralDarker) }
+
+#szSwHead button[data-act="saveCurrent"] { display: none }
+.connected #szSwHead button[data-act="saveCurrent"] { display: block }
 
 #szSwBody {
           padding: 10px;

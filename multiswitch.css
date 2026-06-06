@@ -92,7 +92,7 @@
 
 
 #szSwList li:hover {
-          background: var(--neutralDark);
+          background: var(--neutral);
           border: 1px solid var(--neutralDarker);
 }
 

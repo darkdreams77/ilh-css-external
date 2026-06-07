@@ -252,7 +252,7 @@
 
 /* Bloc-notes */
 .bloc-notes { position: relative; }
-.connected .sidebar.sleft { padding-left: 51px }
+.connected .sidebar.sleft { padding-left: 44px }
  
 .panel_bn_global {
 	background: var(--base);

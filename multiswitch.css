@@ -7,14 +7,14 @@
 }
 
 #szSwBtn {
-          width: 34px;
-          height: 34px;
-          border: 0;
-          border-radius: 5px;
-          cursor: pointer;
-          background: var(--neutralDarker);
-          color: var(--accentClr);
-          font-size: 18px;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    background: var(--neutralDarker);
+    color: var(--accentClr);
+    font-size: 16px;
 }
 
 #szSwBtn:hover {

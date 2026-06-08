@@ -1,0 +1,140 @@
+/* =============================
+          MultiSwitcher
+   ============================= */
+
+#szSw {
+          position: relative;
+}
+
+#szSwBtn {
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    background: var(--neutralDarker);
+    color: var(--accentClr);
+    font-size: 16px;
+}
+
+#szSwBtn:hover {
+          background: var(--accentClr);
+          color: var(--neutral);
+}
+
+#szSwPanel {
+          position: absolute;
+          left: 0;
+          top: 45px;
+          width: 350px;
+          border-radius: 5px;
+          overflow: hidden;
+          background: var(--neutralDark);
+          color: var(--textColor);
+          transition: 0.25s ease;
+          opacity: 0;
+          pointer-events: none;
+}
+
+.connected #szSwPanel {
+          transform: translateX(-50%);
+}
+
+#szSw.open #szSwPanel {
+          opacity: 1;
+          pointer-events: auto;
+}
+
+#szSwHead {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px;
+          background: var(--neutralDarker);
+}
+
+#szSwHead b {
+          font-size: 13px;
+}
+
+#szSwHead .actions {
+          display: flex;
+          gap: 6px;
+}
+
+#szSwHead button {
+          cursor: pointer;
+          border: 0;
+          border-radius: 10px;
+          padding: 6px 8px;
+          background: var(--neutralDark);
+          color: var(--accentClr);
+          font-size: 11px;
+}
+
+#szSwHead button:hover { background: var(--neutralDarker) }
+
+#szSwHead button[data-act="saveCurrent"] { display: none }
+.connected #szSwHead button[data-act="saveCurrent"] { display: block }
+
+#szSwBody {
+          padding: 10px;
+}
+
+#szSwList {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+}
+
+#szSwList li {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          padding: 10px;
+          border-radius: 5px;
+          cursor: pointer;
+          border: 1px solid transparent;
+}
+
+#szSwList li.szSw-active {
+          opacity: .8;
+}
+
+
+#szSwList li:hover {
+          background: var(--neutral);
+          border: 1px solid var(--neutralDarker);
+}
+
+#szSwList img {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          object-fit: cover;
+          background: rgba(255,255,255,.12);
+}
+
+#szSwList .meta {
+          display: flex;
+          flex-direction: column;
+}
+
+#szSwList .nick {
+          font-size: 13px;
+}
+
+#szSwList .sub {
+          font-size: 11px;
+          opacity: .75;
+}
+
+#szSwAdd {
+          margin-top: 10px;
+          display: flex;
+          gap: 6px;
+}
+
+/* =============================
+         END Multiswitcher
+   ============================= */

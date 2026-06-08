@@ -106,7 +106,7 @@
     color: var(--accentClr);
     background-color: var(--neutral);
     font-style: italic;
-    margin-top: 5px;
+    margin-bottom: 5px;
     height: 30px;
 }
 

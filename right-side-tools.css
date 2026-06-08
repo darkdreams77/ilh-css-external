@@ -120,8 +120,11 @@
     color: var(--accentClr);
     background-color: var(--neutral);
     font-style: italic;
-    margin-bottom: 5px;
     height: 30px;
+}
+
+.switcheroo__squircle--button:not(:last-of-type) {
+    margin-bottom: 5px;
 }
 
 .switcheroo__squircle--button i {

@@ -36,12 +36,12 @@
 
 .switcheroo__squircles {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: flex-start;
     margin: 0;
     padding: 0;
     list-style: none;
-    gap: 10px;
+    gap: 5px;
     width: 100%;
 }
 
@@ -54,7 +54,7 @@
     height: 42px;
     border-radius: 5px;
     cursor: pointer;
-    border: 3px solid transparent;
+    border: 2px solid transparent;
     transition: border-radius 128ms var(--ease);
     padding: 3px;
 }
@@ -89,11 +89,16 @@
 	background-color: var(--neutralDarker);
 }
 
+.switcheroo__squircle.active img {
+	border-radius: 8px;
+}
+
 .switcheroo__squircle.active .switcheroo__popper-text:after {
 	content: '(actif·ve)';
-	color: var(--neutralLight);
-	font-style: italic;
-	font-size: var(--10px);
+    color: var(--contrastLight);
+    font-style: italic;
+    font-size: var(--10px);
+    display: block;
 }
 
 .switcheroo__squircle--button {
@@ -103,15 +108,13 @@
     font-style: italic;
     margin-top: 5px;
     height: 30px;
-
-  > i { 
-		font-size: 20px;
-		margin-top: -4px;
-		margin-left: 6px;
-  }
 }
 
-.switcheroo__squircle--button i {font-size: 24px;}
+.switcheroo__squircle--button i {
+	font-size: 20px;
+	margin-top: -4px;
+	margin-left: 6px;
+}
 .switcheroo__squircle--button:hover { background: var(--neutralLight); color: var(--accentClrDark);}
 
 .switcheroo__delete {

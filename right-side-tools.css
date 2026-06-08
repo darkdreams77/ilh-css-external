@@ -23,17 +23,26 @@
 }
 
 .switcheroo {
-  color: var(--textColor); 
+    color: var(--textColor);
+    width: 300px;
+    position: absolute;
+    top: 55px;
+    left: 210px;
+    background: var(--bg-backdrop);
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--neutral);
 }
 
 .switcheroo__squircles {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 10px;
+    width: 100%;
 }
 
 .switcheroo__squircle {
@@ -114,39 +123,18 @@
 }
 
 .switcheroo__popper {
-	background-color: var(--neutralDarker);
-	padding: 0.30rem 1rem;
-	position: absolute;
-	width: -webkit-max-content;
-	width: max-content;
-	border-radius: 5px;
-	z-index: 0;
-	opacity: 0;
-	transition: opacity 64ms var(--ease), transform 128ms var(--ease-bounce);
-	pointer-events: none;
-	color: var(--textColor);
-	left: 0;
-	top: 0;
-	transform-origin: left;
-	transform: translateY(-50%) scale(0.98);
-}
-
-.switcheroo__popper:before {
-	content: "";
-	position: absolute;
-	width: 16px;
-	height: 16px;
-	background-color: var(--neutralDarker);
-	z-index: -1;
-	left: 50%;
-	bottom: -3px;
-	transform: translateX(-50%) rotate(-45deg);
-	border-radius: 2px;
-}
-
-.switcheroo__squircle:hover .switcheroo__popper {
-  opacity: 1;
-  transform: translateY(-150%) translateX(-40%) scale(1);
+    background-color: var(--neutralDarker);
+    padding: 0.30rem 1rem;
+    position: absolute;
+    width: -webkit-max-content;
+    width: max-content;
+    border-radius: 5px;
+    z-index: 0;
+    opacity: 1;
+    color: var(--textColor);
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%) scale(0.98);
 }
 
 .switcheroo__logo,

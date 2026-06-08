@@ -95,10 +95,15 @@
 .switcheroo__squircle.active img {
   	cursor: default;
 	background-color: var(--neutralDarker);
+	font-weight: 700;
 }
 
 .switcheroo__squircle.active img {
 	border-radius: 4px;
+}
+
+.switcheroo__popper-text {
+    line-height: 1;
 }
 
 .switcheroo__squircle.active .switcheroo__popper-text:after {
@@ -107,6 +112,7 @@
     font-style: italic;
     font-size: var(--10px);
     display: block;
+	font-weight: 400;
 }
 
 .switcheroo__squircle--button {

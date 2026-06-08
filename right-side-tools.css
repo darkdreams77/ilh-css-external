@@ -61,7 +61,6 @@
 
 .switcheroo__squircle:hover {
   border-color: var(--neutralDarker) !important;
-  border-radius: 8px;
 }
 
 .switcheroo__squircle:hover img {
@@ -69,7 +68,7 @@
 }
 
 .switcheroo__avatar {
-    width: 30px;
+    width: 34px;
     aspect-ratio: 1 / 1;
 }
 

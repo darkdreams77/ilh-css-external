@@ -292,7 +292,7 @@
     justify-content: center;
 }
 
-.button-styled:hover {
+.button-styled:hover, .button-styled.open {
 	background: var(--accentClr);
 	color: var(--neutral);
 }

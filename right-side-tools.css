@@ -23,15 +23,24 @@
 }
 
 .switcheroo {
-    color: var(--textColor);
-    width: 300px;
-    position: absolute;
-    top: 55px;
-    left: 210px;
-    background: var(--bg-backdrop);
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid var(--neutral);
+	color: var(--textColor);
+	width: 300px;
+	position: absolute;
+	top: 55px;
+	left: 210px;
+	background: var(--bg-backdrop);
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid var(--neutral);
+	opacity: 1;
+	visibility: visible;
+	transition: all .3s ease-in-out;
+}
+
+.switcheroo.hide {
+    opacity: 0;
+    visibility: hidden;
+    left: 200px;
 }
 
 .switcheroo__squircles {

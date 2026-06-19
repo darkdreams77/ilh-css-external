@@ -25,7 +25,8 @@
 .switcheroo {
 	color: var(--textColor);
 	width: 300px;
-	position: absolute;
+	position: fixed;
+	z-index: 100;
 	top: 55px;
 	left: 90px;
 	background: var(--bg-backdrop);

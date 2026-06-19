@@ -27,7 +27,7 @@
 	width: 300px;
 	position: absolute;
 	top: 55px;
-	left: 210px;
+	left: 90px;
 	background: var(--bg-backdrop);
 	padding: 5px;
 	border-radius: 5px;
@@ -40,8 +40,11 @@
 .switcheroo.hide {
     opacity: 0;
     visibility: hidden;
-    left: 200px;
+    left: 80px;
 }
+
+.connected .switcheroo { left: 210px; }
+.connected .switcheroo.hide { left: 200px; }
 
 .switcheroo__squircles {
     display: flex;

@@ -353,7 +353,7 @@
 
 /* ======= QUI EST EN LIGNE ===========*/ 
 
-.qeel {
+/* .qeel {
 	background: var(--bg-backdrop);
 	backdrop-filter: blur(4px);
 	border-radius: 8px;
@@ -663,7 +663,7 @@
 .qeel-right {
 	border-radius: 0 5px 5px 0;
 	text-align: justify;
-}
+}*/
 
 .qeel_birthday {
 	display: flex;

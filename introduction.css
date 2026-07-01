@@ -440,7 +440,7 @@
   justify-content: flex-start;
   position: relative;
   cursor: default;
-  flex: 0;
+  flex: 1;
   transition: flex .3s ease-in-out;
 }
 
@@ -458,8 +458,10 @@
   display: flex;
   gap: 10px;
   flex: 1 1 auto;
-  border-radius: 4px 4px 0 0;
+  justify-content: center;
 }
+
+.qeel_groups .group .group-visible img { width: 30px }
 
 /*.qeel_groups .group:hover .group-visible {
   background: var(--gradientAccent);

@@ -471,75 +471,19 @@
   justify-content: center;
 }
 
-.qeel_groups .group .group-visible img { 
-  width: 30px;
-  border: 1px solid var(--accentClr);
-  border-radius: 50%;
-  padding: 5px;
-  box-sizing: content-box;
-  background: var(--base);
+.qeel_groups .group .group-visible img {
+    width: 30px;
+    border: 1px solid var(--accentClr);
+    border-radius: 50%;
+    padding: 5px;
+    box-sizing: content-box;
+    background: var(--base);
+    transition: all .2s ease-in-out;
 }
 
-/*.qeel_groups .group:hover .group-visible {
-  background: var(--gradientAccent);
-  color: var(--white);
+.qeel_groups .group:hover .group-visible img {
+    transform: scale(1.2);
 }
-
-.qeel_groups .group.pfo .icon,
-.qeel_groups .group.pfo:hover .group-visible {
-  background: var(--pfo);
-  color: var(--white);
-}
-.qeel_groups .group.adams .icon,
-.qeel_groups .group.adams:hover .group-visible {
-  background: var(--adams);
-  color: var(--white);
-}
-.qeel_groups .group.dudley .icon,
-.qeel_groups .group.dudley:hover .group-visible {
-  background: var(--dudley);
-  color: var(--white);
-}
-.qeel_groups .group.franklin .icon,
-.qeel_groups .group.franklin:hover .group-visible {
-  background: var(--franklin);
-  color: var(--white);
-}
-.qeel_groups .group.kirkland .icon,
-.qeel_groups .group.kirkland:hover .group-visible {
-  background: var(--kirkland);
-  color: var(--white);
-}
-.qeel_groups .group.student .icon,
-.qeel_groups .group.student:hover .group-visible {
-  background: var(--students);
-  color: var(--white);
-}
-.qeel_groups .group.dark .icon,
-.qeel_groups .group.dark:hover .group-visible {
-  background: var(--dark);
-  color: var(--white);
-}
-.qeel_groups .group.love .icon,
-.qeel_groups .group.love:hover .group-visible {
-  background: var(--love);
-  color: var(--white);
-}
-.qeel_groups .group.iwantit .icon,
-.qeel_groups .group.iwantit:hover .group-visible {
-  background: var(--iwantit);
-  color: var(--white);
-}
-.qeel_groups .group.wrecked .icon,
-.qeel_groups .group.wrecked:hover .group-visible {
-  background: var(--wrecked);
-  color: var(--white);
-}
-.qeel_groups .group.fire .icon,
-.qeel_groups .group.fire:hover .group-visible {
-  background: var(--fire);
-  color: var(--white);
-}*/
 
 .qeel_groups .group.pfo .qeel-tooltip {
   border-color: var(--pfo);

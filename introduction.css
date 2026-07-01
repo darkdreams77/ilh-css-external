@@ -448,6 +448,7 @@
   visibility: visible;
   transform: translateX(-50%) scale(1);
   transition-delay: 0.1s;
+  transition: transform .2s ease-in-out;
 }
 
 .qeel_groups .group:not(:has(div)) {

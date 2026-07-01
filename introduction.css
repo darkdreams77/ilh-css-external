@@ -414,12 +414,11 @@
 
 .qeel_groups {
   display: flex;
-  justify-content: space-between;
-  gap: 5px;
-  align-items: stretch;
-  flex-direction: column;
+  justify-content: center;
+  gap: 35px;
+  align-items: center;
   flex: 1 1 0;
-  margin: 10px 0;
+  margin: 10px 0 35px;
 }
 
 .qeel_groups .sepa {
@@ -431,7 +430,6 @@
 }
 
 .qeel_groups .group {
-  background: var(--base);
   border-radius: 4px;
   font-size: var(--11px);
   font-weight: 600;
@@ -442,10 +440,13 @@
   justify-content: flex-start;
   position: relative;
   cursor: default;
+  flex: 0;
+  transition: flex .3s ease-in-out;
 }
 
 .qeel_groups .group:hover {
   border-radius: 4px 4px 0 0;
+  flex: 2;
 }
 .qeel_groups .group:hover .qeel-tooltip {
   visibility: visible;
@@ -460,7 +461,7 @@
   border-radius: 4px 4px 0 0;
 }
 
-.qeel_groups .group:hover .group-visible {
+/*.qeel_groups .group:hover .group-visible {
   background: var(--gradientAccent);
   color: var(--white);
 }
@@ -519,7 +520,7 @@
 .qeel_groups .group.fire:hover .group-visible {
   background: var(--fire);
   color: var(--white);
-}
+}*/
 
 .qeel_groups .group.pfo .qeel-tooltip {
   border-color: var(--pfo);
@@ -589,27 +590,26 @@
   color: var(--fire);
 }
 
-.qeel_groups .group .icon {
-  background: var(--gradientAccent);
-  padding: 5px 0;
-  border-radius: 4px;
-  width: 20px;
-  color: var(--white);
-  line-height: 1;
-  text-align: center;
-}
-
 .qeel_groups .group .qeel-tooltip {
   visibility: hidden;
   position: absolute;
-  top: 100%;
+  top: 125%;
   z-index: 1;
   background: var(--base);
   width: 100%;
-  border-radius: 0 0 4px 4px;
+  border-radius: 4px;
   padding: 5px;
   text-align: center;
   border: 1px solid var(--accentClr);
+}
+
+.qeel_groups .group .qeel-tooltip * {
+  transform: scale(0);
+}
+
+.qeel_groups .group:hover .qeel-tooltip * {
+  transform: scale(1);
+  transition-delay: 0.1s;
 }
 
 .qeel_groups .group .qeel-tooltip .title {
@@ -628,6 +628,10 @@
 
 .qeel_groups .group span {
   align-self: center;
+}
+
+.qeel_groups code {
+  background: var(--bg-backdrop);
 }
 
 .qeel_groups .sc-group {

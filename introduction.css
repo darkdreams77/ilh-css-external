@@ -556,7 +556,7 @@
 .qeel_groups .group .qeel-tooltip {
   visibility: hidden;
   position: absolute;
-  top: 125%;
+  top: 75%;
   z-index: 1;
   background: var(--base);
   width: 230px;

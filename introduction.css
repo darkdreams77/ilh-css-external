@@ -446,7 +446,7 @@
 
 .qeel_groups .group:hover .qeel-tooltip {
   visibility: visible;
-  transform: scale(1);
+  transform: translateX(-50%) scale(1);
   transition-delay: 0.1s;
 }
 

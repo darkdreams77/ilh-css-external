@@ -390,8 +390,6 @@
   backdrop-filter: blur(4px);
   border-radius: 8px;
   padding: 10px;
-  outline: 1px solid var(--bg-backdrop);
-  outline-offset: 3px;
   margin-bottom: 30px;
 }
 
@@ -410,24 +408,37 @@
 .qeel-middle {
   flex: 0 0 220px !important;
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background: var(--bg-qeel);
+  background-size: cover;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.qeel-middle .details {
+  background: var(--bg-backdrop);
+  padding: 5px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
 }
 
 .qeel_groups {
-    display: flex;
-    justify-content: center;
-    gap: 35px;
-    align-items: center;
-    flex: 1 1 0;
-    margin: 10px 0 35px;
-    position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  align-items: center;
+  flex: 1 1 0;
+  margin: 10px 0 35px;
+  position: relative;
 }
 
 .qeel_groups:before {
-    content: '';
-    width: 90%;
-    position: absolute;
-    height: 1px;
-    background: var(--accentClr);
+  content: "";
+  width: 90%;
+  position: absolute;
+  height: 1px;
+  background: var(--accentClr);
 }
 
 .qeel_groups .sepa {
@@ -451,13 +462,14 @@
   cursor: default;
 }
 
-.qeel_groups .group:hover {}
+.qeel_groups .group:hover {
+}
 
 .qeel_groups .group:hover .qeel-tooltip {
   visibility: visible;
   transform: translateX(-50%) scale(1);
   transition-delay: 0.1s;
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
 
 .qeel_groups .group:not(:has(div)) {
@@ -472,17 +484,17 @@
 }
 
 .qeel_groups .group .group-visible img {
-    width: 30px;
-    border: 1px solid var(--accentClr);
-    border-radius: 50%;
-    padding: 5px;
-    box-sizing: content-box;
-    background: var(--base);
-    transition: all .2s ease-in-out;
+  width: 30px;
+  border: 1px solid var(--accentClr);
+  border-radius: 50%;
+  padding: 5px;
+  box-sizing: content-box;
+  background: var(--base);
+  transition: all 0.2s ease-in-out;
 }
 
 .qeel_groups .group:hover .group-visible img {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .qeel_groups .group.pfo .qeel-tooltip {
@@ -566,12 +578,12 @@
   border: 1px solid var(--accentClr);
   transform: translateX(-50%) scale(0);
   left: 50%;
-  transition: transform .3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 .qeel_groups .group .qeel-tooltip * {
   transform: scale(0);
-  transition: trasnform .3s ease-in-out;
+  transition: trasnform 0.3s ease-in-out;
 }
 
 .qeel_groups .group:hover .qeel-tooltip * {
@@ -663,6 +675,10 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  background: var(--bg-backdrop);
+  backdrop-filter: blur(4px);
+  padding: 10px 5px 0;
+  border-radius: 4px;
 }
 
 #lastuser_avatar {
@@ -705,11 +721,11 @@
 }
 
 .qeel_posts_members > div:last-child {
-    display: block;
+  display: block;
 }
 
 .qeel_posts_members .number {
-  font: var(--38px) "Libre Bodoni";
+  font: var(--24px) "Libre Bodoni";
   color: var(--accentClr);
 }
 
@@ -727,13 +743,11 @@
 }
 
 .qeel_nb_connected {
-  background: var(--gradientAccent);
-  color: var(--white);
   text-align: center;
   text-transform: uppercase;
   font-size: var(--11px);
-  padding: 4px 2px;
-  border-radius: 4px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--textColorAccent);
 }
 
 .qeel_nb_connected span {
@@ -741,12 +755,12 @@
 }
 
 .qeel_details {
-  font-size: var(--10px);
+  font-size: var(--9px);
   text-transform: uppercase;
   text-align: center;
   font-style: italic;
   margin-top: 5px;
-  color: var(--textColorAccent);
+  padding: 4px 0;
 }
 
 #online_users,

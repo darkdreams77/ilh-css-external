@@ -420,6 +420,35 @@
   border-color: var(--fire);
 }
 
+/* === GROUPES SC === */
+.qeel_groups .group.sc-citizens .qeel-tooltip {
+  border-color: var(--sccitizens);
+}
+.qeel_groups .group.sc-tourists .qeel-tooltip {
+  border-color: var(--sctourists);
+}
+.qeel_groups .group.sc-team1 .qeel-tooltip {
+  border-color: var(--scteam1);
+}
+.qeel_groups .group.sc-team2 .qeel-tooltip {
+  border-color: var(--scteam2);
+}
+.qeel_groups .group.sc-team3 .qeel-tooltip {
+  border-color: var(--scteam3);
+}
+.qeel_groups .group.sc-team4 .qeel-tooltip {
+  border-color: var(--scteam4);
+}
+.qeel_groups .group.sc-team5 .qeel-tooltip {
+  border-color: var(--scteam5);
+}
+.qeel_groups .group.sc-team6 .qeel-tooltip {
+  border-color: var(--scteam6);
+}
+.qeel_groups .group.sc-team7 .qeel-tooltip {
+  border-color: var(--scteam7);
+}
+
 .qeel_groups .group.pfo .qeel-tooltip .title {
   color: var(--pfo);
 }
@@ -452,6 +481,34 @@
 }
 .qeel_groups .group.fire .qeel-tooltip .title {
   color: var(--fire);
+}
+
+.qeel_groups .group.sc-citizens .qeel-tooltip .title {
+  color: var(--sccitizens);
+}
+.qeel_groups .group.sc-tourists .qeel-tooltip .title {
+  color: var(--sctourists);
+}
+.qeel_groups .group.sc-team1 .qeel-tooltip .title {
+  color: var(--scteam1);
+}
+.qeel_groups .group.sc-team2 .qeel-tooltip .title {
+  color: var(--scteam2);
+}
+.qeel_groups .group.sc-team3 .qeel-tooltip .title {
+  color: var(--scteam3);
+}
+.qeel_groups .group.sc-team4 .qeel-tooltip .title {
+  color: var(--scteam4);
+}
+.qeel_groups .group.sc-team5 .qeel-tooltip .title {
+  color: var(--scteam5);
+}
+.qeel_groups .group.sc-team6 .qeel-tooltip .title {
+  color: var(--scteam6);
+}
+.qeel_groups .group.sc-team6 .qeel-tooltip .title {
+  color: var(--scteam7);
 }
 
 .qeel_groups .group .qeel-tooltip {

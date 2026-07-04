@@ -280,20 +280,13 @@
 .connected .sidebar.sleft { padding-left: 44px }
  
 .panel_bn_global {
-	background: var(--base);
-    border-radius: 4px;
-    padding: 5px;
-    width: 400px;
-    position: absolute;
-    left: 0;
-    bottom: 50px;
-    height: 260px;
+    width: 100%;
 }
 
 .notepad {
 	background-color: var(--neutral);
 	border: 1px solid var(--neutralDark);
-	height: 250px;
+	height: 120px;
 	overflow: auto;
 	padding: 5px;
 	width: 100%;

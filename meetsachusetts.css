@@ -61,7 +61,7 @@
 }
 
 .meetsa .left_content .localisation:before {
-  content: '\F3E8';
+  content: "\F3E8";
   font-family: var(--bi-font);
   background: var(--gradientAccent);
   padding: 4px;
@@ -172,7 +172,7 @@
 }
 
 .meetsa.post .left_content:after {
-  content: '';
+  content: "";
   width: 2px;
   background: var(--base);
   flex: 1 1 auto;
@@ -217,7 +217,14 @@
   border-radius: 8px;
 }
 
-.meetsa.post:has(.text_content), .meetsa.post:has(.text_content) .content, .meetsa.post:has(.text_content) .left_content, .meetsa.post:has(.text_content) .right_content {
+.meetsa.post.story .right_content .photo_content img {
+  max-height: 540px;
+}
+
+.meetsa.post:has(.text_content),
+.meetsa.post:has(.text_content) .content,
+.meetsa.post:has(.text_content) .left_content,
+.meetsa.post:has(.text_content) .right_content {
   min-height: 100px;
 }
 
@@ -231,9 +238,13 @@
   max-width: 100%;
 }
 
-.mobile .meetsa .left_content { flex: 0 0 90px; }
+.mobile .meetsa .left_content {
+  flex: 0 0 90px;
+}
 
-.mobile .meetsa .right_content .pseudo { padding: 2px 5px; }
+.mobile .meetsa .right_content .pseudo {
+  padding: 2px 5px;
+}
 
 .mobile .meetsa .content .icon {
   width: 80px;
@@ -267,9 +278,9 @@
 
 .meetsme-container {
   width: 250px;
-	height: 350px;
-	position: relative;
-	margin: 0 auto;
+  height: 350px;
+  position: relative;
+  margin: 0 auto;
 }
 
 .meetsme-container > img {
@@ -281,14 +292,14 @@
 
 .meetsme {
   width: 250px;
-	height: 350px;
-	border-radius: 8px;
-	margin: 30px auto 10px;
-	background-size: cover;
-	background-position: center center;
-	display: flex;
-	flex-direction: column-reverse;
-	overflow: hidden;
+  height: 350px;
+  border-radius: 8px;
+  margin: 30px auto 10px;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
 }
 
 .meetsme .content {

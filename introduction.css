@@ -419,6 +419,21 @@
 .qeel_groups .group.fire .qeel-tooltip {
   border-color: var(--fire);
 }
+.qeel_groups .group.dream .qeel-tooltip {
+  border-color: var(--dream);
+}
+.qeel_groups .group.power .qeel-tooltip {
+  border-color: var(--power);
+}
+.qeel_groups .group.spotlight .qeel-tooltip {
+  border-color: var(--spotlight);
+}
+.qeel_groups .group.goodsouls .qeel-tooltip {
+  border-color: var(--goodsouls);
+}
+.qeel_groups .group.heroes .qeel-tooltip {
+  border-color: var(--heroes);
+}
 
 /* === GROUPES SC === */
 .qeel_groups .group.sc-citizens .qeel-tooltip {
@@ -481,6 +496,21 @@
 }
 .qeel_groups .group.fire .qeel-tooltip .title {
   color: var(--fire);
+}
+.qeel_groups .group.dream .qeel-tooltip .title {
+  color: var(--dream);
+}
+.qeel_groups .group.power .qeel-tooltip .title {
+  color: var(--power);
+}
+.qeel_groups .group.spotlight .qeel-tooltip .title {
+  color: var(--spotlight);
+}
+.qeel_groups .group.goodsouls .qeel-tooltip .title {
+  color: var(--goodsouls);
+}
+.qeel_groups .group.heroes .qeel-tooltip .title {
+  color: var(--heroes);
 }
 
 .qeel_groups .group.sc-citizens .qeel-tooltip .title {

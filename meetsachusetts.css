@@ -92,6 +92,10 @@
   color: var(--love);
 }
 
+.meetsa .right_content .pseudo a {
+  color: var(--white);
+}
+
 .meetsa .right_content .pseudo {
   display: inline-block;
   padding: 4px 10px;
@@ -101,10 +105,6 @@
   font-weight: 600;
   text-transform: uppercase;
   font-size: var(--11px);
-}
-
-.meetsa .right_content .pseudo a {
-  color: var(--white);
 }
 
 .meetsa .right_content .description {
@@ -274,6 +274,10 @@
 
 .mobile .meetsa.post .right_content .photo_content img {
   max-height: 150px;
+}
+
+.mobile .meetsa.post.story .right_content .photo_content img {
+    max-height: 480px;
 }
 
 .meetsme-container {

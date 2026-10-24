@@ -276,6 +276,10 @@
   max-height: 150px;
 }
 
+.mobile .meetsa.post.story .right_content .photo_content img {
+    max-height: 480px;
+}
+
 .meetsme-container {
   width: 250px;
   height: 350px;
